@@ -62,5 +62,5 @@ ignore: null
 theme: fluid
 deploy:
   type: git
-  repo: 'root@hexo:/home/git/blog/hexo.git'
-  branch: master
+  repo:
+  branch:
