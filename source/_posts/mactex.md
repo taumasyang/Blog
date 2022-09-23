@@ -1,7 +1,7 @@
 ---
-title: MacTeX 配合 Visual Studio Code 进行写作
+title: MacTeX 配合 Visual Studio Code 进行 LaTeX 创作
 date: 2022-09-22 20:40:00
-categories: 知识分享
+categories: 技术分享
 tags: LaTeX
 ---
 
@@ -17,7 +17,7 @@ brew install mactex-no-gui visual-studio-code
 
 ## 更新 MacTeX 包
 
-首先更换镜像源。
+更新前先更换镜像源，以上海交大源为例：
 
 ```zsh
 sudo tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet
@@ -39,7 +39,7 @@ where latex
 
 如果有显示路径，代表系统可以直接调用 LaTeX 进行编译。接下来，打开 VSCode，搜索并安装 LaTeX Workshop 插件。
 
-最后，在 `settings.json` 的合适位置添加以下内容：
+最后，在 VSCode 配置文件 `settings.json` 的合适位置添加以下内容：
 
 ```json
 "latex-workshop.latex.tools": [

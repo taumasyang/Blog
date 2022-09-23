@@ -1,7 +1,7 @@
 ---
 title: 安装和使用 Homebrew
 date: 2022-09-22 10:40:00
-categories: 知识分享
+categories: 技术分享
 tags: Homebrew
 ---
 
@@ -15,7 +15,7 @@ Homebrew 不会将文件安装到它本身目录之外，安装后只会将软�
 
 ## 安装 Homebrew
 
-在终端中执行以下命令，并按提示操作。如果安装失败，尝试再次运行：
+在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，尝试再次运行即可：
 
 ```zsh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -84,10 +84,6 @@ brew install iina
 ```
 
 ```console
-Running `brew update --auto-update`...
-==> Auto-updated Homebrew!
-Updated 4 taps (homebrew/cask-versions, homebrew/core, homebrew/cask and homebrew/cask-drivers).
-
 ==> Downloading https://github.com/iina/iina/releases/download/v1.3.0/IINA.v1.3.0.dmg
 ######################################################################## 100.0%
 ==> Installing Cask iina
