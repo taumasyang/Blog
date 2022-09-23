@@ -1,31 +1,25 @@
 ---
-title: MacTeX 配合 Visual Studio Code 进行写作
+title: MacTeX 配合 Visual Studio Code 进行 LaTeX 创作
 date: 2022-09-22 20:41:30
-categories: 知识分享
+categories: 技术分享
 tags: LaTeX
 ---
-
 
 ## 安装 MacTeX 和 Visual Studio Code
 
 使用 Homebrew 安装上述软件。关于 Homebrew 的安装与使用可以参考我的另一篇文章 {% post_link Homebrew '安装和使用 Homebrew' %}。
-
 ```sh
 brew install mactex-no-gui visual-studio-code
 ```
-
 安装过程中会要求输入密码。
 
 ## 更新 MacTeX 包
 
-首先更换镜像源。
-
+更新前先更换镜像源，以上海交大源为例：
 ```sh
 sudo tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet
 ```
-
-更新 MacTeX 包。
-
+更新 MacTeX 包：
 ```sh
 sudo tlmgr update --self --all
 ```
@@ -33,15 +27,12 @@ sudo tlmgr update --self --all
 ## 配置 Visual Studio Code
 
 首先确保 LaTeX 的安装目录已经添加至 `PATH`。
-
 ```sh
 where latex
 ```
-
 如果有显示路径，代表系统可以直接调用 LaTeX 进行编译。接下来，打开 VSCode，搜索并安装 LaTeX Workshop 插件。
 
-最后，在 `settings.json` 的合适位置添加以下内容：
-
+最后，在 VSCode 配置文件 `settings.json` 的合适位置添加以下内容：
 ```json
 "latex-workshop.latex.tools": [
 	{
@@ -140,5 +131,4 @@ where latex
 	"*.vrb"
 ],
 ```
-
 大功告成！快去试试用 LaTeX 写一篇文章吧！

@@ -54,4 +54,4 @@ tags: Python
 
 ## 具体实现
 
-交互式终端使用 Python 提供的模块 `Cmd` 实现，数据库交互使用 `sqlite3`。
+交互式终端使用 Python 提供的模块 `Cmd` 实现，数据库采用 `sqlite3`。

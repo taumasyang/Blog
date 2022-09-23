@@ -1,7 +1,7 @@
 ---
 title: 安装和使用 Homebrew
 date: 2022-09-22 10:40:29
-categories: 知识分享
+categories: 技术分享
 tags: Homebrew
 ---
 
@@ -15,16 +15,13 @@ Homebrew 不会将文件安装到它本身目录之外，安装后只会将软�
 
 ## 安装 Homebrew
 
-在终端中执行以下命令，并按提示操作。如果安装失败，尝试再次运行：
-
+在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，尝试再次运行即可：
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-
 对于基于 Intel 处理器的 Mac，Homebrew 将会安装至 `/usr/local/homebrew` 下；对于基于 Apple Silicon 的 Mac，Homebrew 将会安装至 `/opt/homebrew` 下。
 
 成功安装 Homebrew 后，为使更新更快，可以考虑更换镜像源。以上海交大镜像源为例，执行以下命令：
-
 ```sh
 export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/brew.git"
 brew update
@@ -34,19 +31,15 @@ for tap in core cask{,-fonts,-drivers,-versions}; do
 done
 brew update
 ```
-
 恭喜你！Homebrew 已经设置完成，现在你可以自由安装大多数软件了！
 
 ## 安装软件
 
 安装软件使用 `brew install` 命令。但是，在大部分情况下我们不知道这些软件的包名，因此需要先搜索。例如，我们希望安装视频播放器 IINA，先搜索这个软件的包名：
-
 ```sh
 brew search iina
 ```
-
 Homebrew 会给出搜索结果：
-
 ```text
 ==> Formulae
 inja
@@ -54,9 +47,7 @@ inja
 ==> Casks
 iina                                     iina-plus
 ```
-
 我们注意到 Casks 里面有个与我们想要的完全匹配的包名，我们验证一下它是不是我们想要安装的：
-
 ```sh
 brew info iina
 ```
@@ -75,17 +66,11 @@ IINA.app (App)
 ==> Analytics
 install: 2,420 (30 days), 7,771 (90 days), 30,179 (365 days)
 ```
-
 我们确定我们想要的就是这个，接下来执行安装命令：
-
 ```sh
 brew install iina
 ```
 ```text
-Running `brew update --auto-update`...
-==> Auto-updated Homebrew!
-Updated 4 taps (homebrew/cask-versions, homebrew/core, homebrew/cask and homebrew/cask-drivers).
-
 ==> Downloading https://github.com/iina/iina/releases/download/v1.3.0/IINA.v1.3.0.dmg
 ######################################################################## 100.0%
 ==> Installing Cask iina
@@ -93,9 +78,7 @@ Updated 4 taps (homebrew/cask-versions, homebrew/core, homebrew/cask and homebre
 ==> Linking Binary 'iina-cli' to '/opt/homebrew/bin/iina'
 🍺  iina was successfully installed!
 ```
-
 如果你想卸载 IINA，只需执行：
-
 ```sh
 brew uninstall iina
 ```
@@ -106,7 +89,6 @@ brew uninstall iina
 ==> Unlinking Binary '/opt/homebrew/bin/iina'
 ==> Purging files for version 1.3.0 of Cask iina
 ```
-
 对于一些使用安装器（`.pkg`）的软件，在安装和卸载的过程中可能会要求输入密码。
 
 ## 卸载 Homebrew

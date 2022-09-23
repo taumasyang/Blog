@@ -1,7 +1,7 @@
 ---
 title: 获取、加工、使用电子课本
 date: 2022-09-22 17:42:26
-categories: 知识分享
+categories: 技术分享
 tags:
 ---
 
@@ -45,7 +45,7 @@ Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在�
 cpdf -list-bookmarks -utf8 textbook.pdf
 ```
 
-{% note info %}
+{% note warning %}
 如果不加 `-utf8` 开关，`cpdf` 则只会输出目录中的 ASCII 字符。
 {% endnote %}
 
