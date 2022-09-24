@@ -66,3 +66,6 @@ deploy:
   type: git
   repo:
   branch:
+markdown:
+  plugins:
+    - "@traptitech/markdown-it-katex"
