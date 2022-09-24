@@ -5,7 +5,7 @@ categories: 技术分享
 tags: LaTeX
 ---
 
-## 安装 $\mathrm{Mac}\TeX$ 和 Visual Studio Code
+## 安装 MacTeX 和 Visual Studio Code
 
 使用 Homebrew 安装上述软件。关于 Homebrew 的安装与使用可以参考我的另一篇文章 {% post_link Homebrew '安装和使用 Homebrew' %}。
 ```sh
@@ -13,7 +13,7 @@ brew install $\mathrm{Mac}\TeX$-no-gui visual-studio-code
 ```
 安装过程中会要求输入密码。
 
-## 更新 $\mathrm{Mac}\TeX$ 包
+## 更新 MacTeX 包
 
 更新前先更换镜像源，以上海交大源为例：
 ```sh
