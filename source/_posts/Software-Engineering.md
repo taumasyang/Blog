@@ -14,4 +14,19 @@ categories: 软件工程
 >
 > 软件工程师是对应用软件创造软件的人们的统称，软件工程师按照所处的领域不同可以分为系统分析师、系统架构师、前端和后端工程师、程序员、测试工程师、用户界面设计师等等。各种软件工程师人们俗称程序员。
 
+软件工程与计算机科学不同，计算机科学的目标是探索正确的计算和建模方法，从而改进计算方法本身，而软件工程的目标是在时间、资源、人员这 3 个主要限制条件下构建满足用户需求的软件系统，主要是对软件开发这一过程的统筹规划与安排。计算机科学的最终产品不一定是软件，而是算法和抽象的问题，而软件工程的最终产品就是软件。特别地，软件工程要求软件项目都有特定的进度与时间表，而计算机科学研究项目一般不具有设置的进度与时间表。计算机科学的关注点在于软件本身运行的原理，比如时间复杂度，空间复杂度，和算法的正确性，而软件工程更多地关注如何为用户实现价值。正因为关注点的不同，一般来说，计算机科学对于某一种特定问题的正确解决方法将永远不会改变，而软件工程随着技术和用户需求的不断变化，软件开发人员必须时刻调整自己的开发以适应当前的需求，同时软件工程本身也处于不断的发展中。
+
+## 软件工程的核心知识（SWEBOK）
+ACM 与 IEEE Computer Society 联合修定的 SWEBOK（Software Engineering Body of Knowledge）提到，软件工程领域中的核心知识包括：
+- 软件需求（Software requirements）
+- 软件设计（Software design）
+- 软件建构（Software construction）
+- 软件测试（Software test）
+- 软件维护与更新（Software maintenance）
+- 软件构型管理（Software Configuration Management, SCM）
+- 软件工程管理（Software Engineering Management）
+- 软件开发过程（Software Development Process）
+- 软件工程工具与方法（Software Engineering Tools and methods）
+- 软件质量（Software Quality）
+
 [^1]: <https://zh.wikipedia.org/wiki/软件工程>
