@@ -52,6 +52,7 @@ C-H 猜想在以下情况下被证明：
 凯莱图（英语：Cayley graph），也叫做凯莱着色图，是将离散群的抽象结构画出的一种图。它的定义是凯莱定理（以阿瑟·凯莱命名）所暗含的。画凯莱图时，要选定群的一个生成元集合（通常有限），不同选法可能得到不同的凯莱图。凯莱图是组合群论与几何群论的中心工具。
 <!-- ![在两个生成元a和b上的自由群的凯莱图](https://upload.wikimedia.org/wikipedia/commons/e/e8/F2_Cayley_Graph.png) -->
 假设 $G$ 是群，而 $S$ 是 $G$ 的生成集。凯莱图 $\Gamma=\Gamma(G,S)$，是如下构造的着色的有向图：
+
 - $G$ 的每个元素 $g$ 对应一个顶点。换言之，图 $\Gamma$ 的顶点集合 $V(\Gamma)$ 视为与 $G$ 等同；
 - $S$ 中每个生成元 $s$，对应一种颜色 $c_s$；
 - 对于任何 $g\in G,s\in S$，画一条由元素 $g$ 至 $gs$ 的有向边，染成 $c_s$ 色。换言之，边集合 $E(\Gamma)$ 由形如 $(g,gs)$ 的有序对构成，边的颜色由 $s\in S$ 确定。
@@ -130,6 +131,64 @@ $$f(v_1)=v_2$$
 参考：[Vertex-transitive graph - Wikipedia](https://en.wikipedia.org/wiki/Vertex-transitive_graph)
 {% endnote %}
 - 若 $\delta_G^+\ge r$，则 $g\le3\left\lceil\ln\left(\frac{2+\sqrt7}{3}\right)\right\rceil\approx\frac{1.312n}{r}$ 由 Shen [^31]
+
+## 5 相关成果
+
+**<span id="Theorem_5.1">定理 5.1</span>.** *(Shen [^30])* 对于一个有 $n$ 个顶点的有向图 $G$，如果 $\delta_G^+\ge r$，且 $n\ge2r^2-3r+1$，则 $G$ 有一个长度最长为 $\left\lceil\frac{n}{r}\right\rceil$ 的环．
+
+在一个图 $G$ 中，对于 $u,v\in V(G)$，$\kappa(u,v)$ 表示 $u$ 和 $v$ 之间内部不相交的路径的最大数量．如果 $G$ 是一个有向图，$\kappa$ 计算从 $u$ 到 $v$ 的内部不相交的有向路径的最大数量．
+
+在图 $G$ 中，对于 $u,v\in V(G)$，$\lambda(u,v)$ 表示 $u$ 和 $v$ 之间边不相交的最大路径数．如果 $G$ 是一个有向图，$\lambda$ 计算从 $u$ 到 $v$ 的边不相交的有向路径的最大数量．
+
+**定理 5.2.** *(Thomassen[^34])* 对于所有的正整数 $r$，存在一个不含平行边（digons）的有向图 $D$ 且 $\delta_D^+\ge r,\delta_D^-\ge r$，使得：
+
+1. 没有顶点 $v\in V(D)$ 被包含在三个公开不相交的回路（circuits）中（即三条回路成对地只共享（pairwise share only）$v$）
+2. 没有边 $(x,y)\in E(D)$ 的 $\kappa(y,x)\ge3$．
+
+**定理 5.3.** *(Mader [^25])* 对于每一个整数 $k\ge0$，如果 $G$ 有 $|V(G)|>k^2(k+1)$，并且 $G$ 的最多 $k^2(k+1)$ 个顶点的出度最多为 $k^3(k+1)$，那么有顶点 $x\ne y$，使得 $\kappa(x,y)>k$．
+
+### 5.1 无向图定理
+
+**定理 5.4.** *(Mader [^22])* 当 $r\ge1$ 时，每一个 $\delta_G\ge r$ 的图 $G$ 都包含顶点 $x,y$，且 $\kappa(x,y)\ge r$．
+
+**定理 5.5.** *(Mader [^23])* $\delta_G\ge r$ 的每个图 $G$ 都包含 $r+1$ 个顶点 $v_1,\dots,v_{r+1}$，且对所有的 $i\ne j$，$\lambda(v_i,v_j)\ge r$．
+
+### 5.2 加法数论结果（Additive Number Theory Results）
+
+给定一个加法群 $\Gamma$，以及集合 $A,B\subseteq\Gamma$，令 $A+B:=\{a+b\,|\,a\in A,b\in B\}$，以及 $A\hat+B:=\{a+b\,|\,a\in A,b\in B,a\ne b\}$．最后，对于一个正整数 $r$，令 $rB:=\{b_1+\cdots+b_h\,|\,$所有 $b_i\in B$，不一定不同$\}$．
+
+**定理 5.6.** *(Cauchy [^6] 和 Davenport [^10], [^11])* 设 $p$ 为素数，$A,B\subseteq \mathbb Z/p\mathbb Z$ 为非空，那么 $|A+B|\ge\min(p,|A|+|B|-1)$．
+
+**定理 5.7.** *(I. Chowla [^8])* 设 $m$ 为正整数，$A,B\subseteq \mathbb Z/m\mathbb Z$，使 $0\in B$ 且对于所有非零的 $b\in B$，$\gcd(b,m)=1$．那么 $|A+B|\ge\min(m,|A|+|B|-1)$．
+
+**<span id="Theorem_5.8">定理 5.8</span>.** *(Dias de Silva 和 Hamidoune [^33])* Erdös-Heilbronn 猜想：令 $A\subseteq \mathbb Z/p\mathbb Z$，$p$ 为素数．那么 $|A\hat +A|\ge\min(2|A|-3,p)$．
+
+对于乘法群 $\Gamma$ 和集合 $A,B\subseteq\Gamma$，令 $AB:=\{ab\,|\,a\in A,b\in B\}$．
+
+**<span id="Lemma_5.9">引理 5.9</span>.** *(Kemperman [^21])* 给定一个群 $\Gamma$ 和有限非空子集 $A,B\subseteq\Gamma$，如果 $1\in A,B$，但 $(1,1)$ 是唯一一对 $a\in A,b\in B$，使得 $ab=1$ 的 $(a,b)$，则 $|AB|\ge|A|+|B|-1$．
+
+如果 $G$ 是一个具有 $V(G)=\bigcup_{i=0}^hV_i$ 且 $V_i\ne\emptyset$，以及对于所有 $i\ne j$，$V_i\cap V_j=\emptyset$ ，以及对于特定的 $i\in\{1,\dots,h\}$，$(u,v)\in E(G)$ 意味着 $u\in V_{i-1},v\in V_i$ 的性质的图，我们就说 $G$ 是一个*分层有向图（layered digraph）*．
+
+一个 *Plünnecke 图*是一个具有以下两个特性的分层有向图 $G$：
+
+1. 如果 $u,v,w_1,\dots,w_k$ 是 $G$ 的顶点，$(u,v),(v,w_1),\dots,(v,w_k)\in E(G)$，那么存在不同的顶点 $v_1,\dots,v_k$ 使得对于 $i=1,\dots,k$ 有 $(u,v_i),(v_i,w_i)\in E(G)$．
+2. 如果 $v,w,u_1,\dots,u_k$ 是 $G$ 的顶点，$(v,w),(u_1,v),\dots,(u_k,v)\in E(G)$，那么存在不同的顶点 $v_1,\dots,v_k$ 使得对于 $i=1,\dots,k$ 有 $(u_i,v_i),(v_i,w)\in E(G)$．
+
+设 $G$ 是一个有向图，$X,Y$ 是 $V(G)$ 的非空子集．那么 $\mathrm{Im}(X,Y):=\{y\in Y\,|\,$ 存在一条从 $X$ 到 $y$ 的有向路径$\}$．*放大倍数（magnification ratio）* $D(X,Y)$ 为
+$$D(X,Y):=\min_{Z\subseteq X,Z\ne\emptyset}\left\{\frac{\mathrm{Im}(Z,Y)}{|Z|}\right\}$$
+
+**定理 5.10.** *(Plünnecke [^28])* 在一个 Plünnecke 图中，令 $D_i=D(V_0,V_i)$．那么
+$$D_1\ge D_2^\frac12\ge\cdots\ge D_h^\frac1h$$
+
+以下是将 Plünnecke 不等式应用于由群的子集 $A,B$ 创建的特殊图形的结果：
+
+**定理 5.11.** 对于集合 $A,B\subset\Gamma$：
+
+1. 对于所有的 $0\le i\le h$，$|iB|^\frac1i\ge|hB|^\frac1h$．
+2. 如果 $|B|=k$，且 $|B+B|\le ck$，那么 $|hB|\le c^hk$．
+3. 如果 $|A|=n$，且 $|A+B|<cn$，那么对于所有的 $k,\ell\in\mathbb Z^+$，我们有 $|kB_\ell B|\le c^{k+\ell}n$，其中 $kB-\ell B$ 表示所有可表示成 $(b_1+\cdots+b_k)-(b_1'+\cdots+b_\ell')$ 的元素的集合，其中所有的 $b_i,b_i'$ 都在 $B$ 中．
+
+**定理 5.12.** *（Erdös-Heilbornn（[定理 5.8](#Theorem_5.8) 的推论）* 令 $A,B\subseteq\mathbb Z/p\mathbb Z$，$p$ 是素数且 $|A|\ne|B|$．令 $C=A\hat+B$．那么 $|C|\ge\min(|A|+|B|-2,p)$．
 
 > 未完待续……
 
