@@ -67,3 +67,7 @@ cpdf -utf8 -add-bookmarks bookmarks.txt textbook-1.pdf -o textbook-final.pdf
 ## 使用电子课本
 
 将我们加工完成的电子课本文件导入 [MarginNote 3](https://apps.apple.com/cn/app/marginnote-3/id1348317163) 即可在所有设备上阅读、学习。
+
+## 已知问题
+
+- ABBYY FineReader PDF 无法处理使用 `jbig2` 编码的 PDF 文件。解决方案：将 PDF 每页都导出为图像文件再进行处理。
