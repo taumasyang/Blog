@@ -29,7 +29,7 @@ Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在�
 
 ### 光学文字识别
 
-我曾尝试过许多 PDF OCR 解决方案，大多数在识别中文时都会在每两个汉字中间增加一些无意义的空格。目前我发现的最好的文字识别软件是 [ABBYY FineReader PDF](https://pdf.abbyy.com/finereader-pdf-for-mac/)。需注意，这是收费软件，但是我们可以找到[破解版](https://macwk.com/soft/ABBYY-FineReader-PDF)。
+我曾尝试过许多 PDF OCR 解决方案，大多数在识别中文时都会在每两个汉字中间增加一些无意义的空格。目前我发现的最好的文字识别软件是 [ABBYY FineReader PDF](https://pdf.abbyy.com/finereader-pdf-for-mac/)。需注意，这是收费软件，但是我们可以找到[破解版](https://macapp.org.cn/app/abbyy-finereader-pdf.html)。
 
 安装软件后立即打开，输入激活码激活软件，然后设置识别语言为「简体中文和英文，**简单数学公式**」。对于计算机类教材，还可以添加对应的程序设计语言。
 
