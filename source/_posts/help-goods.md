@@ -5,11 +5,13 @@ categories: 软件工程
 tags: Python
 ---
 
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Help--Goods-blue)](https://github.com/tau-young/Help-Goods)
+
 本项目是上海交通大学《CS3331-软件工程》课程作业。
 
 ## 题目描述
 
-[Canvas 页面（仅本课程参与人员有权限访问）](https://oc.sjtu.edu.cn/courses/48894/assignments/181452)
+[![Canvas Page](https://img.shields.io/badge/Canvas-“你帮我助”软件开发-red)](https://oc.sjtu.edu.cn/courses/48894/assignments/181452)
 
 > 个人项目（10 月 11 日前完成）：
 >
@@ -25,11 +27,30 @@ tags: Python
 >
 > ![表2-2 软件工程师的任务清单（中英对照）](https://oc.sjtu.edu.cn/courses/48894/files/5116866/preview?verifier=6ogAPjoGuA84rt4bfh1zJrdJRWq7HKCtwcwuH2B3)
 
+## PSP 数据统计
+
+|PSP 2.1|Timing|
+|-|-|
+|Planning||
+|&emsp;Estimate|10min|
+|Development||
+|&emsp;Analysis|5min|
+|&emsp;Design Spec||
+|&emsp;Design Review||
+|&emsp;Coding Standard|< 1min|
+|&emsp;Design|30min|
+|&emsp;Coding|2h|
+|&emsp;Code Review||
+|&emsp;Test|2h|
+|Record Time Spent|Unrecorded|
+|Test Report|No Report|
+|Size Measurement|Huge|
+|Postmortem||
+|Process Improvement Plan||
+
 ## 功能介绍
 
-[GitHub 项目地址](https://github.com/tau-young/Help-Goods)
-
-直接运行以进入交互式界面。
+直接运行以进入交互式界面。需要 Python 运行环境。数据存储在 `goods.db` 中，删除此文件将导致数据丢失！
 
 添加一条物品信息：
 
@@ -60,7 +81,3 @@ tags: Python
 ```zsh
 (goods) reset
 ```
-
-## 具体实现
-
-交互式终端使用 Python 提供的模块 `Cmd` 实现，数据库采用 `sqlite3`。
