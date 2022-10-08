@@ -24,7 +24,7 @@ tags: 图论
 
 ## 2 Caccetta-Häggkvist 猜想
 
-**猜想 2.1.** *(L. Caccetta, R. Häggkvist [^5])* 每个最小出度为 $r$ 的简单 $n$ 顶点有向图都有一个长度最多为 $\lceil\frac{n}{r}\rceil$ 的圈．
+**猜想 2.1.** *(L. Caccetta, R. Häggkvist [^5])* 每个最小出度为 $r$ 的简单 $n$ 顶点有向图都有一个长度最多为 $\lceil\frac{n}{r}\rceil$ 的环．
 
 这可以被表述成：令 $A$ 是一个 $n\times n$ 的 $0$-$1$ 矩阵，其中对于所有的 $i\ne j$，$a_{ij}=1$ 就意味着 $a_{ij}\ne1$．对于所有的 $i$，令 $a_{ii}=1$．如果 $A$ 中每一行的总和不小于 $r+1$，则 $A^{\lceil n/r\rceil}$的迹大于 $n$．
 
@@ -34,36 +34,32 @@ C-H 猜想在以下情况下被证明：
 - $r=2$ 由 Caccetta 和 Häggkvist [^5]
 - $r=3$ 由 Hamidoune [^17]
 - $r=4$ 和 $r=5$ 由 Hoáng 和 Reed [^19]
-- $r\le\sqrt{n/2}$ 由 Shen [^19]．关于他的结果的确切陈述，见定理 5.1．这表明，对于任何给定的 $r$，猜想的反例数（如果有的话）是有限的．
-- Cayley 图（这意味着所有使用陪集【coset】表示的顶点传递图）由 Hamidoune [^15]．这个证明使用了 Kemperman [^21] 的一个定理（定理 5.9）．
+- $r\le\sqrt{n/2}$ 由 Shen [^19]．关于他的结果的确切陈述，见[定理 5.1](#Theorem_5.1)．这表明，对于任何给定的 $r$，猜想的反例数（如果有的话）是有限的．
+- Cayley 图（这意味着所有使用陪集【coset】表示的顶点传递图）由 Hamidoune [^15]．这个证明使用了 Kemperman [^21] 的一个定理（[定理 5.9](#Lemma_5.9)）．
 
 另外，Shen [^32] 证明，如果对于所有 $(u,v)\in E(G)$，$\deg^+(u)+\deg^+(v)\ge4$，则 $g\le\lceil n/2\rceil$，其中 $g$ 表示 $G$ 的周长（girth）．这是对 Caccetta-Häggkvist 猜想的 $r=2$ 情况的平均局部出度版本（average local outdegree version）．
 
 ### 2.2 近似结果 I：加上常数（Additive Constant）
 
-另一种方法是证明，对某些小的 $c$，如果 $\delta_G^+\ge r$，则存在一个长度最长为 $\frac{n}{r}+c$ 的圈．对于一些特定的 $c$，这已被证明，如下所示：
+另一种方法是证明，对某些小的 $c$，如果 $\delta_G^+\ge r$，则存在一个长度最长为 $\frac{n}{r}+c$ 的环．对于一些特定的 $c$，这已被证明，如下所示：
 - $c=2500$ 由 Chvátal 和 Szemerédi [^9]
 - $c=304$ 由 Nishimura [^27]
 - $c=73$ 由 Shen [^31]
 
 ### 2.3 近似结果 II：特殊情况 n/3
 
-$r=n/2$ 的情况是显然的，但 $r=n/3$ 的情况受到了很多关注．研究寻找最小常数 $c$，使 $\delta_G^+\ge cn$ 在一个 $n$ 顶点的简单有向图 $G$ 中迫使（forces）一个长度最多为 3 的有向圈．猜想 $c=1/3$，目前的结果是：
+$r=n/2$ 的情况是显然的，但 $r=n/3$ 的情况受到了很多关注．研究寻找最小常数 $c$，使 $\delta_G^+\ge cn$ 在一个 $n$ 顶点的简单有向图 $G$ 中迫使（forces）一个长度最多为 3 的有向环．猜想 $c=1/3$，目前的结果是：
 - $c\le(3-\sqrt5)/2=0.382$ 由 Caccetta 和 Häggkvist [^5]
 - $c\le(2\sqrt6-3)/5=0.3797$ 由 Bondy 在一个整齐的子图计数论证中给出 [^4]
 - $c\le3-\sqrt7=0.3542$ 由 [^29]
 
-类似地，Seymour、Graaf 和 Schrijver [^12] 提出了 $\beta$ 的最小值，以便当 $G$ 的最小入度和出度至少为 $\beta n$ 时，$G$ 有一个长度最多为 3 的有向圈．他们证明了 $\beta\le0.3487$，并给出了一个与 $\beta$ 和 $c$ 有关的公式．Shen 将这个公式应用于他 1998 年的结果，得到了 $\beta\le0.3477$ 的轻微改进 [^29]．
+类似地，Seymour、Graaf 和 Schrijver [^12] 提出了 $\beta$ 的最小值，以便当 $G$ 的最小入度和出度至少为 $\beta n$ 时，$G$ 有一个长度最多为 3 的有向环．他们证明了 $\beta\le0.3487$，并给出了一个与 $\beta$ 和 $c$ 有关的公式．Shen 将这个公式应用于他 1998 年的结果，得到了 $\beta\le0.3477$ 的轻微改进 [^29]．
 
 ## 3 Seymour 第二邻域猜想
 
 这个猜想意味着当入度和出度都至少为 $n/3$ 时，Caccetta-Häggkvist 的特殊情况，它本身也受到了很多关注．
 
-**猜想 3.1.** *(Seymour)* 任何没有圈或退化多边形（digons）的简单有向图都有一个顶点v，其第二邻域至少与第一邻域一样大，即 $|N_2^+(v)|\ge|N^+(v)|$．
-
-{% note info %}
-The digon is the degenerate polygon (corresponding to a line segment) with Schläfli symbol {2}.
-{% endnote %}
+**猜想 3.1.** *(Seymour)* 任何没有自环（loops）或平行边（digons）的简单有向图都有一个顶点 $v$，其第二邻域至少与第一邻域一样大，即 $|N_2^+(v)|\ge|N^+(v)|$．
 
 以下是 Seymour 第二邻域猜想的已知情况．
 - 当 $G$ 是一个锦标赛图（tournament）时，这是 Dean 的猜想，并由 Fisher 用概率方法证明 [^13]．Havet 和 Thomassé 也有一个组合证明 [^18]．
@@ -94,13 +90,13 @@ Behzad-Chartrand-Wall 猜想在以下特殊情况下被证明：
 
 ## 5 相关成果
 
-**定理 5.1.** *(Shen [^30])* 对于一个有 $n$ 个顶点的有向图 $G$，如果 $\delta_G^+\ge r$，且 $n\ge2r^2-3r+1$，则 $G$ 有一个长度最长为 $\left\lceil\frac{n}{r}\right\rceil$ 的圈．
+**<span id="Theorem_5.1">定理 5.1</span>.** *(Shen [^30])* 对于一个有 $n$ 个顶点的有向图 $G$，如果 $\delta_G^+\ge r$，且 $n\ge2r^2-3r+1$，则 $G$ 有一个长度最长为 $\left\lceil\frac{n}{r}\right\rceil$ 的环．
 
 在一个图 $G$ 中，对于 $u,v\in V(G)$，$\kappa(u,v)$ 表示 $u$ 和 $v$ 之间内部不相交的路径的最大数量．如果 $G$ 是一个有向图，$\kappa$ 计算从 $u$ 到 $v$ 的内部不相交的有向路径的最大数量．
 
 在图 $G$ 中，对于 $u,v\in V(G)$，$\lambda(u,v)$ 表示 $u$ 和 $v$ 之间边不相交的最大路径数．如果 $G$ 是一个有向图，$\lambda$ 计算从 $u$ 到 $v$ 的边不相交的有向路径的最大数量．
 
-**定理 5.2.** *(Thomassen[^34])* 对于所有的正整数 $r$，存在一个不含退化多边形（digons）的有向图 $D$ 且 $\delta_D^+\ge r,\delta_D^-\ge r$，使得：
+**定理 5.2.** *(Thomassen[^34])* 对于所有的正整数 $r$，存在一个不含平行边（digons）的有向图 $D$ 且 $\delta_D^+\ge r,\delta_D^-\ge r$，使得：
 1. 没有顶点 $v\in V(D)$ 被包含在三个公开不相交的回路（circuits）中（即三条回路成对地只共享【pairwise share only】$v$）
 2. 没有边 $(x,y)\in E(D)$ 的 $\kappa(y,x)\ge3$．
 
@@ -120,11 +116,11 @@ Behzad-Chartrand-Wall 猜想在以下特殊情况下被证明：
 
 **定理 5.7.** *(I. Chowla [^8])* 设 $m$ 为正整数，$A,B\subseteq \mathbb Z/m\mathbb Z$，使 $0\in B$ 且对于所有非零的 $b\in B$，$\gcd(b,m)=1$．那么 $|A+B|\ge\min(m,|A|+|B|-1)$．
 
-**定理 5.8.** *(Dias de Silva and Hamidoune [^33])* Erdös-Heilbronn 猜想：令 $A\subseteq \mathbb Z/p\mathbb Z$，$p$ 为素数．那么 $|A\hat +A|\ge\min(2|A|-3,p)$．
+**<span id="Theorem_5.8">定理 5.8</span>.** *(Dias de Silva and Hamidoune [^33])* Erdös-Heilbronn 猜想：令 $A\subseteq \mathbb Z/p\mathbb Z$，$p$ 为素数．那么 $|A\hat +A|\ge\min(2|A|-3,p)$．
 
 对于乘法群 $\Gamma$ 和集合 $A,B\subseteq\Gamma$，令 $AB:=\{ab\,|\,a\in A,b\in B\}$．
 
-**定理 5.9.** *(Kemperman [^21])* 给定一个群 $\Gamma$ 和有限非空子集 $A,B\subseteq\Gamma$，如果 $1\in A,B$，但 $(1,1)$ 是唯一一对 $a\in A,b\in B$，使得 $ab=1$ 的 $(a,b)$，则 $|AB|\ge|A|+|B|-1$．
+**<span id="Lemma_5.9">引理 5.9</span>.** *(Kemperman [^21])* 给定一个群 $\Gamma$ 和有限非空子集 $A,B\subseteq\Gamma$，如果 $1\in A,B$，但 $(1,1)$ 是唯一一对 $a\in A,b\in B$，使得 $ab=1$ 的 $(a,b)$，则 $|AB|\ge|A|+|B|-1$．
 
 如果 $G$ 是一个具有 $V(G)=\cup_{i=0}^hV_i$ 且 $V_i\ne\emptyset$，以及对于所有 $i\ne j$，$V_i\cap V_j=\emptyset$ ，以及对于特定的 $i\in\{1,\dots,h\}$，$(u,v)\in E(G)$ 意味着 $u\in V_{i-1},v\in V_i$ 的性质的图，我们就说 $G$ 是一个*分层有向图（layered digraph）*．
 
@@ -145,15 +141,70 @@ $$D_1\ge D_2^\frac12\ge\cdots\ge D_h^\frac1h$$
 2. 如果 $|B|=k$，且 $|B+B|\le ck$，那么 $|hB|\le c^hk$．
 3. 如果 $|A|=n$，且 $|A+B|<cn$，那么对于所有的 $k,\ell\in\mathbb Z^+$，我们有 $|kB_\ell B|\le c^{k+\ell}n$，其中 $kB-\ell B$ 表示所有可表示成 $(b_1+\cdots+b_k)-(b_1'+\cdots+b_\ell')$ 的元素的集合，其中所有的 $b_i,b_i'$ 都在 $B$ 中．
 
-**定理 5.12.** *（Erdös-Heilbornn（定理 5.8）的概括）* 令 $A,B\subseteq\mathbb Z/p\mathbb Z$，$p$ 是素数且 $|A|\ne|B|$．令 $C=A\hat+B$．那么 $|C|\ge\min(|A|+|B|-2,p)$．
+**定理 5.12.** *（Erdös-Heilbornn（[定理 5.8](#Theorem_5.8) 的概括）* 令 $A,B\subseteq\mathbb Z/p\mathbb Z$，$p$ 是素数且 $|A|\ne|B|$．令 $C=A\hat+B$．那么 $|C|\ge\min(|A|+|B|-2,p)$．
 
 ## 6 尚未解决的问题和猜想
-
 ### 6.1 彩虹猜想
+#### 6.1.1 Seymour 第二邻域的有色推广
 
-给定一个有向图 $G=(V,E)$，其中每条边 $e\in E$ 都有一个标签集 $S_e$ 在 $\{1,2,\dots,k_G\}$ 中，一个在 $G$ 中的*彩虹结构* $H$（例如一条路径或回路）是指有办法给每条边 $e\in E(H)$ 分配一个标签 $\ell(e)\in S_e$ 使得对于所有在 $E(H)$ 中的边 $e\ne f$ 都有 $\ell(e)\ne\ell(f)$．
+给定一个有向图 $G=(V,E)$，其中每条边 $e\in E$ 都有一个标签集 $S_e$ 在 $\{1,2,\dots,k_G\}$ 中，一个在 $G$ 中的*彩虹结构* $H$（例如一条路径或环）是指有办法给每条边 $e\in E(H)$ 分配一个标签 $\ell(e)\in S_e$ 使得对于所有在 $E(H)$ 中的边 $e\ne f$ 都有 $ell(e)\ne\ell(f)$．
+
+**<span id="Conjecture_6.1">猜想 6.1</span>.** *（Seymour, Sullivan）* 设 $G$ 是顶点集 $V$ 上的一个简单有向图，$E_1,\dots,E_k\subseteq E(G)$。称一条边 $e\in E(G)$ 有标签集 $S_e\subseteq\{1,\dots,k\}$ 当且仅当 $e\in E_i$，其中 $i\in S_e$。最后，令 $G_i=(V,E_i)$。
+
+<ol type=i>
+	<li>在 $G$ 中存在一个彩虹（双）环【(di)cycle】，或者</li>
+	<li>存在一个顶点 $v$ 使得 $|\{w|$ 存在一条从 $v$ 到 $w$ 的彩虹路径 $\}|\ge\sum_{i=1}^k\delta_{G_i}^+(v)$</li>
+</ol>
+
+*注：* 如果你要求颜色以递增的顺序出现（循环的环），这是错误的。我们已经能够证明，当 $G_1,\dots,G_k$ 是一个共同的群 $\Gamma$ 上的 Cayley 图时，以及当对所有的 $v$ 和除了 $i=1$ 外所有的 $i$ 都有 $\delta_{G_i}^+(v)\le1$ ，其中我们允许出度是无界的（但是有限的）时，这个猜想是成立的（使用对[定理 5.9](#Lemma_5.9) 的归纳）。
+
+#### 6.1.2 [猜想 6.1](#Conjecture_6.1) 的含义
+
+**猜想 6.2.** Seymour 第二邻域猜想
+
+*注：* 为了更好地理解，考虑一个有向图 $H$，令 $k=2,G=H$，且 $E_1=E_2=E(H)$。
+
+**猜想 6.3.** Caccetta-Häggkvist 猜想（一般情形）
+
+*注：* 对于一个有向图 $H$，取 $G=H,k=\lceil\frac{n}{\delta_H^+}\rceil$，和 $E_1=\cdots=E_k=E(H)$。我们必须得到一个彩虹环，因为每个顶点的出度之和 $\ge n$。这如我们所愿对应于 $H$ 中最长为 $\lceil n\rceil$ 的双环（dicycle）。
+
+**<span id="Conjecture_6.4">猜想 6.4</span>.** 任何没有自环或平行边的简单有向图都有一个顶点 $v$，使得 $|N_2^+(v)|+|N^+(v)|\ge2|N^-(v)|$
+
+*注：*  回顾一下，为了比较，SSN 可以写成 $|N_2^+(v)|+|N^+(v)|\ge2|N^+(v)|$。为了了解[猜想 6.1](#Conjecture_6.1) 是如何推出 [6.4](#Conjecture_6.4) 的，取一个没有自环或平行边的简单有向图 $H$，并且使 $G=H,E_1=E_2=E(H)$。根据 $H$ 的定义，$G$ 不可能有一个彩虹环。定义 ${N_G^+}^*(u)=\{$ 从 $u$ 出发通过 $G$ 中的彩虹路径可以到达的顶点 $\}$，以及 ${N_G^-}^*(u)=\{$ 有 $G$ 中的通向 $u$ 的彩虹路径的顶点 $\}$。令 $E_3$ 为边 $\{(u,v)\,|\,v$ 不在集合 ${N_G^-}^*(u)$ 中 $\}$。令 $G'=H$，并且对于 $e\in G'$，使子集 $E_1,E_2,E_3\subseteq E(G')$ 产生标签集 $S_e'\subseteq\{1,2,3\}$。从这些定义我们可以看出，对于 $V(G')$ 中的任何 $u$，
+
+$$\sum_{i=1}^3\delta_{G_i}^+(u)=2|N^+(u)|+((n-1)-|N^-(u)|-|N_2^-(u)|)$$
+
+其中，右式中提到的所有邻域都在 $H$中。我们可以将其改写为：
+
+$$\sum_{i=1}^3\delta_{G_i}^+(u)=((n-1)-|N^-(u)|+|N_2^-(u)|-2|N^+(u)|)$$
+
+那么只要 $|N^-(u)|+|N_2^-(u)|<2|N^+(u)|$ 就有 $\sum_{i=1}^3\delta_{G_i}^+(u)\ge n$。如果这对所有顶点 $u$ 来说都成立，那么就没有顶点满足 $|{N_{G'}^+}^*(u)|\ge\sum_{i=1}^3\delta_{G_i}^+(u)\ge n$，所以根据[猜想 6.1](#Conjecture_6.1)，我们在 $G'$ 中一定有一个彩虹环。然而，根据构造，由于 $G$ 没有彩虹环，$G'$ 也没有彩虹环。因此，存在一个顶点 $v\in V(H)$，使得 $|N^-(u)|+|N_2^-(u)|>2|N^+(u)|$。如果我们反转 $H$ 中的所有边，就会得到 $|N^+(u)|+|N_2^+(u)|<2|N^-(u)|$，正如声称的那样。
+
+**猜想 6.5.** *（Seymour）* 在[猜想 6.1](#Conjecture_6.1) 的假设下，如果 $|V|=d$ 并且对于所有的 $v$ 有 $\sum_{i=1}^k\delta_{G_i}(v)\ge d$，$G$ 必定有一条彩虹环。
+
+*注：* 如果 $|V|=d$ 变成了 $|V|=d+1$，这个猜想不成立。
+
+#### 6.1.3 受[猜想 6.1](#Conjecture_6.1) 启发（或与之相关）的其他猜想
+
+如果我们相信 Seymour 的第二邻域猜想和[猜想 6.1](#Conjecture_6.1)（特别是 [6.4](#Conjecture_6.4)），我们可能会问，以下情况是否成立。
+
+**猜想 6.6.** *（“折中猜想”）* 任何没有自环或平行边的简单有向图都有一个顶点 $v$，使得 $|N_2^+(v)|\ge|N^-(v)|$。
+
+**猜想 6.7.** 任何没有自环或平行边的简单有向图都有一个顶点 $v$，使得 $|N_2^+(v)|+|N^+(v)|\ge2\min(|N^-(v)|,|N^+(v)|)$。
+
+**猜想 6.8.** 在[猜想 6.1](#Conjecture_6.1) 的假设下，如果 $\delta_{G_i}^+\ge r_i$，并且 $\sum_{i=1}^tr_i\ge|V|$，那么在 $G$ 中有一个彩虹环。
+
+**猜想 6.9.** 在[猜想 6.1](#Conjecture_6.1) 的假设下，如果对于所有的顶点 $v$，$\sum_{i=1}^t\delta_{G_i}^+\ge|V|$，那么在 $G$ 中有一个彩虹环。
+
+**猜想 6.10.** *（Devos）* 在[猜想 6.1](#Conjecture_6.1) 的假设下，如果在 $G$ 中没有边标签严格增加的彩虹环，那么从一个固定的顶点 $v$ 出发，通过标签递增（可能是琐碎的）路径可到达的顶点的平均数量至少是 $1+\sum_{i=1}^k\delta_{G_i}^+$。
+
+*注：* 对于某个群 $\Gamma$，当 $G_i=\mathrm{Cayley}(\Gamma,A_i)$ 时，可以用[定理 5.9](#Lemma_5.9) 证明这一点。
 
 > 未完待续……
+
+## 鸣谢
+
+本研究是在美国国土安全部（DHS）奖学金和研究金计划下作为美国国土安全部（DHS）研究员进行的，该计划由橡树岭科学与教育研究所（ORISE）通过与美国能源部（DOE）的机构间协议为DHS管理。ORISE 由橡树岭协会大学根据能源部合同号 DE-AC05-06OR23100 管理。本文所表达的所有意见都是作者的，不一定反映 DHS、DOE 或 ORISE 的政策和观点。
 
 ## 参考文献
 

@@ -11,7 +11,7 @@ tags: Python
 
 ## 题目描述
 
-[Canvas 页面（仅本课程参与人员有权限访问）](https://oc.sjtu.edu.cn/courses/48894/assignments/181452)
+[![Canvas Page](https://img.shields.io/badge/Canvas-“你帮我助”软件开发-red)](https://oc.sjtu.edu.cn/courses/48894/assignments/181452)
 
 > 个人项目（10月11日前完成）：
 >
@@ -50,7 +50,7 @@ tags: Python
 
 ## 功能介绍
 
-直接运行以进入交互式界面。需要 Python 运行环境。
+直接运行以进入交互式界面。需要 Python 运行环境。数据存储在 `goods.db` 中，删除此文件将导致数据丢失！
 
 添加一条物品信息：
 ```sh
