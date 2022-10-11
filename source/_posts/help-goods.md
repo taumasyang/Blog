@@ -35,7 +35,7 @@ tags: Python
 |&emsp;Estimate|10min|
 |Development||
 |&emsp;Analysis|5min|
-|&emsp;Design Spec||
+|&emsp;Design Spec|Not set|
 |&emsp;Design Review||
 |&emsp;Coding Standard|< 1min|
 |&emsp;Design|30min|
@@ -44,9 +44,9 @@ tags: Python
 |&emsp;Test|2h|
 |Record Time Spent|Unrecorded|
 |Test Report|No Report|
-|Size Measurement|Huge|
+|Size Measurement|1 KB|
 |Postmortem||
-|Process Improvement Plan||
+|Process Improvement Plan|More item details|
 
 ## 功能介绍
 
@@ -55,13 +55,13 @@ tags: Python
 添加一条物品信息：
 
 ```zsh
-(goods) add item
+(goods) add <item>
 ```
 
 删除一条物品信息：
 
 ```zsh
-(goods) del item
+(goods) del <item>
 ```
 
 列出所有物品信息：
@@ -73,7 +73,7 @@ tags: Python
 查找物品信息：
 
 ```zsh
-(goods) search item
+(goods) search <item>
 ```
 
 重置数据库：
