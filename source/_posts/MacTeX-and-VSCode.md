@@ -1,5 +1,5 @@
 ---
-title: MacTeX 配合 Visual Studio Code 进行 LaTeX 创作
+title: MacTeX 配合 Visual Studio Code 进行 LaTeX 写作
 date: 2022-09-22 20:41:30
 categories: 技术分享
 tags: LaTeX
@@ -9,7 +9,7 @@ tags: LaTeX
 
 使用 Homebrew 安装上述软件。关于 Homebrew 的安装与使用可以参考我的另一篇文章 {% post_link Homebrew '安装和使用 Homebrew' %}。
 ```sh
-brew install $\mathrm{Mac}\TeX$-no-gui visual-studio-code
+brew install mactex-no-gui visual-studio-code
 ```
 安装过程中会要求输入密码。
 
@@ -23,6 +23,7 @@ sudo tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texl
 ```sh
 sudo tlmgr update --self --all
 ```
+执行 `sudo` 命令会要求输入密码。
 
 ## 配置 Visual Studio Code
 
