@@ -1002,7 +1002,7 @@ links:
   items:
     - {
       title: tauyoung 的小站,
-      intro: 穷苦学生随手写写,
+      intro: 没有简介！,
       link: https://blog.tauyoung.top,
       avatar: https://blog.tauyoung.top/img/avatar.png
     }
@@ -1015,7 +1015,7 @@ links:
   # Custom content at the bottom of the links
   custom:
     enable: true
-    content: '<hr><p>如果有意交换链接，尽可以在评论区留言，只需提供以下信息：</p><ul><li>名称：tauyoung 的小站</li><li>简介：穷苦学生随手写写</li><li>链接：<a href="https://blog.tauyoung.top">https://blog.tauyoung.top</a></li><li>头像：<a href="https://blog.tauyoung.top/img/avatar.png">https://blog.tauyoung.top/img/avatar.png</a></li></ul>'
+    content: '<hr><p>如果有意交换链接，尽可以在评论区留言，只需提供以下信息：</p><ul><li>名称：tauyoung 的小站</li><li>简介：没有简介！</li><li>链接：<a href="https://blog.tauyoung.top">https://blog.tauyoung.top</a></li><li>头像：<a href="https://blog.tauyoung.top/img/avatar.png">https://blog.tauyoung.top/img/avatar.png</a></li></ul>'
 
   # 评论插件
   # Comment plugin
