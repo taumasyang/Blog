@@ -200,10 +200,8 @@ $$D_1\ge D_2^\frac12\ge\cdots\ge D_h^\frac1h$$
 
 **<span id="Conjecture_6.1">猜想 6.1</span>.** *（Seymour, Sullivan）* 设 $G$ 是顶点集 $V$ 上的一个简单有向图，$E_1,\dots,E_k\subseteq E(G)$．称一条边 $e\in E(G)$ 有标签集 $S_e\subseteq\{1,\dots,k\}$ 当且仅当 $e\in E_i$，其中 $i\in S_e$．最后，令 $G_i=(V,E_i)$．
 
-<ol type=i>
-	<li>在 $G$ 中存在一个彩虹（双）环【(di)cycle】，或者</li>
-	<li>存在一个顶点 $v$ 使得 $|\{w|$ 存在一条从 $v$ 到 $w$ 的彩虹路径 $\}|\ge\sum_{i=1}^k\delta_{G_i}^+(v)$</li>
-</ol>
+1. 在 $G$ 中存在一个彩虹（双）环（(di)cycle），或者
+2. 存在一个顶点 $v$ 使得 $|\{w\,|$ 存在一条从 $v$ 到 $w$ 的彩虹路径 $\}|\ge\sum_{i=1}^k\delta_{G_i}^+(v)$
 
 *注：* 如果你要求颜色以递增的顺序出现（循环的环），这是错误的．我们已经能够证明，当 $G_1,\dots,G_k$ 是一个共同的群 $\Gamma$ 上的 Cayley 图时，以及当对所有的 $v$ 和除了 $i=1$ 外所有的 $i$ 都有 $\delta_{G_i}^+(v)\le1$ ，其中我们允许出度是无界的（但是有限的）时，这个猜想是成立的（使用对[定理 5.9](#Lemma_5.9) 的归纳）．
 
@@ -272,7 +270,7 @@ $$\sum_{i=1}^3\delta_{G_i}^+(u)=((n-1)-|N^-(u)|+|N_2^-(u)|-2|N^+(u)|)$$
 [^13]: D. C. Fisher. Squaring a tournament: a proof of Dean’s conjecture. *Journal of Graph Theory*, 23:43–48, 1996.
 [^14]: Godbole, Cole, and Wright. Probabilistic versions of Seymour’s distance two conjecture. *to appear*.
 [^15]: Y. O. Hamidoune. An application of connectivity theory in graphs to factorizations of elements in groups. *European Journal of Combinatorics*, 2(4):349–355, 1981.
-[^16]: Y. O. Hamidoune. Quelques problèmes de connexité dans les graphes orientés. *Journal of Combinatorial Theory*, Series B, 30(1):1–10, 1981.
+[^16]: Y. O. Hamidoune. Quelques problèmes de connexité dans les graphes orientés. *Journal of Combinatorial Theory, Series B*, 30(1):1–10, 1981.
 [^17]: Y. O. Hamidoune. A note on minimal directed graphs with given girth. *Journal of Combinatorial Theory, Series B*, 43(3):343–348, 1987.
 [^18]: F. Havet and S. Thomassé. Median orders of tournaments: a tool for the second neighborhood problem and Sumner’s conjecture. *Journal of Graph Theory*, 35:244–256, 2000.
 [^19]: C. Hoáng and B. Reed. A note on short cycles in digraphs. *Discrete Math*, 66(1-2):103–107, 1987.
