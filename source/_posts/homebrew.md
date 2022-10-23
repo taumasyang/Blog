@@ -21,9 +21,9 @@ Homebrew 不会将文件安装到它本身目录之外，安装后只会将软�
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-对于基于 Intel 处理器的 Mac，Homebrew 将会安装至 `/usr/local/homebrew` 下；对于基于 Apple Silicon 的 Mac，Homebrew 将会安装至 `/opt/homebrew` 下。
+对于基于 Intel 处理器的 Mac，Homebrew 将会安装至 `/usr/local/Homebrew`；对于基于 Apple Silicon 的 Mac，Homebrew 将会安装至 `/opt/homebrew`。
 
-成功安装 Homebrew 后，为使更新更快，可以考虑更换镜像源。以上海交大镜像源为例，执行以下命令：
+成功安装 Homebrew 后，为使更新更快速、稳定，可以考虑更换镜像源。以上海交大镜像源为例，执行以下命令：
 
 ```zsh
 export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/brew.git"
@@ -117,3 +117,9 @@ brew uninstall iina
 ```
 
 如果提示有一些文件未被删除，请手动删除它们。
+
+```zsh
+sudo rm -rf /opt/homebrew
+```
+
+如果是基于 Intel 处理器的 Mac，只需将上面这条命令中的目录替换成前文所述的地址即可。
