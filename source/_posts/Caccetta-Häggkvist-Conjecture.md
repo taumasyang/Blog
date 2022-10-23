@@ -18,15 +18,14 @@ tags: 图论
 - *图（graph）* $G=(V(G),E(G))$ 是顶点 $V(G)$ 和边 $E(G)$ 的集合，其中每条边是不同顶点 $u,v$ 的无序对．
 - *有向图（digraph）* $D=(V(D),E(D))$ 是顶点 $V(G)$ 和边 $E(G)$ 的集合，以及两个关联关系（incidence relation）$h,t:V(D)\times E(D)\to0,1$．我们令 $t(u,e)=1$ 当且仅当 $v$ 是这条边的尾（tail）（即，这条边是从 $u$ 指向另一个顶点 $v$），以及相似地 $h(v,e)=1$ 当且仅当 $v$ 是这条边的头（head）．注意这允许从 $u$ 到 $v$ 存在多条边．除非另有明确说明，本文将假设 $|V(D)|$ 和 $|E(D)|$ 是有限的．
 - *简单有向图（simple digraph）* 是一个对于所有的 $u,v\in V(G)$，$E(G)$ 中最多只有一条从 $u$ 到 $v$ 的边的有向图（即没有平行有向边）．
-- 在有向图 $G$ 中，对于 $u,v\in V(G)$，从 $u$ 到 $v$ 的距离 $d(u,v)$ 是 $u$ 到 $v$ 的最短有向路径的长度．我们说 $v$ 在 $u$ 的*外侧距离（out-distance）*$d(u,v)$，而 $u$ 在 $v$ 的*内侧距离（in-distance）*$d(u,v)$．
-- 对于整数 $j>0$，$N_j^+(v)$ 是离 $v$ 正好外侧距离 $j$ 的顶点集合，$N_j^-(v)$ 是离 $v$ 正好内侧距离 $j$ 的顶点集合．我们可以将 $N_1^+(v)$ 和 $N_1^-(v)$ 分别缩写为 $N^+(v)$ 和 $N^-(v)$．
+- 在有向图 $G$ 中，对于 $u,v\in V(G)$，从 $u$ 到 $v$ 的距离 $d(u,v)$ 是 $u$ 到 $v$ 的最短有向路径的长度．我们说 $v$ 在 $u$ 的*出距离（out-distance）*$d(u,v)$，而 $u$ 在 $v$ 的*入距离（in-distance）*$d(u,v)$．
+- 对于整数 $j>0$，$N_j^+(v)$ 是离 $v$ 正好出距离 $j$ 的顶点集合，$N_j^-(v)$ 是离 $v$ 正好入距离 $j$ 的顶点集合．我们可以将 $N_1^+(v)$ 和 $N_1^-(v)$ 分别缩写为 $N^+(v)$ 和 $N^-(v)$．
 - 在一个有向图 $G$ 中，$\delta_G^+$ 和 $\delta_G^-$ 分别表示 $G$ 的最小出度和入度．对于一个给定的顶点 $v$，$\delta_G^+(v),\delta_G^-(v)$ 表示顶点 $v$ 的出度和入度．在被指代的图很清楚的情况下，我们可以写成 $\delta^+$ 和 $\delta^-$．
 
 {% note info %}
-### 补充定义
-
 - *环（cycle）*：在图论中，环是一条只有第一个和最后一个顶点重复的非空路径．一个没有环的图被称作无环图，一个没有有向环的有向图被称做有向无环图．一个无环的连通图被称作树．
 - *自环（loop）*：一个自环是两个端点为同一顶点的边．如果有多于一条边连接同一对顶点，则它们均被称为重边．一个图的重数是重复次数最多的边的重复次数．如果一个图不含自环或重边，则称为简单图．多数情况下，如无特殊说明，可以假定“图”总是指简单图．
+- *围长（girth）*：在图论中，一个图的围长定义为这个图所包含的最短环长。若这个图是无环图，它的围长则定义做无穷大。举例来说，4-环（正方形）的围长是 4。
 
 参考：[图论术语 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/图论术语)
 {% endnote %}
@@ -43,10 +42,23 @@ C-H 猜想在以下情况下被证明：
 - $r=2$ 由 Caccetta 和 Häggkvist [^5]
 - $r=3$ 由 Hamidoune [^17]
 - $r=4$ 和 $r=5$ 由 Hoáng 和 Reed [^19]
-- $r\le\sqrt{n/2}$ 由 Shen [^19]．关于他的结果的确切陈述，见[定理 5.1](#Theorem_5.1)．这表明，对于任何给定的 $r$，猜想的反例数（如果有的话）是有限的．
-- Cayley 图（这意味着所有使用陪集（coset）表示的顶点传递图）由 Hamidoune [^15]．这个证明使用了 Kemperman [^21] 的一个定理（[定理 5.9](#Lemma_5.9)）．
+- $r\le\sqrt{n/2}$ 由 Shen [^30]．关于他的结果的确切陈述，见[定理 5.1](#Theorem_5.1)．这表明，对于任何给定的 $r$，猜想的反例数（如果有的话）是有限的．
+- Cayley 图（这意味着所有使用陪集（coset）表示的顶点传递图）由 Hamidoune [^15]．这个证明使用了 Kemperman [^21] 的一个定理（[引理 5.9](#Lemma_5.9)）．
 
-另外，Shen [^32] 证明，如果对于所有 $(u,v)\in E(G)$，$\deg^+(u)+\deg^+(v)\ge4$，则 $g\le\lceil n/2\rceil$，其中 $g$ 表示 $G$ 的周长（girth）．这是对 Caccetta-Häggkvist 猜想的 $r=2$ 情况的平均局部出度版本（average local outdegree version）．
+{% note info %}
+凯莱图（英语：Cayley graph），也叫做凯莱着色图，是将离散群的抽象结构画出的一种图。它的定义是凯莱定理（以阿瑟·凯莱命名）所暗含的。画凯莱图时，要选定群的一个生成元集合（通常有限），不同选法可能得到不同的凯莱图。凯莱图是组合群论与几何群论的中心工具。
+<!-- ![在两个生成元a和b上的自由群的凯莱图](https://upload.wikimedia.org/wikipedia/commons/e/e8/F2_Cayley_Graph.png) -->
+假设 $G$ 是群，而 $S$ 是 $G$ 的生成集。凯莱图 $\Gamma=\Gamma(G,S)$，是如下构造的着色的有向图：
+- $G$ 的每个元素 $g$ 对应一个顶点。换言之，图 $\Gamma$ 的顶点集合 $V(\Gamma)$ 视为与 $G$ 等同；
+- $S$ 中每个生成元 $s$，对应一种颜色 $c_s$；
+- 对于任何 $g\in G,s\in S$，画一条由元素 $g$ 至 $gs$ 的有向边，染成 $c_s$ 色。换言之，边集合 $E(\Gamma)$ 由形如 $(g,gs)$ 的有序对构成，边的颜色由 $s\in S$ 确定。
+
+在集合群论中，集合 $S$ 通常取为有限、对称（即满足 $S=S^{-1}$），并且不包含这个群的单位元 $e$。在这种情况下，凯莱图是简单无向图：它的边没有方向（由对称性），并且不包含自环（因为 $e\notin S）$。
+
+参考：[凯莱图 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E5%87%B1%E8%90%8A%E5%9C%96)
+{% endnote %}
+
+另外，Shen [^32] 证明，如果对于所有 $(u,v)\in E(G)$，$\deg^+(u)+\deg^+(v)\ge4$，则 $g\le\lceil n/2\rceil$，其中 $g$ 表示 $G$ 的围长．这是对 Caccetta-Häggkvist 猜想的 $r=2$ 情况的平均局部出度版本（average local outdegree version）．
 
 ### 2.2 近似结果 I：加上常数（Additive Constant）
 
@@ -74,15 +86,15 @@ $r=n/2$ 的情况是显然的，但 $r=n/3$ 的情况受到了很多关注．研
 - 当 $G$ 是一个锦标赛图（tournament）时，这是 Dean 的猜想，并由 Fisher 用概率方法证明 [^13]．Havet 和 Thomassé 也有一个组合证明 [^18]．
 
 {% note info %}
-![Tournament](https://mathworld.wolfram.com/images/eps-svg/Tournament_800.svg)
+**锦标赛图**是一个有向图，通过为无向完整图中的每条边分配一个方向而得到。也就是说，它是完整图的一个方向，或者说是一个有向图，其中每一对不同的顶点都由一条有向边（通常称为**弧**）连接，有两个可能的方向中的任何一个。
 
-锦标赛图是一个[完全](https://mathworld.wolfram.com/CompleteGraph.html)[有向图](https://mathworld.wolfram.com/OrientedGraph.html)，即每一对顶点都由一条唯一的有向边连接的图．上面显示的第一个和第二个 3 个节点的锦标赛图分别被称为[转折三元组（transitive triple）](https://mathworld.wolfram.com/TransitiveTriple.html)和[循环三元组（cyclic triple）](https://mathworld.wolfram.com/CyclicTriple.html)．
+锦标赛图的许多重要属性是由 H. G. Landau 在 Landau (1953) 中首次研究的，用于模拟鸡群中的支配关系。目前锦标赛图的应用包括投票理论和社会选择理论的研究等。
 
-锦标赛图之所以如此命名，是因为 $n$ 个节点的锦标赛图对应于一个锦标赛，在这个锦标赛中，由 $n$ 个玩家组成的小组的每个成员都与其他所有 $n-1$ 个玩家进行比赛，每场比赛的结果是一个玩家获胜，另一个玩家失败．一个所谓的[分数序列](https://mathworld.wolfram.com/ScoreSequence.html)可以与每个锦标赛相关联，给出锦标赛中玩家将获得的一组分数，每场胜利算作 1 分，每场失败算作没有得分．（另一个不同的评分系统被用来计算一个锦标赛的所谓[锦标赛矩阵](https://mathworld.wolfram.com/TournamentMatrix.html)，赢了得 1 分，输了得 -1 分）．一个给定的锦标赛的分数序列是由按非递减顺序排序的[出度](https://mathworld.wolfram.com/Outdegree.html)集得到的．
+*锦标赛图*的名称源于这样一个图，它被解释为一个循环赛的结果，在这个循环赛中，每个玩家正好遇到其他玩家一次，并且没有平局发生。在锦标赛有向图中，顶点对应于球员。每对选手之间的边是由赢家指向输家的。如果选手 $a$ 击败了选手 $b$，那么就说 $a$ *支配了* $b$。如果每个选手都击败了相同数量的其他选手（入度 = 出度），那么这个锦标赛图就被称为*正规的*。
 
-$n=2,3,4,\dots$ 个节点上的非同构锦标赛的数量 $a(n)$ 为 $1,2,4,12,56,456,\dots$（OEIS [A000568](http://oeis.org/A000568); Moon 1968, pp. 126 and 245）．Davis 和 Harary 用 [Pólya 列举定理](https://mathworld.wolfram.com/PolyaEnumerationTheorem.html)得到了这些数字作为 $n$ 的函数的公式．
+![A tournament on 4 vertices](https://upload.wikimedia.org/wikipedia/commons/8/89/4-tournament.svg)
 
-参考：[Tournament -- from Wolfram MathWorld](https://mathworld.wolfram.com/Tournament.html)
+参考：[Tournament (graph theory) - Wikipedia](https://en.wikipedia.org/wiki/Tournament_(graph_theory))
 {% endnote %}
 
 - 它被 Kaneko 和 Locke [^20] 证明适用于最小出度 $\le6$ 的有向图．
@@ -93,7 +105,7 @@ $n=2,3,4,\dots$ 个节点上的非同构锦标赛的数量 $a(n)$ 为 $1,2,4,12,
 
 如果一个有向图的每个顶点 $v$ 都有 $\delta_G^+(v)=\delta_G^-(v)=r$，那么它是 *$r$-正则*的．
 
-**猜想 4.1.** *(Behzad, Chartrand, Wall [^2])* 一个周长为 $g$ 的 $r$-正则有向图的最小顶点数是 $r(g-1)+1$．
+**猜想 4.1.** *(Behzad, Chartrand, Wall [^2])* 一个围长为 $g$ 的 $r$-正则有向图的最小顶点数是 $r(g-1)+1$．
 
 通过在一个圈上放置 $r(g-1)+1$ 个顶点，每个顶点都有通往接下来 $r$ 个顶点的顺时针顺序的边，Behzad、Chartrand 和 Wall给出了一个实现这一目标的例子．Caccetta-Häggkvist 猜想是对这个早期猜想的概括．
 
@@ -101,6 +113,17 @@ Behzad-Chartrand-Wall 猜想在以下特殊情况下被证明：
 - $r=2$ 由 Behzad [^1]
 - $r=3$ 由 Bermond [^3]
 - 顶点传递图由 Hamidoune [^16]
+{% note info %}
+在图论的数学领域，**顶点传递图**是一个图 $G$，在这个图中，给定 $G$ 的任何两个顶点 $v_1$ 和 $v_2$，有一些自同构
+$$f:G\to G$$
+使得
+$$f(v_1)=v_2$$
+换句话说，如果一个图的自变形群对其顶点的作用是传递的，那么这个图就是顶点传递的。一个图是传递的当且仅当其补图是顶点传递的，因为群作用是相同的。
+
+每个没有孤立顶点的对称图都是顶点传递的，每个顶点传递的图都是正规的。然而，并不是所有的顶点传递图都是对称的（例如，截断四面体的边），也不是所有的正规图都是顶点传递的（例如，Frucht 图和 Tietze 的图）。
+
+参考：[Vertex-transitive graph - Wikipedia](https://en.wikipedia.org/wiki/Vertex-transitive_graph)
+{% endnote %}
 - 若 $\delta_G^+\ge r$，则 $g\le3\left\lceil\ln\left(\frac{2+\sqrt7}{3}\right)\right\rceil\approx\frac{1.312n}{r}$ 由 Shen [^31]
 
 ## 5 相关成果
