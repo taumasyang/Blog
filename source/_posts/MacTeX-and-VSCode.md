@@ -14,12 +14,12 @@ brew install mactex-no-gui visual-studio-code
 安装过程中会要求输入密码。
 
 {% note info %}
-Homebrew 同时提供了 `mactex` 和 `mactex-no-gui` 两个 Cask，从 $\mathrm{Mac}\TeX$ 官方网站上下载安装的是 `mactex` 包，并且安装时会一并安装官方提供的 $\LaTeX$ 编辑器和包管理器。我们并不使用官方提供的这些 GUI 工具，因此安装 `mactex-no-gui` 可以避免安装这些无用的工具。不过不用担心，我们更新 $\LaTeX$ 包所使用的命令行工具仍然是官方所提供的 `tlmgr`。
+Homebrew 同时提供了 `mactex` 和 `mactex-no-gui` 两个 Cask，从 $\mathrm{Mac}\TeX$ 官方网站上下载安装的是 `mactex` 包，安装时会一并安装官方提供的 $\LaTeX$ 编辑器和包管理器。如果不使用官方提供的这些 GUI 工具，可以选择安装 `mactex-no-gui`。
 {% endnote %}
 
-## 更新 MacTeX 包
+## 更新 MacTeX 宏包
 
-更新前先更换镜像源，以上海交大源为例：
+$\mathrm{Mac}\TeX$ 一年更新一次，下载的安装包会一同打包当时版本的宏包。一般来说，距离上次发布已经有很多宏包都经过了更新，所以我们需要重新安装过时的宏包。更新前先更换镜像源以加速下载，以上海交大源为例：
 ```sh
 sudo tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet
 ```
@@ -31,16 +31,23 @@ sudo tlmgr update --self --all
 
 ## 配置 Visual Studio Code
 
-首先确保 $\LaTeX$ 的安装目录已经添加至 `PATH`。用 Homebrew 安装的 $\mathrm{Mac}\TeX$ 会自动添加至 `PATH` 中，如果没有，则需要受用添加。
+首先确保 $\LaTeX$ 的安装目录已经添加至 `PATH`。用 Homebrew 安装的 $\mathrm{Mac}\TeX$ 会自动添加至 `PATH` 中，如果没有，则需要手动添加。安装 $\mathrm{Mac}\TeX$ 后需要重启终端或者执行 `eval "$(/usr/libexec/path_helper)"` 来使路径生效。
 ```sh
 type xelatex
 ```
-如果有显示如下输出，代表系统可以直接调用 $\LaTeX$ 进行编译。
+如果有显示如下输出，代表系统可以找到 $\LaTeX$ 编译器。
 ```text
 xelatex is /Library/TeX/texbin/xelatex
 ```
+
+{% note info %}
+我们使用 `xelatex` 是因为它支持 Unicode 编码，可以编译中文文档。其他编译器大多只支持英文或不能访问系统的字体库，在一些情况下可能会无法正常编译。
+{% endnote %}
+
 接下来，打开 VSCode，搜索并安装 LaTeX Workshop 插件。
+
 ![LaTeX Workshop](/img/LaTeX_Workshop.png)
+
 最后，在 VSCode 配置文件 `settings.json` 的合适位置添加以下内容：
 ```json
 "latex-workshop.latex.tools": [
@@ -140,4 +147,4 @@ xelatex is /Library/TeX/texbin/xelatex
 	"*.vrb"
 ],
 ```
-大功告成！快去试试用 $\LaTeX$ 写一篇文章吧！
+如果设置了自动保存和自动编译，那么在源文件修改后可以近乎实时地看到编译结果，在享受 $\LaTeX$ 强大排版能力的同时还能做到其他文字排版工具的「所见即所得」，不失为一种享受。不过，如果你的机器性能不太够，还是建议关闭自动编译功能。
