@@ -7,7 +7,7 @@ tags: LaTeX
 
 ## 安装 MacTeX 和 Visual Studio Code
 
-使用 Homebrew 安装上述软件。关于 Homebrew 的安装与使用可以参考我的另一篇文章 {% post_link Homebrew '安装和使用 Homebrew' %}。
+使用 Homebrew 安装上述软件。关于 Homebrew 的安装与使用可以参考我的另一篇文章{% post_link Homebrew 安装和使用 Homebrew %}。
 ```sh
 brew install mactex-no-gui visual-studio-code
 ```

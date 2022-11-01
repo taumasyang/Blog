@@ -5,9 +5,11 @@ categories: 文献翻译
 tags: 图论
 ---
 
-> 原文：A Summary of Results and Problems Related to the Caccetta-Häggkvist Conjecture
-> 原作者：Blair D. Sullivan
-> 原文链接：https://arxiv.org/abs/math/0605646
+{% note primary %}
+原文：A Summary of Results and Problems Related to the Caccetta-Häggkvist Conjecture
+原作者：Blair D. Sullivan
+原文链接：https://arxiv.org/abs/math/0605646
+{% endnote %}
 
 ## 1 引入
 

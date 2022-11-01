@@ -210,7 +210,7 @@ github()
 重启终端或者运行 `source ~/.zprofile` 来使配置生效。
 
 {% note danger %}
-在上传本地仓库前，仓库里至少需要存在一个分支。你可以进行一次提交来自动创建第一个分支。有关提交到说明，请参阅后文。
+在上传本地仓库前，仓库里至少需要存在一个分支。你可以进行一次提交来自动创建第一个分支。有关提交的说明，请参阅后文。
 {% endnote %}
 
 准备好上传后，在仓库根目录运行 `github` 即可在 GitHub 上创建一个公开仓库并将已有的文件推送到远程仓库。远程仓库名默认为本地仓库名，但也可以用 `github repository` 的方式指定远程仓库的名称。
@@ -227,13 +227,25 @@ Git 适合管理文本文件，包括但不限于各类程序设计语言的源�
 
 ### 暂存文件 `git add`
 
-创建一个新的文件，例如 `README.md` 后，Git 将此文件标记为「未跟踪的」（Untracked）。使用 `git add README.md` 将此文件添加到「暂存区」，或者 `git add .` 将所有未跟踪和已修改的文件添加到暂存区。
+创建一个新的文件后，Git 会将此文件标记为「未跟踪的」（Untracked）。使用 `git add filename` 将此文件添加到「暂存区」，或者 `git add .` 将所有更改（包括未跟踪、已修改和已删除的）文件添加到暂存区。
 
 ### 提交文件 `git commit`
 
-当暂存区有文件，希望进行提交时，可以使用 `git commit -m 'message'` 进行提交。提交需要指定提交信息，可以使用 `-m` 开关在同一条命令中指定，或者 Git 将打开一个文件编辑器让你编辑提交信息。
+当暂存区有文件，希望进行提交时，可以使用 `git commit -m 'message'` 进行提交。提交需要指定提交信息，可以使用 `-m` 开关在同一条命令中指定，否则 Git 将打开一个文本编辑器让你编辑提交信息。
 
-如果想要提交之前暂存所有修改，可以使用 `-a` 开关。注意，这只会暂存「已修改」的文件，不会影响「未追踪」的文件。
+{% note info %}
+Git 默认的文本编辑器是 `vi`，而 `vi` 对习惯了图形界面的用户极其不友好。可以通过配置修改 Git 的默认文本编辑器为 `nano`（命令行编辑器，但是比 `vi` 友好太多）或者 `code`（VSCode，现代化的文本编辑器）。
+```sh
+git config --global core.editor nano
+git config --global core.editor code
+```
+{% endnote %}
+
+如果想要在提交之前暂存所有修改，可以使用 `-a` 开关。
+
+{% note warning %}
+注意，`-a` 开关只会暂存「已修改」的文件，不会影响「未追踪」的文件。
+{% endnote %}
 
 ### 推送更改 `git push`
 
@@ -264,7 +276,7 @@ git rm --cached filename
 git reset --soft HEAD^
 git reset --hard HEAD^
 ```
-此时撤销更改将会撤销整个提交。`--soft` 开关将保留提交之前的修改，而 `--hard` 开关将舍弃提交之前的修改。使用 `HEAD^2` 回退两个提交。修改完成后，需要重新提交。
+此时撤销更改将会撤销整个提交。`--soft` 开关将保留提交之前的修改（回到提交之前的状态），而 `--hard` 开关将舍弃提交之前的修改（回到上一次提交的状态）。使用 `HEAD^2` 回退两个或多个提交。修改完成后，需要重新提交。
 
 #### 更改已推送
 
@@ -313,7 +325,7 @@ Git 允许仓库产生分支，以便同时开发不同的功能。
 使用 `git tag` 为当前提交打上一个标签。今后，也可以用标签来代指这一个提交。
 
 {% note info %}
-此处的标签（Tag）与 GitHub 的分发（Release）不同。Release 是 GitHub 提供的，它基于 Tag 但又区别于 Tag，且只能在 GitHub 网站上创建。
+此处的标签（Tag）与 GitHub 的发布（Release）不同。Release 是 GitHub 提供的，它基于 Tag 但又区别于 Tag，且只能在 GitHub 网站上创建。
 {% endnote %}
 
 ### 修改历史提交信息
@@ -325,6 +337,8 @@ Git 允许仓库产生分支，以便同时开发不同的功能。
 接着，使用 `git commit --amend` 修改提交信息，然后使用 `git rebase --continue` 跳转到下一处修改。中途可以使用 `git rebase --skip` 跳过剩余修改，或者使用 `git rebase --abort` 放弃所有修改。
 
 修改完成后，需要使用 `git push -f` 强制推送。
+
+---
 
 [^1]: [git - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/Git)
 [^2]: [GitHub - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/GitHub)

@@ -18,27 +18,33 @@ tags: 图论
 
 当 $r\geqslant2$ 时，无向图中必定含有环．当 $r=n-1$ 时，我们构造一个 $n$ 顶点的完全图，其中每个顶点的度均为 $n-1$，并且这个图中最短的环长度为 3，无法达到 $\lceil\frac nr\rceil=2$，依然不成立．
 
-### C-H 猜想对于 r = 2 的情况的证明
+### C-H 猜想对于 $r=2$ 的情况的证明[^1]
 
 {% note danger %}
 找不到文献 L. Caccetta and R. Häggkvist. On minimal digraphs with given girth. *Congressus Numerantium*, XXI, 1978.
 {% endnote %}
 
-### C-H 猜想提出的原因[^1]
+在 Mehdi BEHZAD 的文章《Minimal 2-regular digraphs with given girth》中，给出了下列命题的证明：
+
+> $r$-正则有向图的最小顶点数是 $2n-1$．
+
+从这个命题可以推出 Caccetta-Häggkvist 猜想在 $r=2$ 的情况．有关此文献的内容，参阅{% post_link Minimal-2-Regular-Digraphs 具有给定围长的最小 2-正则有向图 %}．
+
+### C-H 猜想提出的原因[^2]
 
 > The Caccetta-Häggkvist Conjecture is a generalization of an earlier conjecture of Behzad, Chartrand, and Wall, who conjectured it only for diregular digraphs.
 
 Caccetta-Häggkvist 猜想是对 Behzad、Chartrand 和 Wall 早期猜想的概括，他们只对 diregular 有向图进行了猜想．
 
-> Behzad–Chartrand–Wall Conjecture (1970)[^2]
+> Behzad–Chartrand–Wall Conjecture (1970)[^3]
 >
 > First I need to introduce three new definitions. A $d$-regular oriented graph is an oriented graph in which each vertex has both in-degree $d$ and out-degree $d$. The girth of a graph is the length (i.e. the number of edges) of a shortest cycle in the graph. A directed cage is defined as the smallest $d$-regular oriented graph of girth $g$.
 >
 > The Behzad–Chartrand–Wall Conjecture states that the number of vertices $n$ of a directed cage is given by $n=(g-1)d+1$. SSNC implies the case $d=\lceil n/3\rceil$ of this conjecture.
 
-一个有向笼是指围长为 $g$ 的最小的 $d$-正则有向图。
+一个有向笼是指围长为 $g$ 的最小的 $d$-正则有向图．
 
-Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d+1$。SSNC 暗示了这个猜想在 $d=\lceil n/3\rceil$ 的情况。
+Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d+1$．SSNC 暗示了这个猜想在 $d=\lceil n/3\rceil$ 的情况．
 
 ## Seymour 第二邻域猜想
 
@@ -50,7 +56,7 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 没有找到资料．
 {% endnote %}
 
-### Seymour 猜想如何推出 C-H 猜想对于 r = n / 3 的情况
+### Seymour 猜想如何推出 C-H 猜想对于 $r=n/3$ 的情况
 
 假设 Seymour 猜想成立，需要证明 C-H 猜想对于 $r=n/3$ 的情况：
 
@@ -87,7 +93,7 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 
 综上所述，我们总能在图 $G$ 中找到长度为 3 的环，命题成立．
 
-## Caylay 图[^3]
+## Caylay 图[^4]
 
 > 凯莱图（英语：Cayley graph），也叫做凯莱着色图，是将离散群的抽象结构画出的一种图．它的定义是凯莱定理（以阿瑟·凯莱命名）所暗含的．画凯莱图时，要选定群的一个生成元集合（通常有限），不同选法可能得到不同的凯莱图．凯莱图是组合群论与几何群论的中心工具．
 > <!-- ![在两个生成元a和b上的自由群的凯莱图](https://upload.wikimedia.org/wikipedia/commons/e/e8/F2_Cayley_Graph.png) -->
@@ -100,7 +106,7 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 
 ## 连通度，边连通度，Menger 定理
 
-### 连通度，边连通度[^4]
+### 连通度，边连通度[^5]
 
 > **连通度**是指为了让图分解成孤立的子图所要删除的顶点数的最小值．
 >
@@ -112,7 +118,7 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 >
 > 如果图 $G$ 的边连通度大于等于 $k$，则它被称作 $k$-边连通的．
 
-### Menger 定理[^5]
+### Menger 定理[^6]
 
 > 在图论中，门格尔定理（英：Menger's Theorem）指在有限图中，最小割集的大小等于任意在所有顶点对之间可以找到的不相交路径的最大数量．这一定理的证明由卡尔·门格尔于1927年发表．这被认为是图论中最重要且经典的定理之一．该定理刻画了连通性的性质，增加了边的权重可推广成最大流量小割定理，而最大流量小割定理是线性规划的强对偶性定理的直接推论．
 >
@@ -140,8 +146,9 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 
 ---
 
-[^1]: [Caccetta-Häggkvist Conjecture | Open Problem Garden](http://openproblemgarden.org/op/caccetta_haggkvist_conjecture)
-[^2]: <https://www.math.ru.nl/OpenGraphProblems/TimV/relatedproblems.html>
-[^3]: [凯莱图 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E5%87%B1%E8%90%8A%E5%9C%96)
-[^4]: [连通图 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E8%BF%9E%E9%80%9A%E5%9B%BE)
-[^5]: [门格尔定理 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E9%97%A8%E6%A0%BC%E5%B0%94%E5%AE%9A%E7%90%86)
+[^1]: [Mehdi BEHZAD. Minimal 2-regular digraphs with given girth. Journal of the Mathematical Society of Japan, 25(1) 1-6 January, 1973.](https://doi.org/10.2969/jmsj/02510001)
+[^2]: [Caccetta-Häggkvist Conjecture | Open Problem Garden](http://openproblemgarden.org/op/caccetta_haggkvist_conjecture)
+[^3]: <https://www.math.ru.nl/OpenGraphProblems/TimV/relatedproblems.html>
+[^4]: [凯莱图 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E5%87%B1%E8%90%8A%E5%9C%96)
+[^5]: [连通图 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E8%BF%9E%E9%80%9A%E5%9B%BE)
+[^6]: [门格尔定理 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E9%97%A8%E6%A0%BC%E5%B0%94%E5%AE%9A%E7%90%86)
