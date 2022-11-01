@@ -4,16 +4,6 @@ date: 2022-10-29 12:30:03
 tags: 图论
 ---
 
-<!-- （10.19）这是今天的作业以及短期的计划：
-1. [x] CH猜想对于无向图是否成立？
-2. [x] CH猜想对于r=2的情况的证明
-3. [x] CH猜想提出的原因（阅读文献5）
-4. [ ] Seymour猜想提出的原因
-5. [ ] Seymour猜想如何推出CH猜想对于r=n/3的情况
-6. [x] 学习Caylay图的概念
-7. [x] 学习连通度，边连通度，Menger定理等
-8. [ ] 下次着重讨论第五章 -->
-
 ## Caccetta-Häggkvist 猜想
 
 ### C-H 猜想对于无向图是否成立？
@@ -30,7 +20,9 @@ tags: 图论
 
 ### C-H 猜想对于 r = 2 的情况的证明
 
+{% note danger %}
 找不到文献 L. Caccetta and R. Häggkvist. On minimal digraphs with given girth. *Congressus Numerantium*, XXI, 1978.
+{% endnote %}
 
 ### C-H 猜想提出的原因[^1]
 
@@ -44,11 +36,19 @@ Caccetta-Häggkvist 猜想是对 Behzad、Chartrand 和 Wall 早期猜想的概�
 >
 > The Behzad–Chartrand–Wall Conjecture states that the number of vertices $n$ of a directed cage is given by $n=(g-1)d+1$. SSNC implies the case $d=\lceil n/3\rceil$ of this conjecture.
 
+一个有向笼是指围长为 $g$ 的最小的 $d$-正则有向图。
+
+Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d+1$。SSNC 暗示了这个猜想在 $d=\lceil n/3\rceil$ 的情况。
+
 ## Seymour 第二邻域猜想
 
 ### Seymour 猜想提出的原因
 
 > **猜想 3.1.** *(Seymour)* 任何没有自环或平行边的简单有向图都有一个顶点 $v$，其第二邻域至少与第一邻域一样大，即 $|N_2^+(v)|\ge|N^+(v)|$．
+
+{% note warning %}
+没有找到资料．
+{% endnote %}
 
 ### Seymour 猜想如何推出 C-H 猜想对于 r = n / 3 的情况
 
