@@ -35,6 +35,10 @@ Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在�
 
 回到我们刚才下载的电子课本，选择打开方式为 ABBYY FineReader PDF，软件会自动添加 PDF 页面并开始识别。识别过程是多核的，占用资源比较多，性能不太够的电脑可以考虑暂停其他操作。识别完后，对照警告检查页面后，选择导出。导出时可按需选择「使用 MRC 压缩图像」，打开能显著缩小导出的文件，但对于一些数学公式可能会渲染异常。如果发生这样的情况，就不要勾选。导出的进程是单核的，因此可能会非常慢。确认导出的文件没有问题后，就可以退出 ABBYY FineReader PDF 了。
 
+{% note danger %}
+ABBYY FineReader PDF 无法处理使用 `jbig2` 编码的 PDF 文件。这种文件是纯黑白的，并且十分少见。解决方案：将 PDF 每页都导出为图像文件再进行处理。
+{% endnote %}
+
 ### 制作目录
 
 我们采用 [Coherent PDF Tools](https://www.coherentpdf.com/) 作为后续处理 PDF 的工具。对照官网的介绍下载、安装 `cpdf` 命令行工具。一般建议将下载好的对应版本的命令行工具拷贝到 `/usr/local/` 目录下。
@@ -75,8 +79,4 @@ cpdf -utf8 -add-bookmarks bookmarks.txt textbook-1.pdf -o textbook-final.pdf
 
 ## 使用电子课本
 
-将我们加工完成的电子课本文件导入 [MarginNote 3](https://apps.apple.com/cn/app/marginnote-3/id1348317163) 即可在所有设备上阅读、学习。
-
-## 已知问题
-
-- ABBYY FineReader PDF 无法处理使用 `jbig2` 编码的 PDF 文件。解决方案：将 PDF 每页都导出为图像文件再进行处理。
+将我们加工完成的电子课本文件导入 [MarginNote 3](https://apps.apple.com/cn/app/marginnote-3/id1348317163) 或者其他文献阅读器中即可在所有设备上阅读、学习。
