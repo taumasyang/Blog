@@ -9,6 +9,10 @@ tags:
 
 ### Z-Library
 
+{% note danger %}
+（2022 年 11 月 4 日更新）Z-Library 网站据传被美国警方查封。[全世界最大的电子图书馆 z-lib 被美国警方查封，所有域名无法访问 - 水源广场 / 热点新闻 - 水源社区](https://shuiyuan.sjtu.edu.cn/t/topic/107743)
+{% endnote %}
+
 > [Z-Library](https://1lib.domains/) 是世界上最大的在线图书馆之一，它拥有超过 11,179,413 的书籍和 84,837,000 的文章。我们的目标是让每个人都能获得文学作品。
 
 Z-Library 有很多镜像站，对于每个镜像站来说，可访问性是不确定的，因此只记住某个站点的地址可能会让你不久以后就无法访问。官方做了一个链接，每次自动寻找可用的站点，收藏好[这个地址](https://1lib.domains/)就可以了。
@@ -35,6 +39,10 @@ Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在�
 
 回到我们刚才下载的电子课本，选择打开方式为 ABBYY FineReader PDF，软件会自动添加 PDF 页面并开始识别。识别过程是多核的，占用资源比较多，性能不太够的电脑可以考虑暂停其他操作。识别完后，对照警告检查页面后，选择导出。导出时可按需选择「使用 MRC 压缩图像」，打开能显著缩小导出的文件，但对于一些数学公式可能会渲染异常。如果发生这样的情况，就不要勾选。导出的进程是单核的，因此可能会非常慢。确认导出的文件没有问题后，就可以退出 ABBYY FineReader PDF 了。
 
+{% note danger %}
+ABBYY FineReader PDF 无法处理使用 `jbig2` 编码的 PDF 文件。这种文件是纯黑白的，并且十分少见。解决方案：将 PDF 每页都导出为图像文件再进行处理。
+{% endnote %}
+
 ### 制作目录
 
 我们采用 [Coherent PDF Tools](https://www.coherentpdf.com/) 作为后续处理 PDF 的工具。对照官网的介绍下载、安装 `cpdf` 命令行工具。一般建议将下载好的对应版本的命令行工具拷贝到 `/usr/local/` 目录下。
@@ -43,14 +51,14 @@ Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在�
 ```sh
 cpdf -list-bookmarks -utf8 textbook.pdf
 ```
-{% note info %}
+{% note warning %}
 如果不加 `-utf8` 开关，`cpdf` 则只会输出目录中的 ASCII 字符。
 {% endnote %}
 如果有输出，表示电子课本自带目录，直接使用即可。
 ```sh
 cpdf -list-bookmarks -utf8 textbook.pdf > bookmarks.txt
 ```
-{% note info %}
+{% note warning %}
 ABBYY FineReader PDF 在导出时会重新制作 PDF，因此会移除原始 PDF 的书签。无论何时，对于 ABBYY FineReader PDF 导出的文件都需要重新添加目录。
 {% endnote %}
 如果原始电子课本没有自带目录，就需要我们手动制作。目录文件的格式参考[官方文档](https://www.coherentpdf.com/cpdfmanual.pdf)，制作过程在此不再赘述。
@@ -59,15 +67,11 @@ ABBYY FineReader PDF 在导出时会重新制作 PDF，因此会移除原始 PDF
 ```sh
 cpdf -utf8 -add-bookmarks bookmarks.txt textbook-1.pdf -o textbook-final.pdf
 ```
-{% note info %}
+{% note warning %}
 这条命令的 `-utf8` 的位置和上面一条的不一样。
 {% endnote %}
 检查输出的 PDF 文件，确认无误后可以删除先前产生的中间文件。
 
 ## 使用电子课本
 
-将我们加工完成的电子课本文件导入 [MarginNote 3](https://apps.apple.com/cn/app/marginnote-3/id1348317163) 即可在所有设备上阅读、学习。
-
-## 已知问题
-
-- ABBYY FineReader PDF 无法处理使用 `jbig2` 编码的 PDF 文件。解决方案：将 PDF 每页都导出为图像文件再进行处理。
+将我们加工完成的电子课本文件导入 [MarginNote 3](https://apps.apple.com/cn/app/marginnote-3/id1348317163) 或者其他文献阅读器中即可在所有设备上阅读、学习。

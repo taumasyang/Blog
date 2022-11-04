@@ -156,7 +156,7 @@ $$f(v_1)=v_2$$
 
 **定理 5.7.** *(I. Chowla [^8])* 设 $m$ 为正整数，$A,B\subseteq \mathbb Z/m\mathbb Z$，使 $0\in B$ 且对于所有非零的 $b\in B$，$\gcd(b,m)=1$．那么 $|A+B|\ge\min(m,|A|+|B|-1)$．
 
-**<span id="Theorem_5.8">定理 5.8</span>.** *(Dias de Silva and Hamidoune [^33])* Erdös-Heilbronn 猜想：令 $A\subseteq \mathbb Z/p\mathbb Z$，$p$ 为素数．那么 $|A\hat +A|\ge\min(2|A|-3,p)$．
+**<span id="Theorem_5.8">定理 5.8</span>.** *(Dias de Silva 和 Hamidoune [^33])* Erdös-Heilbronn 猜想：令 $A\subseteq \mathbb Z/p\mathbb Z$，$p$ 为素数．那么 $|A\hat +A|\ge\min(2|A|-3,p)$．
 
 对于乘法群 $\Gamma$ 和集合 $A,B\subseteq\Gamma$，令 $AB:=\{ab\,|\,a\in A,b\in B\}$．
 
@@ -168,7 +168,7 @@ $$f(v_1)=v_2$$
 1. 如果 $u,v,w_1,\dots,w_k$ 是 $G$ 的顶点，$(u,v),(v,w_1),\dots,(v,w_k)\in E(G)$，那么存在不同的顶点 $v_1,\dots,v_k$ 使得对于 $i=1,\dots,k$ 有 $(u,v_i),(v_i,w_i)\in E(G)$．
 2. 如果 $v,w,u_1,\dots,u_k$ 是 $G$ 的顶点，$(v,w),(u_1,v),\dots,(u_k,v)\in E(G)$，那么存在不同的顶点 $v_1,\dots,v_k$ 使得对于 $i=1,\dots,k$ 有 $(u_i,v_i),(v_i,w)\in E(G)$．
 
-设 $G$ 是一个有向图，$X,Y$ 是 $V(G)$ 的非空子集．那么 $\mathrm{Im}(X,Y):=\{y∈Y\,|\,$ 存在一条从 $X$ 到 $y$ 的有向路径$\}$．*放大倍数（magnification ratio）* $D(X,Y)$ 为
+设 $G$ 是一个有向图，$X,Y$ 是 $V(G)$ 的非空子集．那么 $\mathrm{Im}(X,Y):=\{y\in Y\,|\,$ 存在一条从 $X$ 到 $y$ 的有向路径$\}$．*放大倍数（magnification ratio）* $D(X,Y)$ 为
 $$D(X,Y):=\min_{Z\subseteq X,Z\ne\emptyset}\left\{\frac{\mathrm{Im}(Z,Y)}{|Z|}\right\}$$
 
 **定理 5.10.** *(Plünnecke [^28])* 在一个 Plünnecke 图中，令 $D_i=D(V_0,V_i)$．那么
@@ -181,7 +181,7 @@ $$D_1\ge D_2^\frac12\ge\cdots\ge D_h^\frac1h$$
 2. 如果 $|B|=k$，且 $|B+B|\le ck$，那么 $|hB|\le c^hk$．
 3. 如果 $|A|=n$，且 $|A+B|<cn$，那么对于所有的 $k,\ell\in\mathbb Z^+$，我们有 $|kB_\ell B|\le c^{k+\ell}n$，其中 $kB-\ell B$ 表示所有可表示成 $(b_1+\cdots+b_k)-(b_1'+\cdots+b_\ell')$ 的元素的集合，其中所有的 $b_i,b_i'$ 都在 $B$ 中．
 
-**定理 5.12.** *（Erdös-Heilbornn（[定理 5.8](#Theorem_5.8) 的概括）* 令 $A,B\subseteq\mathbb Z/p\mathbb Z$，$p$ 是素数且 $|A|\ne|B|$．令 $C=A\hat+B$．那么 $|C|\ge\min(|A|+|B|-2,p)$．
+**定理 5.12.** *（Erdös-Heilbornn（[定理 5.8](#Theorem_5.8) 的推论）* 令 $A,B\subseteq\mathbb Z/p\mathbb Z$，$p$ 是素数且 $|A|\ne|B|$．令 $C=A\hat+B$．那么 $|C|\ge\min(|A|+|B|-2,p)$．
 
 ## 6 尚未解决的问题和猜想
 ### 6.1 彩虹猜想
@@ -261,7 +261,7 @@ $$\sum_{i=1}^3\delta_{G_i}^+(u)=((n-1)-|N^-(u)|+|N_2^-(u)|-2|N^+(u)|)$$
 [^13]: D. C. Fisher. Squaring a tournament: a proof of Dean’s conjecture. *Journal of Graph Theory*, 23:43–48, 1996.
 [^14]: Godbole, Cole, and Wright. Probabilistic versions of Seymour’s distance two conjecture. *to appear*.
 [^15]: Y. O. Hamidoune. An application of connectivity theory in graphs to factorizations of elements in groups. *European Journal of Combinatorics*, 2(4):349–355, 1981.
-[^16]: Y. O. Hamidoune. Quelques problèmes de connexité dans les graphes orientés. *Journal of Combinatorial Theory*, Series B, 30(1):1–10, 1981.
+[^16]: Y. O. Hamidoune. Quelques problèmes de connexité dans les graphes orientés. *Journal of Combinatorial Theory, Series B*, 30(1):1–10, 1981.
 [^17]: Y. O. Hamidoune. A note on minimal directed graphs with given girth. *Journal of Combinatorial Theory, Series B*, 43(3):343–348, 1987.
 [^18]: F. Havet and S. Thomassé. Median orders of tournaments: a tool for the second neighborhood problem and Sumner’s conjecture. *Journal of Graph Theory*, 35:244–256, 2000.
 [^19]: C. Hoáng and B. Reed. A note on short cycles in digraphs. *Discrete Math*, 66(1-2):103–107, 1987.
