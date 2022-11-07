@@ -48,7 +48,7 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 
 ### C-H 猜想对于 $r=3$ 的情况的证明[^4]
 
-参阅{% post_link A-Note-on-Minimal-Directed-Graphs 关于给定围长的最小有向图的说明 %}．
+参阅{% post_link Minimal-Directed-Graphs 关于给定围长的最小有向图的说明 %}．
 
 ## Seymour 第二邻域猜想
 
