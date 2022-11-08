@@ -287,7 +287,7 @@ git reset --hard HEAD^
 
 ### 修改提交
 
-如果你想修改刚刚进行的一次提交，你可以使用 `git reset --soft HEAD^`，进行修改，`git add .`，然后 `git commit`。事实上，还有一种更为简便的方式，那就是在 `git commit` 的同时使用 `--amend` 开关，这会使你的上一次提交的内容替换成这一次提交，因此你需要像进行一个新提交那样指定提交信息，并且 Git 会生成一个新的 commit ID。
+如果你想修改刚刚进行的一次提交，你可以使用 `git reset --soft HEAD^`，进行修改，`git add .`，然后 `git commit`。事实上，还有一种更为简便的方式，那就是在 `git commit` 的同时使用 `--amend` 开关，这会使你的上一次提交的内容替换成这一次提交，因此你需要像进行一个新提交那样指定提交信息，并且 Git 会生成一个新的 commit ID，但是并不会修改提交时间。
 ```sh
 git add .
 git commit --amend -m 'message'

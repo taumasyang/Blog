@@ -48,11 +48,11 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 
 > $r$-正则有向图的最小顶点数是 $2n-1$．
 
-从这个命题可以推出 Caccetta-Häggkvist 猜想在 $r=2$ 的情况．有关此文献的内容，参阅{% post_link Minimal-2-Regular-Digraphs 具有给定围长的最小 2-正则有向图 %}．
+从这个命题可以推出 Caccetta-Häggkvist 猜想在 $r=2$ 的情况．有关此文献的内容，参阅{% post_link Minimal-2-Regular-Digraphs %}．
 
 ### C-H 猜想对于 $r=3$ 的情况的证明[^4]
 
-参阅{% post_link Minimal-Directed-Graphs 关于给定围长的最小有向图的说明 %}．
+参阅{% post_link Minimal-Directed-Graphs %}．
 
 ## Seymour 第二邻域猜想
 
