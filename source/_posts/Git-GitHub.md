@@ -237,7 +237,10 @@ Git 适合管理文本文件，包括但不限于各类程序设计语言的源�
 Git 默认的文本编辑器是 `vi`，而 `vi` 对习惯了图形界面的用户极其不友好。可以通过配置修改 Git 的默认文本编辑器为 `nano`（命令行编辑器，但是比 `vi` 友好太多）或者 `code`（VSCode，现代化的文本编辑器）。
 ```sh
 git config --global core.editor nano
-git config --global core.editor code
+```
+或者
+```sh
+git config --global core.editor code --wait
 ```
 {% endnote %}
 
@@ -276,11 +279,19 @@ git rm --cached filename
 git reset --soft HEAD^
 git reset --hard HEAD^
 ```
-此时撤销更改将会撤销整个提交。`--soft` 开关将保留提交之前的修改（回到提交之前的状态），而 `--hard` 开关将舍弃提交之前的修改（回到上一次提交的状态）。使用 `HEAD^2` 回退两个或多个提交。修改完成后，需要重新提交。
+此时撤销更改将会撤销整个提交。`--soft` 开关将保留提交之前的修改（回到提交之前的状态），而 `--hard` 开关将舍弃提交之前的修改（回到上一次提交的状态）。使用 `HEAD^2` 回退两个或多个提交。
 
 #### 更改已推送
 
 在本地执行 `git reset` 命令处理完修改后强制推送 `git push -f`。
+
+### 修改提交
+
+如果你想修改刚刚进行的一次提交，你可以使用 `git reset --soft HEAD^`，进行修改，`git add .`，然后 `git commit`。事实上，还有一种更为简便的方式，那就是在 `git commit` 的同时使用 `--amend` 开关，这会使你的上一次提交的内容替换成这一次提交，因此你需要像进行一个新提交那样指定提交信息，并且 Git 会生成一个新的 commit ID。
+```sh
+git add .
+git commit --amend -m 'message'
+```
 
 ### 拉取最新内容 `git fetch` `git pull`
 
@@ -310,11 +321,11 @@ Git 允许仓库产生分支，以便同时开发不同的功能。
 
 ### 查看仓库状态 `git status`
 
-使用 `git status` 查看仓库状态，包括 `HEAD` 的位置、发生变化的文件、与远程库的比较等等。
+使用 `git status` 查看仓库状态，包括 `HEAD` 的位置、发生变化的文件、与远程库的比较等等。添加 `-s` 开关以便让 Git 以简短的形式显示更改。
 
 ### 查看提交记录 `git log`
 
-使用 `git log` 查看提交记录。添加 `--oneline` 开关将一次提交压缩成一行，添加 `--graph` 开关使用图形的格式呈现记录。
+使用 `git log` 查看提交记录。添加 `--oneline` 开关将一次提交压缩成一行，添加 `--graph` 开关使用图形的格式呈现记录，添加 `-3` 开关以显示最近三次提交记录。
 
 ### 查看具体修改 `git show`
 
@@ -328,15 +339,17 @@ Git 允许仓库产生分支，以便同时开发不同的功能。
 此处的标签（Tag）与 GitHub 的发布（Release）不同。Release 是 GitHub 提供的，它基于 Tag 但又区别于 Tag，且只能在 GitHub 网站上创建。
 {% endnote %}
 
-### 修改历史提交信息
-
-历史提交不可修改，但是可以修改提交信息和提交者信息。
+### 修改历史提交信息 `git rebase`
 
 使用 `git rebase -i HEAD~3` 将打开文本编辑器，并显示最近三次提交。将需要修改的提交前面的 `pick` 改为 `edit`，然后保存并退出。
 
 接着，使用 `git commit --amend` 修改提交信息，然后使用 `git rebase --continue` 跳转到下一处修改。中途可以使用 `git rebase --skip` 跳过剩余修改，或者使用 `git rebase --abort` 放弃所有修改。
 
 修改完成后，需要使用 `git push -f` 强制推送。
+
+### 万能后悔药 `git reflog`
+
+Git 记录 `HEAD` 指针的所有操作。即使你执行了 `git reset`，这次重置操作仍然会被 Git 记录。用 `git reflog show` 查看**本地仓库**中 `HEAD` 指针的操作历史记录，并且可以依此还原至某几次操作之前。
 
 ---
 
