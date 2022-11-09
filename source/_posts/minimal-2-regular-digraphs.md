@@ -1,7 +1,7 @@
 ---
 title: 具有给定围长的最小 2-正则有向图
 date: 2022-11-01 22:50:00
-categories: 文献翻译
+categories: PRP
 tags: 图论
 ---
 
