@@ -2,7 +2,9 @@
 title: Git 与 GitHub 使用指北
 date: 2022-11-01 14:40:10
 categories: 技术分享
-tags: Shell
+tags:
+  - Shell
+  - Git
 ---
 
 ## 源代码管理

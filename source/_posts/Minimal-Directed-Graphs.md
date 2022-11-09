@@ -1,7 +1,9 @@
 ---
 title: 关于给定围长的最小有向图的说明
 date: 2022-11-07 20:11:40
-categories: 文献翻译
+categories:
+  - PRP
+  - 文献翻译
 tags: 图论
 ---
 

@@ -2,7 +2,9 @@
 title: 安装和使用 Homebrew
 date: 2022-09-22 10:40:29
 categories: 技术分享
-tags: Homebrew
+tags:
+  - Shell
+  - Homebrew
 ---
 
 ## Homebrew 是什么？

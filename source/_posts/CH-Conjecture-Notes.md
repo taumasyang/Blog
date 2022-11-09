@@ -1,6 +1,7 @@
 ---
 title: Caccetta-Häggkvist 猜想笔记
 date: 2022-10-29 12:30:03
+categories: PRP
 tags: 图论
 ---
 

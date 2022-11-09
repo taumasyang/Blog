@@ -1,7 +1,9 @@
 ---
 title: 与 Caccetta-Häggkvist 猜想有关的结果和问题总结
 date: 2022-09-25 01:22:05
-categories: 文献翻译
+categories:
+  - PRP
+  - 文献翻译
 tags: 图论
 ---
 
