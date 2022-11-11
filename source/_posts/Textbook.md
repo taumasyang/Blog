@@ -12,6 +12,19 @@ categories: 技术分享
 （2022 年 11 月 4 日更新）Z-Library 网站据传被美国警方查封。[全世界最大的电子图书馆 z-lib 被美国警方查封，所有域名无法访问 - 水源广场 / 热点新闻 - 水源社区](https://shuiyuan.sjtu.edu.cn/t/topic/107743)
 {% endnote %}
 
+{% note info %}
+（2022 年 11 月 11 日更新）Z-Library 已恢复服务，但只能通过 Tor 网络访问。
+
+> Z-library website is currently available only in Tor network. You can find out more and download [Tor browser](https://www.torproject.org/)
+>
+>Tor site: [bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion](http://bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion/)
+
+使用 Homebrew 安装 Tor browser：
+```sh
+brew install tor-browser
+```
+{% endnote %}
+
 > [Z-Library](https://1lib.domains/) 是世界上最大的在线图书馆之一，它拥有超过 11,179,413 的书籍和 84,837,000 的文章。我们的目标是让每个人都能获得文学作品。
 
 Z-Library 有很多镜像站，对于每个镜像站来说，可访问性是不确定的，因此只记住某个站点的地址可能会让你不久以后就无法访问。官方做了一个链接，每次自动寻找可用的站点，收藏好[这个地址](https://1lib.domains/)就可以了。
