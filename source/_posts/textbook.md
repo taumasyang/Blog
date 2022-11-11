@@ -9,6 +9,20 @@ tags:
 
 ### Z-Library
 
+{% note info %}
+Z-Library 目前只能通过 Tor 网络访问。
+
+> Z-library website is currently available only in Tor network. You can find out more and download [Tor browser](https://www.torproject.org/)
+>
+> Tor site: [bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion](http://bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion/)
+
+使用 Homebrew 安装 Tor browser：
+
+```zsh
+brew install tor-browser
+```
+{% endnote %}
+
 > [Z-Library](https://1lib.domains/) 是世界上最大的在线图书馆之一，它拥有超过 11,179,413 的书籍和 84,837,000 的文章。我们的目标是让每个人都能获得文学作品。
 
 Z-Library 有很多镜像站，对于每个镜像站来说，可访问性是不确定的，因此只记住某个站点的地址可能会让你不久以后就无法访问。官方做了一个链接，每次自动寻找可用的站点，收藏好[这个地址](https://1lib.domains/)就可以了。
@@ -17,7 +31,7 @@ Z-Library 有很多镜像站，对于每个镜像站来说，可访问性是不�
 
 ### Library Genesis
 
-> 图书馆创世纪聚合器是一个旨在收集和编目项目描述的社区，大部分是科学、科学和技术方向，以及文件元数据。除了描述之外，聚合器只包含由用户主持的第三方资源的链接。网站上发布的所有信息都是从公开的公共互联网资源中收集的，仅用于提供信息的目的。
+> 图书馆创世纪是一个旨在收集和编目项目描述的社区，大部分是科学、科学和技术方向，以及文件元数据。除了描述之外，聚合器只包含由用户主持的第三方资源的链接。网站上发布的所有信息都是从公开的公共互联网资源中收集的，仅用于提供信息的目的。
 
 Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在以下链接中寻找可访问的即可。
 
