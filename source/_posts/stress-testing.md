@@ -63,7 +63,7 @@ while true; do
 		printf "\rTestcase #%d AC!" ++cnt
 	else
 		printf "\nTestcase #%d WA!\n" ++cnt
-		exit(0)
+		return 0
 	fi
 done
 ```
