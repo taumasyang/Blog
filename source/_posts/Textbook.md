@@ -17,7 +17,7 @@ categories: 技术分享
 
 > Z-library website is currently available only in Tor network. You can find out more and download [Tor browser](https://www.torproject.org/)
 >
->Tor site: [bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion](http://bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion/)
+> Tor site: [bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion](http://bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion/)
 
 使用 Homebrew 安装 Tor browser：
 ```sh
