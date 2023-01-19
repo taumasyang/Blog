@@ -952,7 +952,8 @@ about:
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code
   icons:
-    - { class: "iconfont icon-mail", link: "mailto:tauyoung@foxmail.com", tip: "E-Mail" }
+    - { class: "iconfont icon-mail", link: "mailto:tauyoung@foxmail.com", tip: "E-Mail_(Personal)" }
+    - { class: "iconfont icon-mail", link: "mailto:tauyoung@sjtu.edu.cn", tip: "E-Mail_(Academic)" }
     - { class: "iconfont icon-github-fill", link: "https://github.com/tau-young", tip: "GitHub" }
     # - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/237691885", tip: "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili" }
     # - { class: "iconfont icon-qq-fill", qrcode: "/img/QQ_QR.JPG" }
@@ -1022,10 +1023,16 @@ links:
       link: https://blog.tauyoung.top,
       avatar: https://blog.tauyoung.top/img/avatar.png
     }
+    - {
+      title: 有意栽花花满枝,
+      intro: 心中有光、点亮生活,
+      link: https://huangjia.site,
+      avatar: https://huangjia.site/img/profile.webp
+    }
 
   # 当成员头像加载失败时，替换为指定图片
   # When the member avatar fails to load, replace the specified image
-  onerror_avatar: /img/avatar.png
+  onerror_avatar:
 
   # 友链下方自定义区域，支持 HTML，可插入例如申请友链的文字
   # Custom content at the bottom of the links
