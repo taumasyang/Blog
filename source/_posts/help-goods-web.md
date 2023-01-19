@@ -2,7 +2,7 @@
 title: 「你帮我助」软件开发
 date: 2022-12-23 23:45:00
 categories: 软件工程
-tags: Python
+tags: [Python, Web]
 ---
 
 本项目是上海交通大学 CS-3331 软件工程课程大作业，同时也是 [Help-Goods](https://github.com/tau-young/Help-Goods) 项目的 GUI 版本，但是经过了完全的重构。
