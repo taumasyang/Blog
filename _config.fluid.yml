@@ -1006,6 +1006,12 @@ links:
       link: https://blog.tauyoung.top,
       avatar: https://blog.tauyoung.top/img/avatar.png
     }
+    - {
+      title: 有意栽花花满枝,
+      intro: 心中有光、点亮生活,
+      link: https://huangjia.site,
+      avatar: https://huangjia.site/img/profile.webp
+    }
 
   # 当成员头像加载失败时，替换为指定图片
   # When the member avatar fails to load, replace the specified image
