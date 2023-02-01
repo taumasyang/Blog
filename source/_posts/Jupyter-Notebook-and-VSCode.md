@@ -13,7 +13,7 @@ tags:
 >
 > Jupyter Notebook 文档可以通过 Web 界面中的“Download As”，通过 nbconvert 库或 shell 中的“jupyter nbconvert”命令行界面，转换为许多的开源标准输出格式（HTML、演示幻灯片、LaTeX、PDF、reStructuredText、Markdown、Python)。
 >
-> 为了简化 Jupyter Notebook 文档在 Web 上的可视化，`nbconvert` 库是通过 nbviewer 提供的一项服务，它可以获取任何公开可用的 Notebook 文档的 URL，将其动态转换为 HTML 并显示给用户。
+> 为了简化 Jupyter Notebook 文档在 Web 上的可视化，nbconvert 库是通过 nbviewer 提供的一项服务，它可以获取任何公开可用的 Notebook 文档的 URL，将其动态转换为 HTML 并显示给用户。
 
 # 安装
 
@@ -30,7 +30,7 @@ brew install python@3.11
 ```
 {% endnote %}
 留意安装完成后显示的信息：
-```
+```text
 Python has been installed as
   /opt/homebrew/bin/python3
 
@@ -95,13 +95,27 @@ pip-review --auto
 ```sh
 pip install notebook
 ```
-这条命令会安装 Jupyter Notebook 以及包括 `nbconvert` 在内的一系列 Notebook 相关工具。安装完毕我们便可在浏览器中创建、编辑和运行 Notebook 文件。
+这条命令会安装 Jupyter Notebook 以及包括 `nbconvert` 在内的一系列 Notebook 相关工具。安装完毕我们便可在浏览器中创建、编辑、运行和导出 Notebook 文件。
+
+## 安装 `nbconvert` 依赖
+
+如果需要使用 `nbconvert` 将 notebook 文件转换到 PDF 文件，需要安装 $\LaTeX$ 和 `pandoc`。
+
+```sh
+brew install mactex-no-gui pandoc
+```
 
 ## 安装 VSCode 扩展
 
 在 VSCode 应用商店中搜索并安装「Jupyter」扩展。安装这个扩展的同时会一并安装其他四个相关的扩展，如果不需要可以单独删除。
 
-# `nbconvert` 不正常运行解决方案[^2]
+![Jupyter Extension in VSCode](/img/Jupyter-Extension.png)
+
+# 常见问题
+
+## `nbconvert` 不正常运行
+
+首先检查是否已经正确安装 `nbconvert`、$\LaTeX$ 和 `pandoc`。若问题仍然存在，运行下列命令[^2]：
 
 ```sh
 ln -s /opt/homebrew/share/jupyter/nbconvert ~/Library/Jupyter
