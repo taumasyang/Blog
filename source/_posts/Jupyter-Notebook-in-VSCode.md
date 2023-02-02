@@ -3,8 +3,8 @@ title: 在 VSCode 中使用 Jupyter Notebook
 date: 2023-01-30 22:48:40
 categories: 技术分享
 tags:
-- Python
-- Jupyter Notebook
+  - Python
+  - Jupyter Notebook
 ---
 
 # Jupyter Notebook
