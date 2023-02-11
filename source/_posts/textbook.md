@@ -25,6 +25,12 @@ brew install tor-browser
 ```
 {% endnote %}
 
+{% note info %}
+（2023 年 2 月 11 日更新）Z-Library 已恢复常规网络访问。根据官方博客，用户只需要在 [singlelogin.me](https://singlelogin.me) 登录自己的账户，就将被重定向到个人专属域名。或者可以直接访问个人专属域名并验证密码。访问个人专属域名仍需要科学上网。请注意不要以任何形式泄露个人专属域名！
+
+我已将原文 {% post_link z-library %} 转载到了本站，如有需要可以根据官方指引进行操作。
+{% endnote %}
+
 > [Z-Library](https://1lib.domains/) 是世界上最大的在线图书馆之一，它拥有超过 11,179,413 的书籍和 84,837,000 的文章。我们的目标是让每个人都能获得文学作品。
 
 Z-Library 有很多镜像站，对于每个镜像站来说，可访问性是不确定的，因此只记住某个站点的地址可能会让你不久以后就无法访问。官方做了一个链接，每次自动寻找可用的站点，收藏好[这个地址](https://1lib.domains/)就可以了。
@@ -61,7 +67,7 @@ ABBYY FineReader PDF 无法处理使用 `jbig2` 编码的 PDF 文件。这种文
 
 ### 制作目录
 
-我们采用 [Coherent PDF Tools](https://www.coherentpdf.com/) 作为后续处理 PDF 的工具。对照官网的介绍下载、安装 `cpdf` 命令行工具。一般建议将下载好的对应版本的命令行工具拷贝到 `/usr/local/` 目录下。
+我们采用 [Coherent PDF Tools](https://www.coherentpdf.com/) 作为后续处理 PDF 的工具。对照官网的介绍下载、安装 `cpdf` 命令行工具。一般建议将下载好的对应版本的命令行工具拷贝到 `/usr/local/bin` 目录下。
 
 我们先检查电子课本中是否自带目录：
 
