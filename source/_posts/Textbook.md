@@ -68,7 +68,7 @@ ABBYY FineReader PDF 无法处理使用 `jbig2` 编码的 PDF 文件。这种文
 
 ### 制作目录
 
-我们采用 [Coherent PDF Tools](https://www.coherentpdf.com/) 作为后续处理 PDF 的工具。对照官网的介绍下载、安装 `cpdf` 命令行工具。一般建议将下载好的对应版本的命令行工具拷贝到 `/usr/local/` 目录下。
+我们采用 [Coherent PDF Tools](https://www.coherentpdf.com/) 作为后续处理 PDF 的工具。对照官网的介绍下载、安装 `cpdf` 命令行工具。一般建议将下载好的对应版本的命令行工具拷贝到 `/usr/local/bin` 目录下。
 
 我们先检查电子课本中是否自带目录：
 ```sh
