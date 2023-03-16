@@ -15,27 +15,38 @@ Homebrew 不会将文件安装到它本身目录之外，安装后只会将软�
 
 ## 安装 Homebrew
 
-在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，尝试再次运行即可：
+在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，我们使用镜像源（以上海交大镜像源为例）以确保成功安装：
 
 ```zsh
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 对于基于 Intel 处理器的 Mac，Homebrew 将会安装至 `/usr/local/Homebrew`；对于基于 Apple Silicon 的 Mac，Homebrew 将会安装至 `/opt/homebrew`。
 
-成功安装 Homebrew 后，为使更新更快速、稳定，可以考虑更换镜像源。以上海交大镜像源为例，执行以下命令：
+成功安装 Homebrew 后，可以选择额外 Tap 一些仓库，以便我们安装更多软件：
 
 ```zsh
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/brew.git"
-brew update
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git"
-for tap in core cask{,-fonts,-drivers,-versions}; do
-	brew tap --custom-remote --force-auto-update "homebrew/${tap}" "https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-${tap}.git"
+brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-cask.git
+for tap in cask{-fonts,-drivers,-versions}
+do brew tap --custom-remote --force-auto-update "homebrew/${tap}" "https://mirror.sjtu.edu.cn/git/homebrew-${tap}.git"
 done
 brew update
 ```
 
-恭喜你！Homebrew 已经设置完成，现在你可以自由安装大多数软件了！
+在 `.zprofile` 中（如果使用 Zsh）添加如下语句：
+
+```zsh
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/brew.git
+export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git
+export HOMEBREW_BOTTLE_DOMAIN=https://mirror.sjtu.edu.cn/homebrew-bottles/bottles
+export HOMEBREW_NO_INSTALL_FROM_API=1
+```
+
+然后运行 `source .zprofile` 或者重启终端来启用上述设置。恭喜你！Homebrew 已经设置完成，现在你可以自由安装大多数软件了！
 
 ## 安装软件
 
@@ -77,7 +88,7 @@ IINA.app (App)
 install: 2,420 (30 days), 7,771 (90 days), 30,179 (365 days)
 ```
 
-我们确定我们想要的就是这个，接下来执行安装命令：
+1.3.0 是本文写稿时的版本，现在可能更新。我们确定我们想要的就是这个，接下来执行安装命令：
 
 ```zsh
 brew install iina
