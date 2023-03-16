@@ -17,19 +17,19 @@ Homebrew 不会将文件安装到它本身目录之外，安装后只会将软�
 
 ## 安装 Homebrew
 
-在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，尝试再次运行即可：
+在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，我们使用镜像源（以上海交大镜像源为例）以确保成功安装：
 ```sh
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 对于基于 Intel 处理器的 Mac，Homebrew 将会安装至 `/usr/local/Homebrew`；对于基于 Apple Silicon 的 Mac，Homebrew 将会安装至 `/opt/homebrew`。
 
-成功安装 Homebrew 后，为使更新更快速、稳定，可以考虑更换镜像源。以上海交大镜像源为例，执行以下命令：
+成功安装 Homebrew 后，可以选择额外 Tap 一些仓库，以便我们安装更多软件：
 ```sh
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/brew.git"
-brew update
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git"
-for tap in core cask{,-fonts,-drivers,-versions}; do
-	brew tap --custom-remote --force-auto-update "homebrew/${tap}" "https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-${tap}.git"
+brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-cask.git
+for tap in cask{-fonts,-drivers,-versions}; do
+	brew tap --custom-remote --force-auto-update "homebrew/${tap}" "https://mirror.sjtu.edu.cn/git/homebrew-${tap}.git"
 done
 brew update
 ```
@@ -68,7 +68,7 @@ IINA.app (App)
 ==> Analytics
 install: 2,420 (30 days), 7,771 (90 days), 30,179 (365 days)
 ```
-我们确定我们想要的就是这个，接下来执行安装命令：
+1.3.0 是本文写稿时的版本，现在可能更新。我们确定我们想要的就是这个，接下来执行安装命令：
 ```sh
 brew install iina
 ```

@@ -69,7 +69,7 @@ tags: macOS
 
 ![访达连接服务器](Finder-Connect-to-Server.png)
 
-在 iPhone、iPad 和 iPod touch 上的「文件」App里，点击「连接服务器」，输入 IP 地址或者域名以连接。
+在 iPhone、iPad 和 iPod touch 上的「文件」App 里，点击「连接服务器」，输入 IP 地址或者域名以连接。
 
 ![iPad 文件 App](iPad-File-App.png)
 
