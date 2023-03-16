@@ -33,7 +33,18 @@ for tap in cask{-fonts,-drivers,-versions}; do
 done
 brew update
 ```
-恭喜你！Homebrew 已经设置完成，现在你可以自由安装大多数软件了！
+
+在 `.zprofile` 中（如果使用 Zsh）添加如下语句：
+```sh
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/brew.git
+export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git
+export HOMEBREW_BOTTLE_DOMAIN=https://mirror.sjtu.edu.cn/homebrew-bottles/bottles
+export HOMEBREW_NO_INSTALL_FROM_API=1
+```
+
+然后运行 `source .zprofile` 或者重启终端来启用上述设置。恭喜你！Homebrew 已经设置完成，现在你可以自由安装大多数软件了！
 
 ## 安装软件
 
