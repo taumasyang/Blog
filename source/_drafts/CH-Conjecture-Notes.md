@@ -45,9 +45,9 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 找不到文献 L. Caccetta and R. Häggkvist. On minimal digraphs with given girth. *Congressus Numerantium*, XXI, 1978.
 {% endnote %}
 
-在 Mehdi BEHZAD 的文章《Minimal 2-regular digraphs with given girth》中，给出了下列命题的证明：
+在 Mehdi Behzad 的文章《Minimal 2-regular digraphs with given girth》中，给出了下列命题的证明：
 
-> $r$-正则有向图的最小顶点数是 $2n-1$．
+> 围长为 $n$ 的 2-正则有向图的最小顶点数是 $2n-1$．
 
 从这个命题可以推出 Caccetta-Häggkvist 猜想在 $r=2$ 的情况．有关此文献的内容，参阅{% post_link Minimal-2-Regular-Digraphs %}．
 
@@ -92,7 +92,6 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 
 我们画出 $D_4$ 二面体群的 Caylay 图，用蓝色表示 $\sigma$，用红色表示 $\tau$：
 <img src=/img/D4-Caylay.pdf alt="D4-Caylay" width=50%>
-<!-- ![D4-Caylay](/img/D4-Caylay.pdf) -->
 
 ## Menger 定理
 
@@ -138,7 +137,7 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 
 **证明：** 记最小 $x,y$-点割集的大小为 $\kappa(x,y)$，内部不相交的 $x,y$-路径的条数为 $\lambda(x,y)$．
 
-因为 $x,y$-点割集必须包含任意一条 $x,y$-路径上的一点，而共有 $\lambda(x,y)$ 条内部不相交的 $x,y$-路径，所以 $\kappa(x,y)\geq\lambda(x,y)$．下面我们证明二者相等．
+因为 $x,y$-点割集必须包含任意一条 $x,y$-路径上的一点，而共有 $\lambda(x,y)$ 条内部不相交的 $x,y$-路径，所以 $\lambda(x,y)\geq\kappa(x,y)$．下面我们证明二者相等．
 
 我们对图的阶数进行归纳．当 $n(G)=2$，因为 $xy\notin E(G)$，所以 $\kappa(x,y)=\lambda(x,y)=0$，成立．
 
@@ -148,7 +147,7 @@ Behzad-Chartrand-Wall 猜想指出，一个有向笼的顶点的数量 $n=(g-1)d
 
 令 $V_1$ 为所有 $x,S$-路径上的点，$V_2$ 为所有 $S,y$-路径上的点．根据 $S$ 的最小性，任意 $v\in S$，都有一条 $x,y$-路径 $xPy$ 经过 $v$，且 $P\cap S=v$，因此 $v\in V_1\cup V_2$．反过来，任意 $v\in V_1\cup V_2$，必有 $v\in S$，否则 $x,y$ 在 $G-S$ 中通过 $v$ 连通．因此，$S=V_1\cup V_2$．
 
-构造一个新的图 $H$，使得 $H_1$ 是 $G$ 的 $V_1$-导出子图再加上一个新的点 $y'$，使得 $y'$ 与 $S$ 中所有点相连．因为 $G$ 中每一条 $x,y$-路径都从 $x$ 开始经过 $S$，所以 $H$ 中的 $x,y'$-点割集也是 $G$ 中的 $x,y$-点割集．又因为 $S$ 是 $H$ 的 $x,y'$-点割集，所以 $\kappa_H(x,y)=k$．又因为$|N(y)-S|>0$，所以 $H$ 比 $G$ 的阶数小，根据归纳假设，$H$ 中有 $k$ 条内部不相交的 $x,y'$-路径，即 $G$ 中有 $k$ 条内部不相交的 $x,S$-路径．同理，$G$ 中有 $k$ 条内部不相交的 $S,y$-路径，把它们合起来得到 $k$ 条内部互不相交的 $x,y$-路径．
+构造一个新的图 $H$，使得 $H_1$ 是 $G$ 的 $V_1$-导出子图再加上一个新的点 $y'$，使得 $y'$ 与 $S$ 中所有点相连．因为 $G$ 中每一条 $x,y$-路径都从 $x$ 开始经过 $S$，所以 $H$ 中的 $x,y'$-点割集也是 $G$ 中的 $x,y$-点割集．又因为 $S$ 是 $H$ 的 $x,y'$-点割集，所以 $\kappa_H(x,y)=k$．又因为$|N(y)-S|>0$，所以 $H$ 比 $G$ 的阶数小，根据归纳假设，$H$ 中有 $k$ 条内部不相交的 $x,y'$-路径，即 $G$ 中有 $k$ 条内部不相交的 $x,S$ -路径．同理，$G$ 中有 $k$ 条内部不相交的 $S,y$-路径，把它们合起来得到 $k$ 条内部互不相交的 $x,y$-路径．
 
 **情况 2**：$G$ 的最小 $x,y$-点割集不是 $N(x)$ 就是 $N(y)$．
 
