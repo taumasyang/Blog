@@ -48,14 +48,9 @@ tkinter is no longer included with this formula, but it is available separately:
 
 See: https://docs.brew.sh/Homebrew-and-Python
 ```
-方便起见，我们将 `python` 和 `pip` 链接到相应的可执行文件，在 `.zprofile` 中添加如下内容：
+方便起见，我们将 Python 路径添加到 `$PATH`。在 `~/.zprofile` 中添加以下内容：
 ```sh
-alias python='python3.10'
-alias pip='pip3.10'
-```
-或者将 Python 路径添加到 `$PATH`：
-```sh
-export PATH=$PATH:/opt/homebrew/opt/python@3.10/libexec/bin
+export PATH=$PATH:$(brew --prefix python)/libexec/bin
 ```
 
 ## `pip` 使用技巧
@@ -118,6 +113,7 @@ brew install mactex-no-gui pandoc
 首先检查是否已经正确安装 `nbconvert`、$\LaTeX$ 和 `pandoc`。若问题仍然存在，运行下列命令[^2]：
 
 ```sh
+mkdir ~/Library/Jupyter     # Create directory if not exists
 ln -s /opt/homebrew/share/jupyter/nbconvert ~/Library/Jupyter
 ```
 
