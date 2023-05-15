@@ -15,7 +15,30 @@ tags:
 
 # R
 
-首先需要安装 R。
+在安装任何 R 内核之前，请确保你已经安装了 Jupyter Notebook 和 R，在虚拟环境里安装的请确保在同一虚拟环境里进行后续操作，否则相关程序可能无法正常运行。下面给出了在一台全新的机器上安装内核的步骤，读者若已经部分安装了相关程序可以按需阅读。
+
+## 安装 Python
+
+### 在全局 Python 环境下安装
+
+```sh
+brew install python
+export PATH=$PATH:$(brew --prefix python)/libexec/bin
+pip install notebook
+```
+
+### 在虚拟 Python 环境下安装
+
+```sh
+brew install miniforge
+conda init "$(basename "${SHELL}")"
+conda create -n kernel python
+conda activate kernel
+pip install notebook
+```
+
+## 安装 R 和 R 内核
+
 ```sh
 brew install r
 ```
@@ -23,7 +46,7 @@ brew install r
 ```sh
 R
 ```
-注意启动 R 需要大写，小写的 `r` 是 shell 内置命令，表示运行上一个命令。
+注意启动 R 需要大写，小写的 `r` 是 shell 内置命令，表示运行上一条命令。
 ```r
 > install.packages('IRkernel')
 > IRkernel::installspec()
