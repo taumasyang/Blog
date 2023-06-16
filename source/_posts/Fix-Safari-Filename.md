@@ -1,6 +1,7 @@
 ---
 title: 修复 Safari 下载文件名乱码
 date: 2023-06-08 02:00:00
+updated: 2023-06-16 12:15:00
 categories: 技术分享
 tags: Automator
 ---
@@ -9,11 +10,11 @@ Safari 浏览器从特定网站上下载文件时，会出现文件名乱码的�
 
 我们需要 macOS 提供的「自动操作」（Automator.app）制作快速操作。
 
-![Automator.app](Fix-Safari-Filename/Automator.png)
+![Automator.app](Automator.png)
 
 打开「自动操作」后，我们新建文稿，选择「快速操作」。
 
-![新建快速操作](Fix-Safari-Filename/NewQuickAction.png)
+![新建快速操作](NewQuickAction.png)
 
 在左侧边栏找到「运行 Shell 脚本」，双击或者拖到右边编辑窗口，将下面的代码粘贴至最大的文本框内，并修改「工作流程收到当前」为「文件或文件夹」，修改「传递输入：」为「作为自变量」。
 
@@ -38,7 +39,7 @@ for f in "$@"; do
 done
 ```
 
-![快速操作](Fix-Safari-Filename/QuickAction.png)
+![快速操作](QuickAction.png)
 
 你可以把「图像」和「颜色」修改成自己喜欢的样式，然后选择「保存」（⌘S）。提示输入时输入「修复文件名」或者其他你认得出的名字，最后点按「存储」，你的快速操作就自动会在你的「访达」中出现。
 
