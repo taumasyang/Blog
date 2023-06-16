@@ -1,6 +1,7 @@
 ---
 title: 获取、加工和使用电子课本
 date: 2022-09-22 17:40:00
+updated: 2023-06-16 12:00:00
 categories: 技术分享
 tags:
 ---
@@ -53,9 +54,9 @@ Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在�
 
 我曾尝试过许多 PDF OCR 解决方案，大多数在识别中文时都会在每两个汉字中间增加一些无意义的空格。目前我发现的最好的文字识别软件是 [ABBYY FineReader PDF](https://pdf.abbyy.com/finereader-pdf-for-mac/)。需注意，这是收费软件，但是我们可以找到[破解版](https://macapp.org.cn/app/abbyy-finereader-pdf.html)。
 
-安装软件后立即打开，输入激活码激活软件，然后设置识别语言为「简体中文和英文，**简单数学公式**」。对于计算机类教材，还可以添加对应的程序设计语言。
+安装软件后立即打开，输入激活码激活软件。如果书中出现了数学公式，需要设置识别语言为「简体中文和英文，**简单数学公式**」；对于计算机类教材，还可以添加对应的程序设计语言。
 
-回到我们刚才下载的电子课本，选择打开方式为 ABBYY FineReader PDF，软件会自动添加 PDF 页面并开始识别。识别过程是多核的，占用资源比较多，性能不太够的电脑可以考虑暂停其他操作。识别完后，对照警告检查页面后，选择导出。导出时可按需选择「使用 MRC 压缩图像」，打开该选项能显著缩小导出的文件，但部分数学公式可能会渲染异常。如果发生这样的情况，就不要勾选。导出的过程是单核的，因此可能会非常慢。确认导出的文件没有问题后，就可以退出 ABBYY FineReader PDF 了。
+回到我们刚才下载的电子课本，选择打开方式为 ABBYY FineReader PDF，软件会自动添加 PDF 页面并开始识别。识别过程是多核的，占用资源比较多，性能不太够的电脑可以考虑暂停其他操作。识别完后，对照警告检查页面，并导出。导出时可按需选择「使用 MRC 压缩图像」，打开该选项能显著缩小导出的文件，但部分数学公式可能会渲染异常。如果发生这样的情况，就不要勾选。导出的过程是单核的，因此可能会非常慢。确认导出的文件没有问题后，就可以退出 ABBYY FineReader PDF 了。
 
 {% note warning %}
 在识别下一本书之前，请先退出 ABBYY FineReader PDF，否则它将会将下一本书的页面添加到上一本书的末尾。
@@ -64,6 +65,12 @@ Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在�
 {% note danger %}
 ABBYY FineReader PDF 无法处理使用 `jbig2` 编码的 PDF 文件。这种文件是纯黑白的，并且十分少见。解决方案：将 PDF 文件每页都导出为图像文件再进行处理。
 {% endnote %}
+
+#### Preview.app (Apple Silicon Mac)
+
+在 macOS Ventura (13.0) 及后续版本，macOS 预装的 Preview.app 也可以进行 OCR 了。这是基于 macOS 的「实况文本」功能，在 QuickLook（快速查看）和 Preview.app（预览）中打开的 PDF 文档都会进行自动识别。在预览中，选择菜单栏中的「文件->导出…」后，勾选上「嵌入文本」复选框，然后保存，就能获得一份识别后的文档了。但是这个过程没有进度条，识别过程中整个预览（包括打开的其他文档窗口）都会无响应，耐心等待即可。
+
+特别注意：实况文本是 Apple Silicon Mac 特有的功能，配有 Intel 处理器的 Mac 没有此功能。由于 ABBYY FineReader PDF 在 Apple Silicon Mac 上需要转译运行，且无法发挥 Apple Silicon 神经学习处理能力的优势，在识别速度上被「实况文本」吊打。
 
 ### 制作目录
 
@@ -89,7 +96,7 @@ cpdf -list-bookmarks -utf8 textbook.pdf > bookmarks.txt
 ABBYY FineReader PDF 在导出时会重新制作 PDF，因此不会保留原始 PDF 的书签。无论何时，对于 ABBYY FineReader PDF 导出的文件都需要重新添加目录。
 {% endnote %}
 
-如果原始电子课本没有自带目录，就需要我们手动制作。目录文件的格式参考[官方文档](https://www.coherentpdf.com/cpdfmanual.pdf)，制作过程在此不再赘述。
+如果原始电子课本没有自带目录，就需要我们手动制作。目录文件的格式参考[官方文档](https://www.coherentpdf.com/cpdfmanual.pdf)，可以使用任意文本编辑器手动制作目录。
 
 制作好我们的目录文件 `bookmarks.txt` 后，需要将其添加至 PDF 文件中。
 
@@ -105,7 +112,7 @@ cpdf -utf8 -add-bookmarks bookmarks.txt textbook-ocr.pdf -o textbook-final.pdf
 
 ### 添加逻辑页码
 
-一般来说，书籍的正文部分会重新编号页码，这就导致了我们阅览 PDF 文件的正文部分会出现书中的页码与文件的页码不一致的问题。为了使两者同步，我们可以往 PDF 文件中添加**逻辑页码**。在 Coherent PDF Tools 中，这样的操作被称为添加「页面标签」（Page Labels）。我们可以为页面标签指定不同的页面范围、样式、前缀、起始编号等等。默认的样式是十进制数字，默认的起始编号是 1。
+一般来说，书籍的正文部分会从头开始重新编号页码，这就导致了我们阅览 PDF 文件的正文部分会出现书中的页码与文件的页码不一致的问题。为了使两者同步，我们可以往 PDF 文件中添加**逻辑页码**。在 Coherent PDF Tools 中，这样的操作被称为添加「页面标签」（Page Labels）。我们可以为页面标签指定不同的页面范围、样式、前缀、起始编号等等。默认的样式是十进制数字，默认的起始编号是 1。
 
 > |样式|预览|
 > |-:|:-|
@@ -129,6 +136,6 @@ cpdf -utf8 -add-bookmarks bookmarks.txt textbook-ocr.pdf -o textbook-final.pdf
 
 ## 使用电子课本
 
-将我们加工完成的电子课本文件导入 [MarginNote 3](https://apps.apple.com/cn/app/marginnote-3/id1348317163) 或者其他文献阅读器中即可在所有设备上阅读、学习。经过我们对课本文件的处理，现在可以通过目录或页码快速、准确地访问某一特定内容。
+将我们加工完成的电子课本文件使用任意 PDF 阅读器打开即可。经过我们对课本文件的处理，现在可以通过目录或页码快速、准确地定位到某一特定内容。
 
-如果嫌弃 MarginNote 3 在 Mac 上性能低下，可以考虑使用 VSCode 和 PDF 插件。如果安装了 LaTeX Workshop，由于该插件自带 `PDF.js` 用于预览生成的文件，无需另外安装插件即可查看 PDF 文件。
+笔者目前常用的阅读器是 Preview.app 和 VSCode + PDF 插件（在写作业时同时需要参考书本）。如果安装了 LaTeX Workshop，由于该插件自带 `PDF.js` 用于预览生成的文件，无需另外安装插件即可查看 PDF 文件。
