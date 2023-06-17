@@ -1,6 +1,7 @@
 ---
 title: 在 VSCode 中使用 Jupyter Notebook
 date: 2023-01-30 22:50:00
+updated: 2023-06-17 19:45:00
 categories: 技术分享
 tags: [Python, Notebook]
 ---
@@ -13,6 +14,8 @@ tags: [Python, Notebook]
 >
 > 为了简化 Jupyter Notebook 文档在 Web 上的可视化，`nbconvert` 库是通过 `nbviewer` 提供的一项服务，它可以获取任何公开可用的 Notebook 文档的 URL，将其动态转换为 HTML 并显示给用户。
 
+Jupyter 为 Notebook 提供了基于 Web 的 GUI 界面，不能说不好用，只是笔者有点叛逆，希望什么工作都能在 VSCode 里解决。所以，这才有了这篇文章，希望能对和笔者一样叛逆的朋友们有点帮助。
+
 ## 安装
 
 ### 安装 Python
@@ -24,7 +27,7 @@ brew install python
 ```
 
 {% note info %}
-以上安装命令会让 Homebrew 自动选择 Python 版本。在笔者撰写这篇文章期间，Python 3.11 已经发布，但是 Homebrew 仍然安装了 Python 3.10.9。如果要指定安装的版本，可以使用如下命令：
+以上安装命令会让 Homebrew 自动选择 Python 版本，不一定会是最新版。例如，在笔者撰写这篇文章期间，Python 3.11 已经发布，但是 Homebrew 仍然安装了 Python 3.10.9。如果要指定安装的版本，可以使用如下命令：
 
 ```zsh
 brew install python@3.11
@@ -59,6 +62,14 @@ export PATH=$PATH:$(brew --prefix python)/libexec/bin
 ```
 
 ### `pip` 使用技巧
+
+#### 换源
+
+虽然默认的 PyPI 源下载还是很不错的，不过既然有镜像站提供了镜像，估计也有人喜欢用吧。
+
+```zsh
+pip config set global.index-url https://mirror.sjtu.edu.cn/pypi/web/simple
+```
 
 #### 安装包
 
@@ -121,12 +132,14 @@ brew install mactex-no-gui pandoc
 
 ## `nbconvert` 不正常运行
 
-首先检查是否已经正确安装 `nbconvert`、$\LaTeX$ 和 `pandoc`。若问题仍然存在，运行下列命令[^2]：
+首先检查是否已经正确安装 `nbconvert`、LaTeX 和 `pandoc`。若问题仍然存在，运行下列命令[^2]：
 
 ```zsh
 mkdir ~/Library/Jupyter  # 如果路径不存在，先创建它
 ln -s /opt/homebrew/share/jupyter/nbconvert ~/Library/Jupyter
 ```
+
+这段代码解决的是 `nbconvert` 找不到默认模板的问题，按照上述方法安装的都会遇到这个问题。
 
 [^1]: https://zh.wikipedia.org/wiki/Jupyter
 [^2]: https://github.com/executablebooks/jupyter-book/issues/1541#issuecomment-1166064740
