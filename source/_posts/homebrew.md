@@ -1,6 +1,7 @@
 ---
 title: 安装和使用 Homebrew
 date: 2022-09-22 10:40:00
+updated: 2023-6-17 19:00:00
 categories: 技术分享
 tags: [Shell, Homebrew]
 ---
@@ -11,15 +12,15 @@ tags: [Shell, Homebrew]
 
 Homebrew 不会将文件安装到它本身目录之外，安装后只会将软件和命令**软链接**到 `/Application` 和其他存放命令到路径下。
 
-使用 Homebrew 安装软件只需短短的几个命令，无需再从茫茫互联网上寻找你需要的，也无需担心安装的软件是被修改后的版本。
+使用 Homebrew 安装软件只需短短的几个命令，无需再从茫茫互联网上寻找你需要的，也无需担心你安装的软件被恶意更改过。
 
 ## 安装 Homebrew
 
-在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，我们使用镜像源（以上海交大镜像源为例）以确保成功安装：
+在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，我们使用镜像源（以上海交大镜像源为例）以加速安装：
 
 ```zsh
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git"
+export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/brew.git
+export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -29,7 +30,7 @@ export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-
 
 ```zsh
 brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-cask.git
-for tap in cask{-fonts,-drivers,-versions}
+for tap in cask{-fonts,-versions}
 do brew tap --custom-remote --force-auto-update "homebrew/${tap}" "https://mirror.sjtu.edu.cn/git/homebrew-${tap}.git"
 done
 brew update
@@ -46,11 +47,13 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirror.sjtu.edu.cn/homebrew-bottles/bottle
 export HOMEBREW_NO_INSTALL_FROM_API=1
 ```
 
-然后运行 `source .zprofile` 或者重启终端来启用上述设置。恭喜你！Homebrew 已经设置完成，现在你可以自由安装大多数软件了！
+如果是基于 Intel 处理器的 Mac，按需修改 `eval` 语句中的路径。Homebrew 目前默认使用 API 进行安装，但是上海交大镜像源目前不支持此方式，所以需要设置不从 API 安装。
 
-## 安装软件
+最后，运行 `source .zprofile` 或者重启终端来启用上述设置。恭喜你！Homebrew 已经设置完成，现在你可以自由安装多数软件了！
 
-安装软件使用 `brew install` 命令。但是，在大部分情况下我们不知道这些软件的包名，因此需要先搜索。例如，我们希望安装视频播放器 IINA，先搜索这个软件的包名：
+## 使用 Homebrew 安装软件
+
+安装软件使用 `brew install` 命令。但是，在大部分情况下我们不能确定这些软件的包名，因此需要先搜索。例如，我们希望安装视频播放器 IINA，先搜索这个软件的包名：
 
 ```zsh
 brew search iina
@@ -121,7 +124,7 @@ brew uninstall iina
 
 ## 卸载 Homebrew
 
-如果你想卸载或重新安装 Homebrew，请执行以下命令以卸载 Homebrew。注意，这也会卸载你使用 Homebrew 安装过的包！你可以保存 `brew list` 的结果以便再次安装这些包。
+如果你想卸载或重新安装 Homebrew，请执行以下命令以卸载 Homebrew。注意，这也会卸载你使用 Homebrew 安装过的 Formula（Cask 不受影响）！你可以保存 `brew list` 的结果以便再次安装这些包。
 
 ```zsh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
