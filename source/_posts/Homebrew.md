@@ -1,26 +1,27 @@
 ---
 title: 安装和使用 Homebrew
-date: 2022-09-22 10:40:29
+date: 2022-09-22 10:40:30
+updated: 2023-6-17 18:57:20
 categories: 技术分享
 tags:
   - Shell
   - Homebrew
 ---
 
-## Homebrew 是什么？
+# Homebrew 是什么？
 
 [Homebrew](https://brew.sh) 是一个**包管理器**，可以在 macOS 上安装一些软件、命令等。
 
 Homebrew 不会将文件安装到它本身目录之外，安装后只会将软件和命令**软链接**到 `/Application` 和其他存放命令到路径下。
 
-使用 Homebrew 安装软件只需短短的几个命令，无需再从茫茫互联网上寻找你需要的，也无需担心安装的软件是被修改后的版本。
+使用 Homebrew 安装软件只需短短的几个命令，无需再从茫茫互联网上寻找你需要的，也无需担心你安装的软件被恶意更改过。
 
-## 安装 Homebrew
+# 安装 Homebrew
 
-在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，我们使用镜像源（以上海交大镜像源为例）以确保成功安装：
+在终端中执行以下命令，并按提示操作。安装时需要用到 GitHub 上的一些资源，因此可能会安装失败，我们使用镜像源（以上海交大镜像源为例）以加速安装：
 ```sh
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git"
+export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/brew.git
+export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 对于基于 Intel 处理器的 Mac，Homebrew 将会安装至 `/usr/local/Homebrew`；对于基于 Apple Silicon 的 Mac，Homebrew 将会安装至 `/opt/homebrew`。
@@ -28,7 +29,7 @@ export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-
 成功安装 Homebrew 后，可以选择额外 Tap 一些仓库，以便我们安装更多软件：
 ```sh
 brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-cask.git
-for tap in cask{-fonts,-drivers,-versions}; do
+for tap in cask{-fonts,-versions}; do
 	brew tap --custom-remote --force-auto-update "homebrew/${tap}" "https://mirror.sjtu.edu.cn/git/homebrew-${tap}.git"
 done
 brew update
@@ -43,12 +44,13 @@ export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-c
 export HOMEBREW_BOTTLE_DOMAIN=https://mirror.sjtu.edu.cn/homebrew-bottles/bottles
 export HOMEBREW_NO_INSTALL_FROM_API=1
 ```
+如果是基于 Intel 处理器的 Mac，按需修改 `eval` 语句中的路径。Homebrew 目前默认使用 API 进行安装，但是上海交大镜像源目前不支持此方式，所以需要设置不从 API 安装。
 
-然后运行 `source .zprofile` 或者重启终端来启用上述设置。恭喜你！Homebrew 已经设置完成，现在你可以自由安装大多数软件了！
+最后，运行 `source .zprofile` 或者重启终端来启用上述设置。恭喜你！Homebrew 已经设置完成，现在你可以自由安装多数软件了！
 
-## 安装软件
+# 使用 Homebrew 安装软件
 
-安装软件使用 `brew install` 命令。但是，在大部分情况下我们不知道这些软件的包名，因此需要先搜索。例如，我们希望安装视频播放器 IINA，先搜索这个软件的包名：
+安装软件使用 `brew install` 命令。但是，在大部分情况下我们不能确定这些软件的包名，因此需要先搜索。例如，我们希望安装视频播放器 IINA，先搜索这个软件的包名：
 ```sh
 brew search iina
 ```
@@ -85,7 +87,7 @@ brew install iina
 ```
 ```text
 ==> Downloading https://github.com/iina/iina/releases/download/v1.3.0/IINA.v1.3.0.dmg
-######################################################################## 100.0%
+####################################################################### 100.0%
 ==> Installing Cask iina
 ==> Moving App 'IINA.app' to '/Applications/IINA.app'
 ==> Linking Binary 'iina-cli' to '/opt/homebrew/bin/iina'
@@ -104,9 +106,9 @@ brew uninstall iina
 ```
 对于一些使用安装器（`.pkg`）的软件，在安装和卸载的过程中可能会要求输入密码。
 
-## 卸载 Homebrew
+# 卸载 Homebrew
 
-如果你想卸载或重新安装 Homebrew，请执行以下命令以卸载 Homebrew。注意，这也会卸载你使用 Homebrew 安装过的包！你可以保存 `brew list` 的结果以便再次安装这些包。
+如果你想卸载或重新安装 Homebrew，请执行以下命令以卸载 Homebrew。注意，这也会卸载你使用 Homebrew 安装过的 Formula（Cask 不受影响）！你可以保存 `brew list` 的结果以便再次安装这些包。
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 ```

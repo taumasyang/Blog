@@ -1,6 +1,7 @@
 ---
 title: 一些有用的 Shell 命令
 date: 2023-03-20 11:50:00
+updated: 2023-04-08 01:33:40
 categories: 技术分享
 tags: Shell
 ---

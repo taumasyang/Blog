@@ -1,6 +1,7 @@
 ---
-title: 将 FLAC（或其他格式）的音频转换为 ALAC
-date: 2023-02-27 23:31:21
+title: 将 FLAC 音频转换为 ALAC
+date: 2023-02-27 23:31:20
+updated: 2023-6-17 19:52:30
 categories: 技术分享
 tags: Shell
 ---
@@ -29,7 +30,7 @@ Permute 3 是一款强大的媒体转换工具，可以方便地在各种媒体�
 brew install ffmpeg
 ```
 
-会一并安装大量依赖，不用慌张。
+会一并安装大量依赖，不用慌张，请耐心等待。
 
 ## 使用 FFmpeg
 
@@ -37,9 +38,9 @@ brew install ffmpeg
 ```sh
 ffmpeg -i audio.flac -acodec alac -vcodec copy audio.m4a
 ```
-如果要转换整个文件夹的 FLAC 音频，可以使用 Zsh 的 `for` 语法：
+如果要转换整个目录下的 FLAC 音频，可以使用 Zsh 的循环：
 
 ```sh
 for f in *.flac; do ffmpeg -i "$f" -acodec alac -vcodec copy "${f%.*}.m4a"; done
 ```
-转换其他格式的音视频同理，感兴趣的读者可以自行查阅。其他命令笔者有需求才会更新在这里。
+转换其他格式的媒体同理，感兴趣的读者可以自行查阅。

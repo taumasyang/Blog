@@ -1,6 +1,7 @@
 ---
 title: “你帮我助”软件开发
 date: 2022-09-22 11:23:20
+updated: 2022-10-29 03:34:00
 categories: 软件工程
 tags: Python
 ---
@@ -9,7 +10,7 @@ tags: Python
 
 本项目是上海交通大学《CS3331-软件工程》课程作业。
 
-## 题目描述
+# 题目描述
 
 [![Canvas Page](https://img.shields.io/badge/Canvas-“你帮我助”软件开发-red)](https://oc.sjtu.edu.cn/courses/48894/assignments/181452)
 
@@ -27,7 +28,7 @@ tags: Python
 >
 > ![表2-2 软件工程师的任务清单（中英对照）](https://oc.sjtu.edu.cn/courses/48894/files/5116866/preview?verifier=6ogAPjoGuA84rt4bfh1zJrdJRWq7HKCtwcwuH2B3)
 
-## PSP 数据统计
+# PSP 数据统计
 
 |PSP 2.1|Timing|
 |-|-|
@@ -48,7 +49,7 @@ tags: Python
 |Postmortem||
 |Process Improvement Plan|More item details|
 
-## 功能介绍
+# 功能介绍
 
 使用 Python3 解释器执行 `goods.py` 文件，或直接运行 `dist/goods`（不在本仓库）。数据存储在 `goods.db` 中，删除此文件将导致数据丢失！输出结果需要 `prettytable` 包，如果使用解释器运行，请确保安装了它：
 ```sh
