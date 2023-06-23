@@ -1,7 +1,7 @@
 ---
 title: Git 与 GitHub 使用指北
 date: 2022-11-01 14:40:10
-updated: 2022-11-09 14:25:00
+updated: 2023-06-24 06:12:10
 categories: 技术分享
 tags:
   - Shell
@@ -166,42 +166,24 @@ git config --global github.user username
 git config --global github.token usertoken
 ```
 
-将下列代码添加到 `.zprofile` 中（如果使用 Zsh）：
+如果使用 Zsh，请将下列代码添加到 `.zprofile` 中：
 
 ```sh
 github()
 {
-	invalid_credentials=0
-	repo_name=$1
-	dir_name=`basename $(pwd)`
-
-	if [ "$repo_name" = "" ]; then
-		repo_name=$dir_name
-	fi
-
-	username=`git config github.user`
-	if [ "$username" = "" ]; then
-		echo "Could not find username, run 'git config --global github.user <username>'"
-		invalid_credentials=1
-	fi
-
-	token=`git config github.token`
-	if [ "$token" = "" ]; then
-		echo "Could not find token, run 'git config --global github.token <token>'"
-		invalid_credentials=1
-	fi
-
-	if [ "$invalid_credentials" = 1 ]; then
-		echo "fix error and try again"
-		return 1
-	fi
-
-	echo -n "Creating Github repository '$repo_name' ..."
-	curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$repo_name'"}' > /dev/null
-	echo " done."
-
-	echo "Pushing local code to remote ..."
-	git remote add origin git@github.com:$username/$repo_name.git
+	username=$(git config github.user)
+	[[ -z $username ]] && echo 'GitHub username not get' && exit
+	token=$(git config github.token)
+	[[ -z $token ]] && echo 'GitHub token not get' && exit
+	repo=${1:-$(basename $(pwd))}
+	read "newrepo?Repo name (default is $repo): "
+	[[ $newrepo ]] && repo=$newrepo
+	read "description?Repo description: "
+	read "homepage?Repo homepage: "
+	read "private?Private repo? (dafault is false): "
+	[[ $private ]] && private='true' || private='false'
+	curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$repo'","description":"'$description'","homapage":"'$homepage'","private":"'$private'"}'
+	git remote add origin git@github.com:$username/$repo.git
 	git push -u origin main
 }
 ```
@@ -210,7 +192,7 @@ github()
 在笔者的机器上，默认分支名为 `main`；在有些机器上，默认分支名为 `master`。运行 `git config --list` 查看 `init.defaultbranch` 条目以确定你的默认分支名称，并按需修改上述脚本的倒数第二行。
 {% endnote %}
 
-重启终端或者运行 `source ~/.zprofile` 来使配置生效。
+这段代码自动或手动获取仓库基本信息，远程创建仓库并推送到 GitHub 上。里面的 `read` 命令在 Bash 下行为有所不同，如果使用 Bash，请查询 `read -p` 的用法，并自行修改上述代码。重启终端或者运行 `source ~/.zprofile` 来使配置生效。
 
 {% note danger %}
 在上传本地仓库前，仓库里至少需要存在一个分支。你可以进行一次提交来自动创建第一个分支。有关提交的说明，请参阅后文。
