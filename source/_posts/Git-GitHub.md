@@ -1,7 +1,7 @@
 ---
 title: Git 与 GitHub 使用指北
 date: 2022-11-01 14:40:10
-updated: 2023-06-24 06:12:10
+updated: 2023-08-04 14:28:00
 categories: 技术分享
 tags:
   - Shell
@@ -20,17 +20,15 @@ tags:
 
 ## 创建 GitHub 账号
 
-访问 [GitHub](https://github.com/)。
+访问 [GitHub](https://github.com/)。如果遇到无法访问的情况，考虑采用科学上网的手段。
 
 ![GitHub](/img/GitHub.png)
 
-{% note warning %}
-GitHub 在国内访问并不稳定，重度用户一般使用科学上网的手段保证连接的稳定性。
-{% endnote %}
-
-点击 [Sign up](https://github.com/signup)，输入电子邮箱，然后按指示注册账号。
+点击 [Sign up](https://github.com/signup)，输入电子邮箱，然后按指示注册一个免费账号。
 
 ## 使用 SSH 连接 GitHub[^3]
+
+GitHub 允许使用个人访问令牌（PAT）或者公钥（SSH）来验证身份。这里推荐使用安全性更高的 SSH 方式。
 
 ### 检查现有的 SSH 密钥
 
@@ -38,23 +36,15 @@ GitHub 在国内访问并不稳定，重度用户一般使用科学上网的手�
 
 打开终端，输入 `ls -al ~/.ssh` 查看现有的 SSH 密钥是否存在。
 ```sh
-$ ls -al ~/.ssh
 # 列出你的 .ssh 目录中的文件，如果它们存在的话
+$ ls -al ~/.ssh
 ```
 检查目录列表，看看你是否已经有一个公共的 SSH 密钥。默认情况下，支持 GitHub 的公钥的文件名是以下之一。
 - `id_rsa.pub`
 - `id_ecdsa.pub`
 - `id_ed25519.pub`
 
-{% note info %}
-提示：如果你收到 `~/.ssh` 不存在的错误，你在默认位置没有现有的 SSH 密钥对。你可以在下一步创建一个新的 SSH 密钥对。
-{% endnote %}
-
-要么生成一个新的SSH密钥，要么上传一个现有的密钥。
-
-如果你没有支持的公钥和私钥对，或者不希望使用任何可用的公钥和私钥对，那么就生成一个新的SSH密钥。
-
-如果你看到一个现有的公钥和私钥对（例如，`id_rsa.pub` 和 `id_rsa`），你想用它来连接 GitHub，你可以把这个密钥添加到 `ssh-agent`。
+如果你已经有符合条件的密钥对，你可以使用它们来访问 GitHub；如果没有或者不想使用现成的密钥对，可以在下一步生成一对新的密钥。
 
 ### 生成一个新的 SSH 密钥
 
@@ -62,13 +52,13 @@ $ ls -al ~/.ssh
 
 打开终端，粘贴下面的命令，并将电子邮件替换成你的 GitHub 电子邮件地址。
 ```
-ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-keygen -t ed25519
 ```
-这将创建一个新的 SSH 密钥，使用提供的电子邮件作为标签。
+这将创建一个新的 SSH 密钥。
 
 当你被提示“输入一个保存密钥的文件”时，你可以按回车键来接受默认的文件位置。请注意，如果你以前创建过 SSH 密钥，`ssh-keygen` 可能会要求你重写另一个密钥，在这种情况下，我们建议创建一个自定义命名的 SSH 密钥。要做到这一点，请输入默认的文件位置，并用你的自定义密钥名称替换 `id_ssh_keyname`。
 
-生成完毕，执行 `cat ~/.ssh/id_ed25519.pub` 来查看公钥。将输出的结果拷贝至剪贴板中。
+生成完毕后，执行 `pbcopy < ~/.ssh/id_ed25519.pub` 将公钥拷贝至剪贴板中。
 
 ### 在 GitHub 上添加密钥
 
@@ -78,17 +68,15 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 
 ![GitHub New SSH Key](/img/GitHub-New-SSH-Key.png)
 
-点击「Add SSH Key」，将验证密码。操作成功后，就将本机与 GitHub 连接了。
+点击「Add SSH Key」，将验证密码或者验证码。操作成功后，就将本机与 GitHub 连接了。
 
-{% note warning %}
-如果你需要在不同的电脑上操作同一仓库，你需要在每台电脑上都执行上述操作。
-{% endnote %}
+如果你需要在不同的计算机上连接同一个 GitHub 账户，你需要在每台计算机上都生成并添加一个密钥，或者将以生成的私钥拷贝到其他计算机上。
 
 # 配置 Git
 
 macOS 系统已经自动安装了 Git，所以你无需手动安装。如果你不放心，可以运行 `git --version` 来确认 Git 是否已经安装以及 Git 的版本。在笔者的机器上输出结果如下：
 ```txt
-git version 2.37.0 (Apple Git-136)
+git version 2.39.2 (Apple Git-143)
 ```
 但是，你仍然需要配置用户名和电子邮箱才能使用它。运行以下命令，将 `username` 和 `username@example.com` 替换为你的信息。
 ```sh
@@ -117,14 +105,14 @@ git config --global user.email username@example.com
 - Choose a license 选择一个许可证：许可证告诉别人他们可以和不可以用你的代码做什么。
 
 {% note warning %}
-如果要导入一个已存在的仓库，不要修改最后三项。
+如果要导入一个已存在的仓库，不要修改最后三项。尽管笔者个人更推荐后文使用的方法将一个现成仓库导入到 GitHub 上。
 {% endnote %}
 
 确认好信息后，点击「Create Repository」，就可以进入你刚刚创建的仓库啦。
 
 ## 将仓库克隆到本地
 
-在仓库页面，寻找绿色的按钮「Code」，选择「SSH」，将仓库地址拷贝至剪贴板中。
+在仓库页面，寻找绿色的按钮「Code」，选择「SSH」方式，将仓库地址拷贝至剪贴板中。
 
 回到本机，先在终端中 `cd` 到你想存放这个仓库的目录，运行 `git clone` 命令克隆仓库。
 ```sh
@@ -152,21 +140,17 @@ cd repository
 
 ## 将仓库上传到 GitHub
 
-远程创建 GitHub 仓库需要 Personal access token (PAT)，访问 [Personal Access Tokens (Classic)](https://github.com/settings/) 来创建一个。
+使用 GitHub API 创建 GitHub 仓库需要 Personal access token (PAT)，访问 [Personal Access Tokens (Classic)](https://github.com/settings/) 来创建一个。
 
 创建 token 时，将「Select scopes」下的「repo」项目全选，其他按需选择。选择完毕后点击最下方的「Generate token」，验证密码后就创建成功了。
 
-{% note warning %}
-创建好 PAT 后，token 将只显示一遍。
-{% endnote %}
-
-将 GitHub 用户名和刚才创建的 token 配置到 Git 中。
+创建好 PAT 后，token 将只显示一遍，所以请妥善保管你的 PAT！这里推荐将 GitHub 用户名和刚才创建的 token 配置到 Git 中。
 ```sh
 git config --global github.user username
 git config --global github.token usertoken
 ```
 
-如果使用 Zsh，请将下列代码添加到 `.zprofile` 中：
+如果使用 Zsh，请将下列创建并推送仓库的代码添加到 `.zprofile` 中：
 
 ```sh
 github()
@@ -192,23 +176,21 @@ github()
 在笔者的机器上，默认分支名为 `main`；在有些机器上，默认分支名为 `master`。运行 `git config --list` 查看 `init.defaultbranch` 条目以确定你的默认分支名称，并按需修改上述脚本的倒数第二行。
 {% endnote %}
 
-这段代码自动或手动获取仓库基本信息，远程创建仓库并推送到 GitHub 上。里面的 `read` 命令在 Bash 下行为有所不同，如果使用 Bash，请查询 `read -p` 的用法，并自行修改上述代码。重启终端或者运行 `source ~/.zprofile` 来使配置生效。
+这段代码自动或手动获取仓库基本信息，远程创建仓库并推送到 GitHub 上。注意这段代码使用了 Zsh 的特殊语法，与 Bash 并不兼容。重启终端或者运行 `source ~/.zprofile` 来使配置生效。
 
 {% note danger %}
-在上传本地仓库前，仓库里至少需要存在一个分支。你可以进行一次提交来自动创建第一个分支。有关提交的说明，请参阅后文。
+此段代码默认上传 `main` 分支。如果是刚刚新建的空白仓库，由于 `main` 分支并不存在，会推送失败。请务必进行一次提交后再运行此代码！
 {% endnote %}
 
-准备好上传后，在仓库根目录运行 `github` 即可在 GitHub 上创建一个公开仓库并将已有的文件推送到远程仓库。远程仓库名默认为本地仓库名，但也可以用 `github repository` 的方式指定远程仓库的名称。
+准备好上传后，在仓库根目录运行 `github` 即可在 GitHub 上创建一个公开仓库并将已有的文件推送到远程仓库。脚本会询问仓库的名称、描述、主页和可见性。其他设置可以在创建后访问 GitHub 修改。
 
 # 使用 Git 管理文件
 
-{% note danger %}
 Git 适合管理文本文件，包括但不限于各类程序设计语言的源代码、Jupyter Notebook、LaTeX 源文件等以文本形式存储的文件。尽管你可以将二进制文件放在 Git 仓库中，但 Git 并不能识别出它们之间的差异，因此 Git 仓库可能会变得无比庞大。在 `.gitignore` 中添加这些文件或它们的存储路径以便 Git 忽略这些文件。
-{% endnote %}
 
-{% note info %}
 你可以在诸如 VSCode 等编辑器中使用集成的 Git 插件来操作 Git 仓库。必要时，也可以使用用命令。
-{% endnote %}
+
+你可以在 [Git Book](https://git-scm.com/book/zh) 上学习和理解 Git 常用的操作，下文仅作速查表使用。
 
 ## 暂存文件 `git add`
 
@@ -219,7 +201,7 @@ Git 适合管理文本文件，包括但不限于各类程序设计语言的源�
 当暂存区有文件，希望进行提交时，可以使用 `git commit -m 'message'` 进行提交。提交需要指定提交信息，可以使用 `-m` 开关在同一条命令中指定，否则 Git 将打开一个文本编辑器让你编辑提交信息。
 
 {% note info %}
-Git 默认的文本编辑器是 `vi`，而 `vi` 对习惯了图形界面的用户极其不友好。可以通过配置修改 Git 的默认文本编辑器为 `nano`（命令行编辑器，但是比 `vi` 友好太多）或者 `code`（VSCode，现代化的文本编辑器）。
+Git 默认的文本编辑器是 `vi`，而 `vi` 对习惯了图形界面的用户极其不友好。可以通过配置修改 Git 的默认文本编辑器为 `nano`（同样是命令行编辑器，但是比 `vi` 友好太多）或者 `code`（即 VSCode，现代化的文本编辑器）。
 ```sh
 git config --global core.editor nano
 ```
@@ -229,15 +211,11 @@ git config --global core.editor code --wait
 ```
 {% endnote %}
 
-如果想要在提交之前暂存所有修改，可以使用 `-a` 开关。
-
-{% note warning %}
-注意，`-a` 开关只会暂存「已修改」的文件，不会影响「未追踪」的文件。
-{% endnote %}
+如果想要在提交之前暂存所有修改，可以使用 `-a` 开关。请注意，这只会暂存「已修改」的文件，不会影响「未追踪」的文件。
 
 ## 推送更改 `git push`
 
-如果希望将已提交的更改推送到远程仓库，可以使用 `git push` 命令。这将在远程仓库合并本地的修改。如果有冲突，此命令将会出错。如果希望覆盖远程仓库的内容，使用 `git push -f` 强制推送。
+如果希望将已提交的更改推送到远程仓库，可以使用 `git push` 命令。这将在远程仓库合并本地的修改。如果有冲突，此命令将会出错。如果确定不再需要远程版本，想要覆盖远程仓库的内容，可以使用 `git push -f` 强制推送。
 
 ## 撤销更改
 
@@ -268,21 +246,21 @@ git reset --hard HEAD^
 
 ### 更改已推送
 
-在本地执行 `git reset` 命令处理完修改后强制推送 `git push -f`。
+在本地处理完修改后强制推送 `git push -f`。
 
-## 修改提交
+### 快捷修改提交
 
-如果你想修改刚刚进行的一次提交，你可以使用 `git reset --soft HEAD^`，进行修改，`git add .`，然后 `git commit`。事实上，还有一种更为简便的方式，那就是在 `git commit` 的同时使用 `--amend` 开关，这会使你的上一次提交的内容替换成这一次提交，因此你需要像进行一个新提交那样指定提交信息，并且 Git 会生成一个新的 commit ID，但是并不会修改提交时间。
+如果你想修改刚刚进行的一次提交，你可以使用 `git reset --soft HEAD^`，进行修改，`git add .`，然后 `git commit`。事实上，还有一种更为简便的方式，那就是在 `git commit` 的同时使用 `--amend` 开关，这会使你的上一次提交的内容替换成这一次提交，因此你需要像进行一个新提交那样指定提交信息。
 ```sh
 git add .
 git commit --amend -m 'message'
 ```
 
+这个新的提交与被替换的提交没有上下游关系，如果原先的提交已经推送到远程仓库，那么推送新提交到时候需要指定强制覆盖。
+
 ## 拉取最新内容 `git fetch` `git pull`
 
-`git fetch` 将从远程仓库拉取最新的更改。拉取后还需要执行 `git merge FETCH_HEAD` 使其与本地内容合并。
-
-或者使用 `git pull` 拉取并合并远程内容。
+`git fetch` 将从远程仓库拉取最新的更改。拉取后还需要执行 `git merge FETCH_HEAD` 使其与本地内容合并。在无冲突的情况下，还可以使用 `git pull` 一次完成拉取并合并远程内容。
 
 ## 分支 `git branch`
 
@@ -303,6 +281,30 @@ Git 允许仓库产生分支，以便同时开发不同的功能。
 ### 删除分支
 
 分支合并完成后，可以选择执行 `git branch -d branchname` 删除不再需要的分支。如果合并尚未完成，也可以使用 `git branch -D branchname` 强制删除分支。
+
+## 理解 Git 的指针
+
+Git 的分支本质上是指向提交树上某一节点的指针。除了最初的提交外，每一个提交都有一个或多个父亲，Git 可以通过类似链表的形式追踪各个提交的父亲来管理历史版本。一个线性的提交历史可能长这样：
+
+![线性提交历史](https://cs61bl.org/su23/guides/img/graph1.svg)
+
+提交的本质是新建一个以当前节点为父节点的新节点，然后前移当前指针。
+
+分支的本质是在当前节点新建一个指针，后续提交将会移动新的指针。
+
+![分支](https://cs61bl.org/su23/guides/img/graph2.svg)
+
+标签的本质是新建一个指向当前提交的静态指针，不会随新的提交而移动。
+
+重设的本质是将当前指针移动到指定位置，可以是另一个分支、一个标签，一个 commit hash，甚至是上述指针的相对位置。例如，想要完全放弃本地更改，用远程仓库的内容替换本地内容，可以使用如下命令：
+```sh
+git fetch
+git reset --hard FETCH_HEAD
+```
+
+改组命令首先获取远程仓库的内容，Git 会自动生成一个 `FETCH_HEAD` 指向获取的内容。然后，使用硬重设用远程内容替换本地内容。此时，本地的修改会因为没有指针指向它们而被丢失。仅在知道 commit hash 的情况下可以找回它们。这些「丢失」的内容会在下次垃圾回收时被清理。
+
+请注意，在使用这些命令前需要完全了解你在做什么。如果你在同他人协作，随意重设指针可能会让你的同伴搞不清楚发生了什么，他们在拉取或推送时可能会由于冲突引起意想不到的后果。`reset` 命令和 `rebase` 命令一样可能会使你遭人厌恶。
 
 ## 查看仓库状态 `git status`
 
@@ -334,7 +336,7 @@ Git 允许仓库产生分支，以便同时开发不同的功能。
 
 ## 万能后悔药 `git reflog`
 
-Git 记录 `HEAD` 指针的所有操作。即使你执行了 `git reset`，这次重置操作仍然会被 Git 记录。用 `git reflog show` 查看**本地仓库**中 `HEAD` 指针的操作历史记录，并且可以依此还原至某几次操作之前。
+Git 记录 `HEAD` 指针的所有变动。即使你执行了 `git reset`，这次重置操作仍然会被 Git 记录。用 `git reflog` 查看**本地仓库**中 `HEAD` 指针的历史记录，你可以利用此记录找回丢失且尚未被垃圾回收的提交。
 
 ---
 
