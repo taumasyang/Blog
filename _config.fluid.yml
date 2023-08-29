@@ -1029,6 +1029,12 @@ links:
       link: https://blog.hjroyal.top,
       avatar: https://blog.hjroyal.top/img/profile.webp
     }
+    - {
+      title: Andreo Y.'s Space,
+      intro: To sail beyond the sunset.,
+      link: https://andreoy.cn/,
+      avatar: https://pigco-1313228125.cos.ap-shanghai.myqcloud.com/img/6F5d1EWoQrmCjLA.png
+    }
 
   # 当成员头像加载失败时，替换为指定图片
   # When the member avatar fails to load, replace the specified image
