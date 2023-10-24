@@ -1,7 +1,7 @@
 ---
 title: 获取、加工和使用电子课本
 date: 2022-09-22 17:42:26
-updated: 2023-06-16 12:00:00
+updated: 2023-10-25 00:15:00
 categories: 技术分享
 ---
 
@@ -11,42 +11,20 @@ categories: 技术分享
 
 ## Z-Library
 
-{% note danger %}
-（2022 年 11 月 4 日更新）Z-Library 网站据传被美国警方查封。[全世界最大的电子图书馆 z-lib 被美国警方查封，所有域名无法访问 - 水源广场 / 热点新闻 - 水源社区](https://shuiyuan.sjtu.edu.cn/t/topic/107743)
-{% endnote %}
+> [Z-Library](https://zh.singlelogin.se/) 是世界上最大的在线图书馆之一，它拥有超过 11,179,413 的书籍和 84,837,000 的文章。我们的目标是让每个人都能获得文学作品。
 
-{% note warning %}
-（2022 年 11 月 11 日更新）Z-Library 已恢复服务，但只能通过 Tor 网络访问。
-
-> Z-library website is currently available only in Tor network. You can find out more and download [Tor browser](https://www.torproject.org/)
->
-> Tor site: [bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion](http://bookszlibb74ugqojhzhg2a63w5i2atv5bqarulgczawnbmsb6s6qead.onion/)
-
-可以使用 Homebrew 安装 Tor browser（需要科学上网）：
-```sh
-brew install tor-browser
-```
-{% endnote %}
-
-{% note info %}
-（2023 年 2 月 11 日更新）Z-Library 已恢复常规网络访问。根据官方博客，用户只需要在 [singlelogin.me](https://singlelogin.me) 登录自己的账户，就将被重定向到个人专属域名。或者可以直接访问个人专属域名并验证密码。访问个人专属域名仍需要科学上网。请注意不要以任何形式泄露个人专属域名！
-
-为了防止泄露我的专属域名，我将原文 {% post_link Z-Library-Back-to-Clearnet %} 转载到了本站，如有需要可以根据官方指引进行操作。
-{% endnote %}
-
-> [Z-Library](https://1lib.domains/) 是世界上最大的在线图书馆之一，它拥有超过 11,179,413 的书籍和 84,837,000 的文章。我们的目标是让每个人都能获得文学作品。
-
-Z-Library 有很多镜像站，对于每个镜像站来说，可访问性是不确定的，因此只记住某个站点的地址可能会让你不久以后就无法访问。官方做了一个链接，每次自动寻找可用的站点，收藏好[这个地址](https://1lib.domains/)就可以了。
-
-对于游客来说，Z-Library 限制了每个 IP 地址每天可下载的数量（5 本）。但是，对于网络运营商来说，他们很可能会使众多用户用用一个公网 IP 地址对外访问，因此，你很可能发现明明自己没有下载过书就被限制了。最好的方法是注册一个 Z-Library 账号，它不仅能避免其他使用同一个公网 IP 的用户侵占你的配额，还能允许你每天下载最多 10 本电子书。一般来说，一个学期的课程不会用到超过 10 本参考书，因此在一天内找齐你要的所有书是没有问题的。
+Z-Library 提供了多种访问方式，除了[直接](https://zh.singlelogin.se/)或通过 [TOR 网络](http://loginzlib2vrak5zzpcocc3ouizykn6k5qecgj2tzlnab5wcbqhembyd.onion)访问其网站，还有可以通过[桌面客户端](https://zh.go-to-zlibrary.se/soft/zlibrary-setup-latest.dmg)、[Firefox 浏览器扩展](https://zh.go-to-zlibrary.se/soft/mozilla-addon-latest.xpi)、Telegram 机器人等方式获取图书资源，具体方式见[此链接](https://zh.go-to-zlibrary.se/)。
 
 ## Library Genesis
 
 > 图书馆创世纪是一个旨在收集和编目项目描述的社区，大部分是科学、科学和技术方向，以及文件元数据。除了描述之外，聚合器只包含由用户主持的第三方资源的链接。网站上发布的所有信息都是从公开的公共互联网资源中收集的，仅用于提供信息的目的。
 
 Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在以下链接中寻找可访问的即可。科学上网可以稳定访问下列任意站点。
-
-[libgen.io](https://libgen.io), [libgen.org](https://libgen.org), [libgen.li](https://libgen.li), [libgen.gs](https://libgen.gs), [libgen.lc](https://libgen.lc)
+- [libgen.io](https://libgen.io)
+- [libgen.org](https://libgen.org)
+- [libgen.li](https://libgen.li)
+- [libgen.gs](https://libgen.gs)
+- [libgen.lc](https://libgen.lc)
 
 # 加工电子课本
 
@@ -54,7 +32,9 @@ Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在�
 
 ## 光学文字识别
 
-我曾尝试过许多 PDF OCR 解决方案，大多数在识别中文时都会在每两个汉字中间增加一些无意义的空格。目前我发现的最好的文字识别软件是 [ABBYY FineReader PDF](https://pdf.abbyy.com/finereader-pdf-for-mac/)。需注意，这是收费软件，但是我们可以找到[破解版](https://macapp.org.cn/app/abbyy-finereader-pdf.html)。
+### ABBYY FineReader PDF (Windows and macOS)
+
+我曾尝试过许多 PDF OCR 解决方案，大多数在识别中文时都会在每两个汉字中间增加一些无意义的空格。目前我发现的最好的文字识别软件是 [ABBYY FineReader PDF](https://pdf.abbyy.com/finereader-pdf-for-mac/)。需注意，这是收费软件，但是我们可以找到[破解版](https://appstorrent.ru/16-abbyy-finereader-pdf.html)。
 
 安装软件后立即打开，输入激活码激活软件。如果书中出现了数学公式，需要设置识别语言为「简体中文和英文，**简单数学公式**」；对于计算机类教材，还可以添加对应的程序设计语言。
 
@@ -69,13 +49,13 @@ ABBYY FineReader PDF 无法处理使用 `jbig2` 编码的 PDF 文件。这种文
 
 ### Preview.app (Apple Silicon Mac)
 
-在 macOS Ventura (13.0) 及后续版本，系统自带的 Preview.app 也可以进行 OCR 了。这是基于 macOS 的「实况文本」功能，在 QuickLook（快速查看）和 Preview.app（预览）中打开的 PDF 文档都会进行自动识别。在预览中，选择菜单栏中的「文件->导出…」后，勾选上「嵌入文本」复选框，然后保存，就能获得一份识别后的文档了。但是这个过程没有进度条，识别过程中整个预览（包括打开的其他文档窗口）都会无响应，耐心等待即可。
+在 macOS Ventura (13.0) 及后续版本，系统自带的 Preview.app 也可以进行 OCR 了。这是基于 macOS 的「实况文本」功能，在 QuickLook（快速查看）和 Preview.app（预览）中打开的 PDF 文档都会进行自动识别。在预览中，选择菜单栏中的「文件>导出…」后，勾选上「嵌入文本」复选框，然后保存，就能获得一份识别后的文档了。但是这个过程没有进度条，识别过程中整个预览（包括打开的其他文档窗口）都会无响应，耐心等待即可。
 
-特别注意：实况文本是 Apple Silicon Mac 特有的功能，配有 Intel 处理器的 Mac 没有此功能。由于 ABBYY FineReader PDF 在 Apple Silicon Mac 上需要转译运行，且无法发挥 Apple Silicon 神经学习处理能力的优势，在识别速度上被「实况文本」吊打。
+特别注意：实况文本是 Apple Silicon Mac 特有的功能，配有 Intel 处理器的 Mac 没有此功能。由于 ABBYY FineReader PDF 仅有 Intel 版本，在 Apple Silicon Mac 上需要转译运行，且无法发挥 Apple Silicon 神经学习处理能力的优势，在识别速度上被「实况文本」吊打。
 
 ## 制作目录
 
-我们采用 [Coherent PDF Tools](https://www.coherentpdf.com/) 作为后续处理 PDF 的工具。对照官网的介绍下载、安装 `cpdf` 命令行工具。一般建议将下载好的对应版本的命令行工具拷贝到 `/usr/local/bin` 目录下。
+我们采用 [Coherent PDF Tools](https://www.coherentpdf.com/) 作为后续处理 PDF 的工具。对照官网的介绍下载、安装 `cpdf` 命令行工具。一般建议将下载好的对应版本的命令行工具拷贝到 `/usr/local/bin` 目录下。首次运行可能会被操作系统拒绝，到「设置>隐私与安全性>安全性」里允许即可。
 
 我们先检查电子课本中是否自带目录：
 ```sh
