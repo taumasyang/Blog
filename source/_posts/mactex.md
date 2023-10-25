@@ -1,7 +1,7 @@
 ---
 title: MacTeX 配合 Visual Studio Code 进行 LaTeX 写作
 date: 2022-09-22 20:40:00
-updated: 2023-06-17 19:15:00
+updated: 2023-10-25 15:50:00
 categories: 技术分享
 tags: LaTeX
 ---
@@ -58,21 +58,21 @@ xelatex is /Library/TeX/texbin/xelatex
 
 接下来，打开 VSCode，搜索并安装 LaTeX Workshop 插件。
 
-![LaTeX Workshop](/img/LaTeX_Workshop.png)
+![LaTeX Workshop](LaTeX_Workshop.png)
 
 最后，在 VSCode 配置文件 `settings.json` 的合适位置添加以下内容：
 
 ```json
 "latex-workshop.latex.tools": [
 	{
-		"name": "latexmk",
+		"name": "xelatexmk",
 		"command": "latexmk",
 		"args": [
 			"-synctex=1",
 			"-interaction=nonstopmode",
 			"-file-line-error",
-			"-pdf",
-			"%DOC%"
+			"-xelatex",
+			"%DOCFILE%"
 		]
 	},
 	{
@@ -86,16 +86,6 @@ xelatex is /Library/TeX/texbin/xelatex
 		]
 	},
 	{
-		"name": "pdflatex",
-		"command": "pdflatex",
-		"args": [
-			"-synctex=1",
-			"-interaction=nonstopmode",
-			"-file-line-error",
-			"%DOC%"
-		]
-	},
-	{
 		"name": "bibtex",
 		"command": "bibtex",
 		"args": [
@@ -105,24 +95,15 @@ xelatex is /Library/TeX/texbin/xelatex
 ],
 "latex-workshop.latex.recipes": [
 	{
+		"name": "xelatexmk",
+		"tools": [
+			"xelatexmk"
+		]
+	},
+	{
 		"name": "xelatex",
 		"tools": [
 			"xelatex"
-		]
-	},
-	{
-		"name": "latexmk 🔃",
-		"tools": [
-			"latexmk"
-		]
-	},
-	{
-		"name": "pdflatex ➞ bibtex ➞ pdflatex ×2",
-		"tools": [
-			"pdflatex",
-			"bibtex",
-			"pdflatex",
-			"pdflatex"
 		]
 	},
 	{
@@ -141,7 +122,6 @@ xelatex is /Library/TeX/texbin/xelatex
 	"*.blg",
 	"*.idx",
 	"*.ind",
-	"*.ilg",
 	"*.lof",
 	"*.lot",
 	"*.out",
@@ -156,10 +136,13 @@ xelatex is /Library/TeX/texbin/xelatex
 	"*.log",
 	"*.fdb_latexmk",
 	"*.snm",
+	"*.synctex*",
 	"*.nav",
-	"*.vrb"
+	"*.vrb",
+	"*.xdv"
 ],
-"latex-workshop.latex.clean.method": "glob"
 ```
 
-如果设置了自动保存和自动编译，那么在源文件修改后可以近乎实时地看到编译结果，在享受 LaTeX 强大排版能力的同时还能做到其他文字排版工具的「所见即所得」，不失为一种享受。不过，如果你的机器性能不太够，还是建议关闭自动编译功能。
+各位读者可以根据自己的实际需求修改上述工具、配方和清理的文件类型。
+
+如果设置了自动保存和自动编译，那么在源文件修改后可以近乎实时地看到编译结果，在享受 LaTeX 强大排版能力的同时还能做到其他文字排版工具的「所见即所得」，不失为一种享受。不过，如果你的机器性能不太够，或者文件内包含大尺寸图片或者大量 TikZ 画图会严重拖慢编译速度，还是建议关闭自动编译功能。
