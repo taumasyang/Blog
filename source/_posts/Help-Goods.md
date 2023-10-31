@@ -1,7 +1,7 @@
 ---
 title: “你帮我助”软件开发
 date: 2022-09-22 11:23:20
-updated: 2022-10-29 03:34:00
+updated: 2023-10-31 19:00:00
 categories: 软件工程
 tags: Python
 ---
@@ -28,6 +28,7 @@ tags: Python
 >
 > ![表2-2 软件工程师的任务清单（中英对照）](https://oc.sjtu.edu.cn/courses/48894/files/5116866/preview?verifier=6ogAPjoGuA84rt4bfh1zJrdJRWq7HKCtwcwuH2B3)
 
+<!--
 # PSP 数据统计
 
 |PSP 2.1|Timing|
@@ -48,6 +49,7 @@ tags: Python
 |Size Measurement|1 KB|
 |Postmortem||
 |Process Improvement Plan|More item details|
+-->
 
 # 功能介绍
 
@@ -56,18 +58,18 @@ tags: Python
 pip3 install prettytable
 ```
 
-添加一条物品信息：
+添加物品信息：
 ```sh
 (goods) add <item1> <quantity1> <item2> <quantity2> ...
 ```
-请在 `add` 命令后交替输入名称与数量，用空格分割。如果数量为 1，则可省略。如：
+请在 `add` 命令后交替输入名称与数量，用空格分隔。如果数量为 1，则可省略。如：
 ```sh
 add item 1
 add item
 ```
 都将添加一条数量为 1 的物品信息。如果物品已存在，则将更新物品数量。
 
-删除一条物品信息：
+删除物品信息：
 ```sh
 (goods) del <item1> <quantity1> <item2> <quantity2> ...
 ```

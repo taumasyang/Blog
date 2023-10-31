@@ -1,7 +1,7 @@
 ---
 title: 获取、加工和使用电子课本
 date: 2022-09-22 17:42:26
-updated: 2023-10-25 00:15:00
+updated: 2023-10-31 19:00:00
 categories: 技术分享
 ---
 
@@ -23,8 +23,10 @@ Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在�
 - [libgen.io](https://libgen.io)
 - [libgen.org](https://libgen.org)
 - [libgen.li](https://libgen.li)
-- [libgen.gs](https://libgen.gs)
 - [libgen.lc](https://libgen.lc)
+- [libgen.gs](https://libgen.gs)
+- [libgen.top](https://libgen.top)
+- [libgen.click](https://libgen.click)
 
 # 加工电子课本
 
