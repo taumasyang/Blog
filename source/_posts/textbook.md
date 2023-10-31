@@ -1,7 +1,7 @@
 ---
 title: 获取、加工和使用电子课本
 date: 2022-09-22 17:40:00
-updated: 2023-10-25 00:15:00
+updated: 2023-10-31 19:00:00
 categories: 技术分享
 tags:
 ---
@@ -21,11 +21,14 @@ Z-Library 提供了多种访问方式，除了[直接](https://zh.singlelogin.se
 > 图书馆创世纪是一个旨在收集和编目项目描述的社区，大部分是科学、科学和技术方向，以及文件元数据。除了描述之外，聚合器只包含由用户主持的第三方资源的链接。网站上发布的所有信息都是从公开的公共互联网资源中收集的，仅用于提供信息的目的。
 
 Library Genesis 是一个俄罗斯的找书网站。它也有很多站点，在以下链接中寻找可访问的即可。使用魔法可以稳定访问下列任意站点。
+
 - [libgen.io](https://libgen.io)
 - [libgen.org](https://libgen.org)
 - [libgen.li](https://libgen.li)
-- [libgen.gs](https://libgen.gs)
 - [libgen.lc](https://libgen.lc)
+- [libgen.gs](https://libgen.gs)
+- [libgen.top](https://libgen.top)
+- [libgen.click](https://libgen.click)
 
 ## 加工电子课本
 
