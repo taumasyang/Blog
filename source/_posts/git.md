@@ -2,7 +2,7 @@
 title: Git 与 GitHub 使用指北
 date: 2022-11-01 14:40:00
 updated: 2023-08-04 23:30:00 -07
-categories: 技术分享
+categories: 实用工具
 tags: [Git, Shell]
 ---
 
@@ -20,7 +20,7 @@ tags: [Git, Shell]
 
 访问 [GitHub](https://github.com/)。如果遇到无法访问的情况，考虑采用科学上网的手段。
 
-![GitHub](/img/GitHub.png)
+![GitHub](GitHub.png)
 
 点击 [Sign up](https://github.com/signup)，输入电子邮箱，然后按指示注册一个免费账号。
 
@@ -69,7 +69,7 @@ ssh-keygen -t ed25519
 
 选择「New SSH Key」，指定一个标题，并将刚才拷贝的公钥粘贴至下方的文本框中。
 
-![GitHub New SSH Key](/img/GitHub-New-SSH-Key.png)
+![GitHub New SSH Key](GitHub-New-SSH-Key.png)
 
 点击「Add SSH Key」，将验证密码或者验证码。操作成功后，就将本机与 GitHub 连接了。
 
@@ -98,7 +98,7 @@ git config --global user.email username@example.com
 
 在 GitHub 主页找到「New Repository」按钮，点击它将来到一个新页面。
 
-![GitHub New Repository](/img/GitHub-New-Repository.png)
+![GitHub New Repository](GitHub-New-Repository.png)
 
 在这个页面，你需要为你的新仓库指定一些信息。
 
@@ -321,6 +321,7 @@ Git 的分支本质上是指向提交树上某一节点的指针。除了最初�
 标签的本质是新建一个指向当前提交的静态指针，不会随新的提交而移动。
 
 重设的本质是将当前指针移动到指定位置，可以是另一个分支、一个标签，一个 commit hash，甚至是上述指针的相对位置。例如，想要完全放弃本地更改，用远程仓库的内容替换本地内容，可以使用如下命令：
+
 ```zsh
 git fetch
 git reset --hard FETCH_HEAD

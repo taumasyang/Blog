@@ -1,7 +1,7 @@
 ---
 title: SSH 登录远程主机
 date: 2022-11-08 23:50:00
-categories: 技术分享
+categories: 实用工具
 tags: Shell
 ---
 
@@ -19,7 +19,7 @@ SSH 需要远程主机的 IP 地址。如果远程主机有固定的 IP 地址�
 
 macOS 需要在系统设置中打开「远程登录」。macOS 12 及以下在「共享」面板可以找到这项设置，macOS 13 及以上在「通用 → 共享」面板可以找到这项设置。
 
-![远程登录](/img/Remote-Login.png)
+![远程登录](Remote-Login.png)
 
 使用以下命令登录到远程主机：
 
@@ -77,7 +77,7 @@ $ ls -al ~/.ssh
 打开终端，粘贴下面的命令。
 
 ```
-ssh-keygen -t rsa -f filename -C "Remark"
+ssh-keygen -t rsa
 ```
 
 这将创建一个新的采用 RSA 加密方式的 SSH 密钥。

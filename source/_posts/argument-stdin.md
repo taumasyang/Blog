@@ -1,7 +1,7 @@
 ---
 title: 命令行参数与标准输入
 date: 2023-10-21 02:00:00
-categories: 技术分享
+categories: 实用工具
 tags: Shell
 ---
 

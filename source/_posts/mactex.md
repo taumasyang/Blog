@@ -2,7 +2,7 @@
 title: MacTeX 配合 Visual Studio Code 进行 LaTeX 写作
 date: 2022-09-22 20:40:00
 updated: 2023-11-23 17:40:00
-categories: 技术分享
+categories: 实用工具
 tags: LaTeX
 ---
 

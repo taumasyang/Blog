@@ -1,7 +1,7 @@
 ---
 title: 不求人，自制 DDNS 脚本！
 date: 2023-11-20 15:00:00
-categories: 技术分享
+categories: 实用工具
 tags: Shell
 ---
 

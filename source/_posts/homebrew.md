@@ -2,7 +2,7 @@
 title: 安装和使用 Homebrew
 date: 2022-09-22 10:40:00
 updated: 2023-10-25 00:00:00
-categories: 技术分享
+categories: 实用工具
 tags: [Shell, Homebrew]
 ---
 
@@ -92,6 +92,7 @@ install: 74,569 (30 days), 221,137 (90 days), 472,374 (365 days)
 install-on-request: 61,014 (30 days), 184,190 (90 days), 395,424 (365 days)
 build-error: 259 (30 days)
 ```
+
 Homebrew 给出了这个软件的基本信息、相关依赖和统计信息。我们确定我们想要的就是这个，接下来执行安装命令：
 
 ```zsh

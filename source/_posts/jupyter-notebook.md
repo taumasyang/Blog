@@ -2,8 +2,8 @@
 title: 在 VSCode 中使用 Jupyter Notebook
 date: 2023-01-30 22:50:00
 updated: 2023-06-17 19:45:00
-categories: 技术分享
-tags: [Python, Notebook]
+categories: 实用工具
+tags: [Python, Jupyter]
 ---
 
 ## Jupyter Notebook
@@ -65,7 +65,7 @@ export PATH=$PATH:$(brew --prefix python)/libexec/bin
 
 #### 换源
 
-虽然默认的 PyPI 源下载还是很不错的，不过既然有镜像站提供了镜像，估计也有人喜欢用吧。
+如果从 PyPI 源下载遇到了问题，可以考虑更换为国内的镜像源。
 
 ```zsh
 pip config set global.index-url https://mirror.sjtu.edu.cn/pypi/web/simple
@@ -114,9 +114,9 @@ pip install notebook
 
 这条命令会安装 Jupyter Notebook 以及包括 `nbconvert` 在内的一系列 Notebook 相关工具。安装完毕我们便可在浏览器中创建、编辑、运行和导出 Notebook 文件。
 
-## 安装 `nbconvert` 依赖
+### 安装 `nbconvert` 依赖
 
-如果需要使用 `nbconvert` 将 notebook 文件转换到 PDF 文件，需要安装 MacTeX 和 `pandoc`。
+如果需要使用 `nbconvert` 将 notebook 文件转换到 PDF 文件，需要安装 LaTeX 和 `pandoc`。
 
 ```zsh
 brew install mactex-no-gui pandoc
@@ -126,11 +126,11 @@ brew install mactex-no-gui pandoc
 
 在 VSCode 应用商店中搜索并安装「Jupyter」扩展。安装这个扩展的同时会一并安装其他四个相关的扩展，如果不需要可以单独删除。
 
-![Jupyter Extension in VSCode](/img/Jupyter-Extension.png)
+![Jupyter Extension in VSCode](Jupyter-Extension.png)
 
-# 常见问题
+## 常见问题
 
-## `nbconvert` 不正常运行
+### `nbconvert` 不正常运行
 
 首先检查是否已经正确安装 `nbconvert`、LaTeX 和 `pandoc`。若问题仍然存在，运行下列命令[^2]：
 

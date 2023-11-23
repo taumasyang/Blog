@@ -1,8 +1,8 @@
 ---
 title: 在 Jupyter Notebook 中使用更多语言
 date: 2023-05-11 10:55:00
-categories: 技术分享
-tags: [Python, Notebook, R, MATLAB]
+categories: 实用工具
+tags: [Python, Jupyter, R, MATLAB]
 ---
 
 使用过 Jupyter Notebook 的开发者想必都十分熟悉这种基于 Web 的交互式计算环境，并且喜爱这种可以同时包含代码、文本、公式、图表和富媒体的文件格式吧！Jupyter Notebook 中最流行的程序语言是 Python，但是这不代表其他语言不能在 Jupyter Notebook 中运行，毕竟，这么好的格式怎么能让 Python 独占呢！事实上，只要能安装运行相应的**核**（Kernel），那么对应语言的代码就能在 Jupyter Notebook 中运行。你可以在[这里](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)找到第三方核和它们支持的语言的完整列表，或者在文末查看。
@@ -17,7 +17,7 @@ tags: [Python, Notebook, R, MATLAB]
 
 #### 在全局 Python 环境下安装
 
-```sh
+```zsh
 brew install python
 export PATH=$PATH:$(brew --prefix python)/libexec/bin
 pip install notebook
@@ -25,7 +25,7 @@ pip install notebook
 
 #### 在虚拟 Python 环境下安装
 
-```sh
+```zsh
 brew install miniforge
 conda init "$(basename "${SHELL}")"
 conda create -n kernel python
@@ -100,7 +100,7 @@ pip install matlab_kernel
 |[jpCoffeescript](https://github.com/n-riesco/jp-coffeescript)||coffeescript >= 1.7||||
 |[jp-LiveScript](https://github.com/p2edwards/jp-livescript)||livescript >= 1.5|||Based on IJavascript and jpCoffeescript|
 |[Juka](https://github.com/jukaLang/juka_kernel)|Jupyter 4|Any|[Juka](https://jukalang.com/download)|[Example](https://github.com/jukaLang/juka_kernel/blob/main/JukaTest.ipynb)|Wrapper. Requires [Juka](https://jukalang.com/download) executable in PATH|
-#|[ICSharp](https://github.com/zabirauf/icsharp)|Jupyter 4.0|C# 4.0+|scriptcs|||
+|[ICSharp](https://github.com/zabirauf/icsharp)|Jupyter 4.0|C# 4.0+|scriptcs|||
 |[IRKernel](http://irkernel.github.io/)|IPython 3.0|R 3.2|rzmq|||
 |[SageMath](http://www.sagemath.org/)|Jupyter 4|Any|many|||
 |[pari_jupyter](https://github.com/jdemeyer/pari_jupyter)|Jupyter 4|PARI/GP >= 2.9||||
