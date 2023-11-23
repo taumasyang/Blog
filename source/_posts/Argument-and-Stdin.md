@@ -1,7 +1,8 @@
 ---
 title: 命令行参数与标准输入
 date: 2023-10-21 02:00:00
-categories: 技术分享
+updated: 2023-10-21 02:00:00
+categories: 实用工具
 tags: Shell
 ---
 
@@ -33,7 +34,6 @@ int main(int argc, char* argv[])
 ```sh
 ~ % ./echo1 tauyoung	# 启动的同时一并传递参数
 tauyoung				# 打印传递的参数值
-
 ~ % ./echo2				# 启动时不接受任何参数
 tauyoung				# 在控制台通过键盘输入
 tauyoung				# 打印输入的数据

@@ -2,25 +2,21 @@
 title: 在 Jupyter Notebook 中使用更多语言
 date: 2023-05-11 10:55:40
 updated: 2023-05-15 13:32:50
-categories: 技术分享
-tags:
-  - Python
-  - Jupyter Notebook
-  - R
-  - MATLAB
+categories: 实用工具
+tags: [Python, Jupyter, R, MATLAB]
 ---
 
 使用过 Jupyter Notebook 的开发者想必都十分熟悉这种基于 Web 的交互式计算环境，并且喜爱这种可以同时包含代码、文本、公式、图表和富媒体的文件格式吧！Jupyter Notebook 中最流行的程序语言是 Python，但是这不代表其他语言不能在 Jupyter Notebook 中运行，毕竟，这么好的格式怎么能让 Python 独占呢！事实上，只要能安装运行相应的**核**（Kernel），那么对应语言的代码就能在 Jupyter Notebook 中运行。你可以在[这里](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)找到第三方核和它们支持的语言的完整列表，或者在文末查看。
 
 本文主要介绍 R 和 MATLAB 核的安装与使用。
 
-# R
+## R
 
 在安装任何 R 内核之前，请确保你已经安装了 Jupyter Notebook 和 R，在虚拟环境里安装的请确保在同一虚拟环境里进行后续操作，否则相关程序可能无法正常运行。下面给出了在一台全新的机器上安装内核的步骤，读者若已经部分安装了相关程序可以按需阅读。
 
-## 安装 Python
+### 安装 Python
 
-### 在全局 Python 环境下安装
+#### 在全局 Python 环境下安装
 
 ```sh
 brew install python
@@ -28,7 +24,7 @@ export PATH=$PATH:$(brew --prefix python)/libexec/bin
 pip install notebook
 ```
 
-### 在虚拟 Python 环境下安装
+#### 在虚拟 Python 环境下安装
 
 ```sh
 brew install miniforge
@@ -38,40 +34,49 @@ conda activate kernel
 pip install notebook
 ```
 
-## 安装 R 和 R 内核
+### 安装 R 和 R 内核
 
 ```sh
 brew install r
 ```
+
 安装完毕后，进入 R 环境，安装 IRkernel。
+
 ```sh
 R
 ```
+
 注意启动 R 需要大写，小写的 `r` 是 shell 内置命令，表示运行上一条命令。
+
 ```r
 > install.packages('IRkernel')
 > IRkernel::installspec()
 ```
+
 第一条命令会下载并编译很多包，因此过程可能比较缓慢，耐心等待即可。网络上有些教程可能会用 `IRkernel::installspec(user = FALSE)` 代替上述第二条命令，不过在我的机器上提示权限不够，个人感觉并不会影响使用。
 
 安装完毕后，就可以在 Jupyter Notebook 中找到 R 的核了。
 
-# MATLAB
+## MATLAB
 
 MATLAB 需要 Python 与之通信，因此机器上除了完整的 MATLAB 以外，还需要安装 Python。截止 R2023a，MATLAB 仍不支持 Python 3.11，所以我们建立一个 Python 3.10 的虚拟环境。这里我们使用 `conda` 管理虚拟环境，如果读者有其他等效方法也可使用。
+
 ```sh
 conda create -n matlab python=3.10
 ```
+
 建立好虚拟环境后，我们激活并安装 MATLAB Engine for Python（由 MathWorks 提供）和 MATLAB Kernel。
+
 ```sh
 conda activate matlab
 cd /Applications/MATLAB_R2023a.app/extern/engines/python
 pip install .
 pip install matlab_kernel
 ```
+
 安装完毕后，就可以在 Jupyter Notebook 中找到 MATLAB 的核了。
 
-# Jupyter Kernels
+## Jupyter Kernels
 
 以下是一份完整的 Jupyter 内核和支持语言的列表。相应的使用方法点击链接即可访问。
 

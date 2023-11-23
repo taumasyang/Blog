@@ -2,7 +2,7 @@
 title: 修复 Safari 下载文件名乱码
 date: 2023-06-08 02:00:00
 updated: 2023-06-16 12:15:00
-categories: 技术分享
+categories: 实用工具
 tags: Automator
 ---
 

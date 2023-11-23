@@ -1,7 +1,8 @@
 ---
 title: 不求人，自制 DDNS 脚本！
 date: 2023-11-20 15:00:00
-categories: 技术分享
+updated: 2023-11-20 15:00:00
+categories: 实用工具
 tags: Shell
 ---
 
@@ -48,9 +49,11 @@ tags: Shell
 获取当前解析记录有两个重要用途。一是将目前解析值与当前 IPv6 地址进行比对，如果相同，则无需更新，可直接退出；二是地址不匹配是需要当前的记录 ID 才能更新新的记录。
 
 查阅[文档](https://www.namesilo.com/api-reference#dns/dns-list-records)可知，向如下地址发出 GET 请求即可获取该域名下的所有解析记录。
+
 ```url
 https://www.namesilo.com/api/dnsListRecords?version=1&type=xml&key=&domain=
 ```
+
 其中 `key` 和 `domain` 的值就是我们上一步准备的变量。
 
 获取到的回复是一个 XML 文件，我们需要使用 `xmllint` 解析其中的值获取当前已有的记录。
@@ -58,6 +61,7 @@ https://www.namesilo.com/api/dnsListRecords?version=1&type=xml&key=&domain=
 ### 更新现有解析记录
 
 查阅[文档](https://www.namesilo.com/api-reference#dns/dns-update-record)可知，更新 DNS 解析记录需要向如下地址发出 GET 请求并提供对应信息。
+
 ```url
 https://www.namesilo.com/api/dnsUpdateRecord?version=1&type=xml&key=&domain=&rrid=&rrhost=&rrvalue=&rrttl=
 ```
