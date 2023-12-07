@@ -1,19 +1,39 @@
 ---
 title: About
 layout: about
-date: 2022-09-21 23:00:00
+comment: true
 ---
 
-欢迎访问 tauyong 的小站！
+欢迎访问韬秧道！
 
-本人是：
+作者目前就读于上海交通大学本科，主修数学与应用数学，辅修计算机科学与技术。平时喜欢钻研一些有意思但没多大用的玩意……
 
-- 数学专业本科生，但是学不会数学；
-- 忠实的果粉，但是买不起新款；
-- 喜欢整计算机，但是整不出名堂；
-- 摄影爱好者，但是还在用没有未来的单反；
-- 天文爱好者，但是仅限于看书……
+### 喜爱的音乐
 
-反正没什么人看，不如就自娱自乐一下～🤪
+- 华语（周杰伦）
+- 日语（流行、二次元）
+- 欧美（流行、影视）
+- 电子音乐
+- 古典音乐
 
-本站所有文章若不特殊说明，运行环境均为最新正式版 macOS，终端为相应版本的 Zsh。如果涉及 Python 或其他程序设计语言，也默认是尽可能新的正式版。
+想知道我最近在听什么？试试这个！（未订阅用户仅可试听 90 秒）
+
+<center><iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/%E9%9F%B3%E4%B9%90%E5%9B%9E%E5%BF%86-2023/pl.rp-RNNLT0dlxezL?l=zh-Hans-CN"></iframe></center>
+
+### 开发环境
+
+- [macOS Sonoma](https://www.apple.com/macos/sonoma/) 14.2 {% label success @Latest %}
+- [Zsh](https://zsh.sourceforge.io/) 5.9 {% label primary @Built-in %}{% label success @Latest %}
+- [Apple Clang](https://opensource.apple.com/projects/llvm-clang/) 15.0.0 {% label primary @Built-in %}
+- [Python](https://www.python.org/) 3.12.0 {% label success @Latest %}
+- [MacTeX](https://tug.org/mactex/) 2023.0314 {% label success @Latest %}
+
+### 开源项目
+
+- 本站：https://github.com/tauyoungsama/Blog
+- 终端提示符：https://github.com/tauyoungsama/zsh-prompt
+- 物品交换软件（软件工程大作业）
+	- [命令行界面](/article/Help-Goods)：https://github.com/tauyoungsama/Help-Goods
+	- [图形化界面](/article/Help-Goods-Web)：https://github.com/tauyoungsama/HelpGoodsWeb
+
+---
