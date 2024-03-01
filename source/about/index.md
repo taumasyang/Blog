@@ -18,7 +18,7 @@ comment: true
 
 想知道我最近在听什么？试试这个！（未订阅用户仅可试听 90 秒）
 
-<center><iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/%E9%9F%B3%E4%B9%90%E5%9B%9E%E5%BF%86-2023/pl.rp-RNNLT0dlxezL?l=zh-Hans-CN"></iframe></center>
+<center><iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/%E9%9F%B3%E4%B9%90%E5%9B%9E%E5%BF%86-2024/pl.rp-owN3IRP3VgEy?l=zh-Hans-CN"></iframe></center>
 
 ### 开发环境
 
