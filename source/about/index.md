@@ -22,10 +22,10 @@ comment: true
 
 ### 开发环境
 
-- [macOS Sonoma](https://www.apple.com/macos/sonoma/) 14.2.1 {% label success @Latest %}
+- [macOS Sonoma](https://www.apple.com/macos/sonoma/) {% label success @Latest %}
 - [Zsh](https://zsh.sourceforge.io/) 5.9 {% label primary @Built-in %}{% label success @Latest %}
 - [Apple Clang](https://opensource.apple.com/projects/llvm-clang/) 15.0.0 {% label primary @Built-in %}
-- [Python](https://www.python.org/) 3.12.1 {% label success @Latest %}
+- [Python](https://www.python.org/) 3.12 {% label success @Latest %}
 - [MacTeX](https://tug.org/mactex/) 2023.0314 {% label success @Latest %}
 
 所有仍在更新的项目在以上平台与环境下可正常运行。
