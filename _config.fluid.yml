@@ -1034,7 +1034,7 @@ links:
   # Custom content at the bottom of the links
   custom:
     enable: true
-    content: <p>如果有意交换链接，欢迎在评论区留言，需要提供以下信息：</p><ul><li>名称：韬秧道</li><li>简介：韬光之息 珠露生秧</li><li>链接：<a href="https://blog.tauyoung.top">https://blog.tauyoung.top</a></li><li>头像：<a href="https://blog.tauyoung.top/img/avatar.png">https://blog.tauyoung.top/img/avatar.png</a></li></ul><hr>
+    content: <p>如果有意交换链接，欢迎在评论区留言，需要提供以下信息：</p><ul><li>名称：韬秧道</li><li>简介：韬光之息 珠露生秧</li><li>链接：<a href="https://blog.tauyoung.top"><code>https://blog.tauyoung.top</code></a></li><li>头像：<a href="https://blog.tauyoung.top/img/avatar.png"><code>https://blog.tauyoung.top/img/avatar.png</code></a></li></ul><hr>
 
   # 评论插件
   # Comment plugin
