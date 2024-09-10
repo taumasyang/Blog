@@ -34,11 +34,11 @@ comment: true
 
 ### 开源项目
 
-- 本站：https://github.com/tauyoungsama/Blog
-- 终端提示符：https://github.com/tauyoungsama/zsh-prompt
-- 必应图片归档：https://github.com/tauyoungsama/imageArchive
+- 本站：https://github.com/taumasyang/Blog
+- 终端提示符：https://github.com/taumasyang/zsh-prompt
+- 必应图片归档：https://github.com/taumasyang/imageArchive
 - 物品交换软件（软件工程大作业）
-	- [命令行界面](/article/Help-Goods)：https://github.com/tauyoungsama/Help-Goods
-	- [图形化界面](/article/Help-Goods-Web)：https://github.com/tauyoungsama/HelpGoodsWeb
+	- [命令行界面](/article/Help-Goods)：https://github.com/taumasyang/Help-Goods
+	- [图形化界面](/article/Help-Goods-Web)：https://github.com/taumasyang/HelpGoodsWeb
 
 ---

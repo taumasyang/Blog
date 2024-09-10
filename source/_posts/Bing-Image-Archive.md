@@ -12,7 +12,7 @@ banner_img:
 
 这些图片确实太好看了！站长很喜欢，决定每天把它们保存下来，并将最新的照片作为本站的首页图。
 
-[![](https://img.shields.io/badge/GitHub-imageArchive-0?logo=GitHub)](https://github.com/tauyoungsama/imageArchive)
+[![](https://img.shields.io/badge/GitHub-imageArchive-0?logo=GitHub)](https://github.com/taumasyang/imageArchive)
 
 ## 抓取每日一图
 
@@ -224,9 +224,9 @@ git commit -m "Fetch: $startdate"
 git push
 ```
 
-假设我们的仓库名是`imageArchive`，最终`latest.jpg`的地址就是 https://media.githubusercontent.com/media/tauyoungsama/imageArchive/main/img/latest.jpg ，只要把这个地址插入到要使用的地方（比如博客的首页！），每天打开就是最新的图片了。就像这样：
+假设我们的仓库名是`imageArchive`，最终`latest.jpg`的地址就是 https://media.githubusercontent.com/media/taumasyang/imageArchive/main/img/latest.jpg ，只要把这个地址插入到要使用的地方（比如博客的首页！），每天打开就是最新的图片了。就像这样：
 
-![正是本站今日的首页图！](https://media.githubusercontent.com/media/tauyoungsama/imageArchive/main/img/latest.jpg)
+![正是本站今日的首页图！](https://media.githubusercontent.com/media/taumasyang/imageArchive/main/img/latest.jpg)
 
 ## 完整的脚本
 

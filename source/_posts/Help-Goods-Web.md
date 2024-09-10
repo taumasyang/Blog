@@ -51,7 +51,7 @@ pip install django
 克隆本仓库
 
 ```sh
-git clone https://github.com/tauyoungsama/HelpGoodsWeb.git
+git clone https://github.com/taumasyang/HelpGoodsWeb.git
 ```
 
 切换到根目录
