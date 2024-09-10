@@ -83,7 +83,7 @@ Waline 可绑定社交账号。通过此类方式在不同的博客上登录 Wal
 
 文章使用 [Markdown](https://markdown.com.cn/) 语法编写，也可以插入 Fluid 主题支持的特殊语法，例如 [Tag 插件](https://hexo.fluid-dev.com/docs/guide/#tag-插件)。
 
-本站[源代码](https://github.com/tauyoungsama/Blog)完全公开，如果遇到了没见过的语法，可以查看源代码观摩学习。
+本站[源代码](https://github.com/taumasyang/Blog)完全公开，如果遇到了没见过的语法，可以查看源代码观摩学习。
 
 ## 部署
 
@@ -99,7 +99,7 @@ Hexo 支持多种方式部署项目。可以选择购买一台云服务器（VPS
 
 连接项目仓库后，以后所有推送到主要分支的提交都会触发 Vercel 的自动部署。通常推送后只需要半分钟就能看到更新后的博客了。
 
-成功部署后，Vercel 会提供类似于 https://blog-tauyoungsama.vercel.app/ 的项目地址。这个地址是永久的，即使博客更新后重新部署，此地址仍然有效。如果希望使用自己的域名，详见下一节。
+成功部署后，Vercel 会提供类似于 https://blog-taumasyang.vercel.app/ 的项目地址。这个地址是永久的，即使博客更新后重新部署，此地址仍然有效。如果希望使用自己的域名，详见下一节。
 
 ## 域名
 
