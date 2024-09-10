@@ -8,7 +8,7 @@ index_img: https://tvlc.org/wp-content/uploads/2017/06/canned-goods.jpg
 banner_img: https://g.foolcdn.com/editorial/images/230524/consumer-goods.jpg
 ---
 
-本项目是上海交通大学 CS-3331 软件工程课程大作业，同时也是 [Help-Goods](https://github.com/tau-young/Help-Goods) 项目的 GUI 版本，但是经过了完全的重构。
+本项目是上海交通大学 CS-3331 软件工程课程大作业，同时也是 [Help-Goods](https://github.com/taumasyang/Help-Goods) 项目的 GUI 版本，但是经过了完全的重构。
 
 原项目采用 CLI 形式，由 Python Script 写成，理论上只要安装了 Python 3.y 解释器的机器就能运行。本项目使用 Django 制作成网页应用，因此在任何浏览器上都能访问。然而，运行本项目的服务器仍需要安装 Python 3.y 并正确部署。
 
@@ -53,7 +53,7 @@ pip install django
 克隆本仓库
 
 ```zsh
-git clone https://github.com/tauyoungsama/HelpGoodsWeb.git
+git clone https://github.com/taumasyang/HelpGoodsWeb.git
 ```
 
 切换到根目录
@@ -109,7 +109,7 @@ python manage.py runserver
 
 ## 开发体会
 
-这个项目的前身 [Help-Goods](https://github.com/tau-young/Help-Goods) 是我比较满意的一个作品，功能并不复杂，使用命令行的方式不仅简洁而且方便。作业截止后出于个人兴趣我还加强了它的功能和易用性。只可惜第二次强制要求 GUI 界面，美其名曰「为了便于使用上述功能」。若少了这条限制，我本可以将命令行程序做的不比图形界面麻烦。所以……冲着这个图形界面的要求，这个项目被我拖了将近半个学期，期间还推倒重来了若干次。
+这个项目的前身 [Help-Goods](https://github.com/taumasyang/Help-Goods) 是我比较满意的一个作品，功能并不复杂，使用命令行的方式不仅简洁而且方便。作业截止后出于个人兴趣我还加强了它的功能和易用性。只可惜第二次强制要求 GUI 界面，美其名曰「为了便于使用上述功能」。若少了这条限制，我本可以将命令行程序做的不比图形界面麻烦。所以……冲着这个图形界面的要求，这个项目被我拖了将近半个学期，期间还推倒重来了若干次。
 
 ### 开发框架的选择
 

@@ -8,7 +8,7 @@ index_img: https://www.simulyze.com/hubfs/Blog/Drone-package-delivery.jpg
 banner_img: https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg
 ---
 
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Help--Goods-blue)](https://github.com/tau-young/Help-Goods)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Help--Goods-blue)](https://github.com/taumasyang/Help-Goods)
 
 本项目是上海交通大学《CS3331-软件工程》课程作业。
 
