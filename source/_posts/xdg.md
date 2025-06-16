@@ -1,8 +1,8 @@
 ---
 title: 请使用 XDG 基本目录规范！
 author: Edwin Kofler
-date: 2023-12-08 12:30:00
-updated: 2023-12-08 12:30:00
+date: 2023-12-08 12:30:00 +08
+updated: 2023-12-08 12:30:00 +08
 categories:
 tags: Shell
 license: BY-SA

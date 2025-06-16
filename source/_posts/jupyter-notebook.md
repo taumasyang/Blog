@@ -1,7 +1,7 @@
 ---
 title: 在 VSCode 中使用 Jupyter Notebook
-date: 2023-01-30 22:50:00
-updated: 2023-06-17 19:45:00
+date: 2023-01-30 22:50:00 +08
+updated: 2023-06-17 19:45:00 +08
 categories: 实用工具
 tags: [Python, Jupyter]
 index_img: /img/Jupyter.png

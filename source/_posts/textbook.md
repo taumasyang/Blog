@@ -1,7 +1,7 @@
 ---
 title: 获取、加工和使用电子课本
-date: 2022-09-22 17:40:00
-updated: 2023-10-31 19:00:00
+date: 2022-09-22 17:40:00 +08
+updated: 2023-10-31 19:00:00 +08
 categories: 实用工具
 tags: PDF
 index_img: https://leadgenandlistbuildingtips.com/wp-content/uploads/2017/07/The-Ultimate-eBook-Template-Free-Download.jpg

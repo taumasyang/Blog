@@ -1,6 +1,6 @@
 ---
 title: Git 与 GitHub 使用指北
-date: 2022-11-01 14:40:00
+date: 2022-11-01 14:40:00 +08
 updated: 2023-08-04 23:30:00 -07
 categories: 实用工具
 tags: [Git, Shell, SSH]

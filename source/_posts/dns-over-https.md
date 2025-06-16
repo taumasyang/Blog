@@ -1,6 +1,7 @@
 ---
 title: 使用加密 DNS 保护 DNS 查询
-date: 2023-11-29 15:50:00
+date: 2023-11-29 15:50:00 +08
+updated: 2023-11-29 15:50:00 +08
 categories: 实用工具
 tags: [macOS, DNS]
 index_img: http://techpp.com/wp-content/uploads/2020/07/DNS-over-HTTPS.jpg

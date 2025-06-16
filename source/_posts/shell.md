@@ -1,6 +1,7 @@
 ---
 title: 一些有用的 Shell 命令
-date: 2023-03-20 11:50:00
+date: 2023-03-20 11:50:00 +08
+updated: 2023-03-20 11:50:00 +08
 categories: 实用工具
 tags: Shell
 index_img: https://www.grandream.jp/image/blog/zsh.png

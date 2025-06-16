@@ -1,6 +1,7 @@
 ---
 title: 命令行参数与标准输入
-date: 2023-10-21 02:00:00
+date: 2023-10-21 02:00:00 +08
+updated: 2023-10-21 02:00:00 +08
 categories: 实用工具
 tags: Shell
 index_img: https://freepngimg.com/thumb/graphic_design/73392-shell-command-line-script-unix-linux-interface.png

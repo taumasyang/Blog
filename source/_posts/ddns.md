@@ -1,6 +1,7 @@
 ---
 title: 不求人，自制 DDNS 脚本！
-date: 2023-11-20 15:00:00
+date: 2023-11-20 15:00:00 +08
+updated: 2023-11-20 15:00:00 +08
 categories: 实用工具
 tags: [Shell, DNS]
 index_img: https://www.redeszone.net/app/uploads-redeszone.net/2018/11/Redes-DDNS.jpg

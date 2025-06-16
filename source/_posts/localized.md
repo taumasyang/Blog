@@ -1,7 +1,7 @@
 ---
 title: 本地化 macOS 目录
-date: 2024-03-25 23:30:00
-updated: 2024-03-25 23:30:00
+date: 2024-03-25 23:30:00 +08
+updated: 2024-03-25 23:30:00 +08
 categories: 实用工具
 tags: [macOS, Shell]
 index_img: https://pic2.zhimg.com/v2-625173db197b64e4103e36da9340b594_1440w.jpg
