@@ -1,7 +1,7 @@
 ---
 title: MacTeX 配合 Visual Studio Code 进行 LaTeX 写作
-date: 2022-09-22 20:41:30
-updated: 2023-10-25 15:50:00
+date: 2022-09-22 20:41:30 +08
+updated: 2023-10-25 15:50:00 +08
 categories: 实用工具
 tags: LaTeX
 index_img: https://ctan.org/assets/skin/gray/images/ctan-lion-d371c25e7eefcd9e0ada8e810fc88127.svg

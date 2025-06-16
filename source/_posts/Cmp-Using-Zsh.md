@@ -1,7 +1,7 @@
 ---
 title: 使用 Zsh 脚本进行对拍
-date: 2022-10-29 02:23:30
-updated: 2023-06-17 19:26:40
+date: 2022-10-29 02:23:30 +08
+updated: 2023-06-17 19:26:40 +08
 categories: 实用工具
 tags: Shell
 index_img: https://img95.699pic.com/video_cover/62/38/92/a_7kNx8zmQTFvh1571623892.jpg

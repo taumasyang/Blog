@@ -1,7 +1,7 @@
 ---
 title: 将 FLAC 音频转换为 ALAC
-date: 2023-02-27 23:31:20
-updated: 2023-6-17 19:52:30
+date: 2023-02-27 23:31:20 +08
+updated: 2023-6-17 19:52:30 +08
 categories: 实用工具
 tags: Shell
 index_img: https://ahmadawais.com/wp-content/uploads/2021/05/FFmpeg.jpg

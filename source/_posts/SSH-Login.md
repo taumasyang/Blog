@@ -1,7 +1,7 @@
 ---
 title: SSH 登录远程主机
-date: 2022-11-08 23:50:00
-updated: 2023-06-17 19:37:40
+date: 2022-11-08 23:50:00 +08
+updated: 2023-06-17 19:37:40 +08
 categories: 实用工具
 tags: [Shell, SSH]
 index_img: https://itfromzero.com/wp-content/uploads/2018/10/ssh.png

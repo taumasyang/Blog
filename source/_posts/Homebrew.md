@@ -1,7 +1,7 @@
 ---
 title: 安装和使用 Homebrew
-date: 2022-09-22 10:40:30
-updated: 2023-10-25 00:00:00
+date: 2022-09-22 10:40:30 +08
+updated: 2023-10-25 00:00:00 +08
 categories: 实用工具
 tags: [Shell, Homebrew]
 index_img: /img/Homebrew.png

@@ -1,7 +1,7 @@
 ---
 title: 「你帮我助」软件开发
-date: 2022-12-23 23:45:00
-updated: 2023-10-31 19:00:00
+date: 2022-12-23 23:45:00 +08
+updated: 2023-10-31 19:00:00 +08
 categories: 软件工程
 tags: [Python, HTML]
 index_img: https://tvlc.org/wp-content/uploads/2017/06/canned-goods.jpg

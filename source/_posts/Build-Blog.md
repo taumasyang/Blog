@@ -1,7 +1,7 @@
 ---
 title: 自建博客，也没有那么复杂嘛
-date: 2023-11-24 00:35:00
-updated: 2023-11-24 00:35:00
+date: 2023-11-24 00:35:00 +08
+updated: 2023-11-24 00:35:00 +08
 categories: 实用工具
 tags: Node.js
 index_img: https://pic1.zhimg.com/v2-41e1b825c51055f39c22b95777bc620b_1440w.jpg

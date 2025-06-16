@@ -1,7 +1,7 @@
 ---
 title: 虚拟机安装 Debian GNU/Linux
-date: 2023-12-02 16:45:00
-updated: 2023-12-02 16:45:00
+date: 2023-12-02 16:45:00 +08
+updated: 2023-12-02 16:45:00 +08
 categories: 实用工具
 tags: [Linux, Debian]
 index_img: https://linuxiac.b-cdn.net/wp-content/uploads/2020/11/debian13.png

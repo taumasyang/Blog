@@ -1,7 +1,7 @@
 ---
 title: macOS 文件共享
-date: 2023-03-15 10:30:00
-updated: 2023-03-15 10:33:00
+date: 2023-03-15 10:30:00 +08
+updated: 2023-03-15 10:33:00 +08
 categories: 实用工具
 tags: macOS
 index_img: http://ww1.prweb.com/prfiles/2011/07/05/8620783/JPADS%202K%20FF%20in%20flight%201.JPG
