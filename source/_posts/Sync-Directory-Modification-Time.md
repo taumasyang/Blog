@@ -1,7 +1,7 @@
 ---
 title: 同步目录的修改日期
 date: 2025-06-16 14:45:00 -07
-updated: 2025-06-16 14:45:00 -07
+updated: 2026-02-06 08:55:00 -06
 categories: 实用工具
 tags: Shell
 index_img: https://www.intego.com/mac-security-blog/wp-content/uploads/2021/03/downloads-hero.png
@@ -35,30 +35,25 @@ Change: Wed Nov 20 18:40:00 2024
 
 ```zsh
 setdir () {
-	# 同时考虑点开头的文件、使用扩展匹配语法、允许匹配结果为空（否则在空目录会出错）
-	setopt dotglob extendedglob nullglob
-	recurse () {	# 递归地同步子目录
-		for i in $1/*(/)
-		do
-			recurse $i
-		done
-		local files=($1/^.DS_Store)
-		(($#files)) || (	# 空目录
-			rmdir -v $1 || tree -a $1
-		) && touch -achmd ${"$(date -Iseconds -r $(stat -f %m $files | sort -r | head -1))"[1,19]} $1
-	}
-	for i in $@
+	local i
+	for i
 	do
-		recurse $i
-	done
-	unfunction recurse
-	unsetopt dotglob extendedglob nullglob
+		[[ -e $i/.DS_Store ]] && rm -v $i/.DS_Store
+		setdir $i/^(Library|*.app)(/DN)
+		local f=($i/*(DNom[1]))
+		if (($#f))
+		then
+			[[ $f[1] -nt $i || $f[1] -ot $i ]] && touch -achmr $f[1] $i
+		else
+			rmdir -v $i
+		fi
+	done || true
 }
 ```
 
 要使用上述函数，需要认同几个共识：
 
 1. 点开头的文件在 UNIX 系统中默认是隐藏文件，但它们在反映目录时间上与普通文件同样重要，因此需要纳入考虑。
-2. `.DS_Store` 在大多数目录下是垃圾文件，需要事先手动移除；需要自定义访达视图的少部分目录遗留的 `.DS_Store` 文件不会纳入考虑；不应有目录仅包含 `.DS_Store` 文件。
-3. 空目录无法从文件中获取修改时间，且一般应当被移除；对于部分应用，空目录的存在是必要的，应当避免在此类目录下使用该函数。
+2. `.DS_Store` 在大多数目录下是垃圾文件，不应对目录的修改日期作出贡献，因此需要顺便移除。
+3. 空目录无法从文件中获取修改时间，一般应当被移除；在需要保留空目录的情况，应当避免在此类目录下使用该函数。
 4. 极少数情况下（目录内文件太多、目录层级太深等）可能会出现 Argument list too long 错误，可以手动修改函数改为循环实现，但效率会大幅下降。
