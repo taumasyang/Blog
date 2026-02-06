@@ -1,7 +1,7 @@
 ---
 title: 安装和使用 Homebrew
-date: 2022-09-22 10:40:00 +08
-updated: 2023-10-25 00:00:00 +08
+date: 2022-09-22 10:40:30 +08
+updated: 2026-02-06 03:30:00 -06
 categories: 实用工具
 tags: [Shell, Homebrew]
 index_img: /img/Homebrew.png
@@ -10,9 +10,7 @@ banner_img: http://beekmanbeergarden.com/wp-content/uploads/2020/10/header_brewi
 
 ## Homebrew 是什么？
 
-[Homebrew](https://brew.sh) 是一个**包管理器**，可以在 macOS 和 Linux 上安装一些软件、命令等。Homebrew 支持在 Linux 上运行，但不在本文的介绍范围内。
-
-Homebrew 不会将文件安装到它本身目录之外，安装后只会将软件和命令**软链接**到 `/Applications` 和其他存放命令到路径下。
+[Homebrew](https://brew.sh) 是一个**包管理器**，可以在 macOS 和 Linux 上安装一些软件、命令等。Homebrew 也支持在 Linux 上运行。
 
 使用 Homebrew 安装软件只需短短的几个命令，无需再从茫茫互联网上寻找你需要的，也无需担心你安装的软件被恶意更改过。
 
@@ -29,15 +27,6 @@ export HOMEBREW_NO_INSTALL_FROM_API=1
 ```
 
 对于基于 Intel 处理器的 Mac，Homebrew 将会安装至 `/usr/local/Homebrew`；对于基于 Apple Silicon 的 Mac，Homebrew 将会安装至 `/opt/homebrew`。
-
-成功安装 Homebrew 后，可以选择额外 Tap 一些仓库，以便我们安装更多软件：
-
-```zsh
-brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-cask.git
-for tap in cask{-fonts,-versions} services
-do brew tap --custom-remote --force-auto-update homebrew/${tap} "https://mirror.sjtu.edu.cn/git/homebrew-${tap}.git"
-done
-```
 
 在 `~/.bash_profile`（如果使用 Bash）或 `~/.zprofile` （如果使用 Zsh）中添加如下语句：
 
@@ -58,41 +47,37 @@ export HOMEBREW_NO_INSTALL_FROM_API=1
 
 安装软件使用 `brew install` 命令。但是，在大部分情况下我们不能确定这些软件的包名，因此需要先搜索。例如，我们希望安装媒体转码器 FFmpeg，先搜索这个软件的包名：
 
-```zsh
-brew search ffmpeg
-```
-
-Homebrew 会给出搜索结果：
-
 ```console
+% brew search ffmpeg
 ==> Formulae
-ffmpeg                     ffmpeg@2.8                 ffmpeg@5
-ffmpeg2theora              ffmpeg@4                   ffmpegthumbnailer
+ffmpeg                     ffmpeg@2.8 (deprecated)    ffmpeg@6
+ffmpeg-full                ffmpeg@4                   ffmpeg@7
+ffmpeg2theora              ffmpeg@5                   ffmpegthumbnailer
 ```
 
 我们注意到 Formulae 里面有若干个与我们想要的匹配的包名，其中@后面跟着的是大版本号，如有必要我们可以安装旧版。我们验证一下它是不是我们想要安装的：
 
-```zsh
-brew info ffmpeg
-```
-
 ```console
-==> ffmpeg: stable 6.0 (bottled), HEAD
-Play, record, convert, and stream audio and video
+% brew info ffmpeg
+==> ffmpeg ✘: stable 8.0.1 (bottled), HEAD
+Play, record, convert, and stream select audio and video codecs
 https://ffmpeg.org/
 Not installed
-From: https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git/Formula/f/ffmpeg.rb
+From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/f/ffmpeg.rb
 License: GPL-2.0-or-later
 ==> Dependencies
-Build: pkg-config ✘
-Required: aom ✘, aribb24 ✘, dav1d ✘, fontconfig ✔, freetype ✔, frei0r ✘, gnutls ✘, jpeg-xl ✘, lame ✘, libass ✘, libbluray ✘, librist ✘, libsoxr ✘, libvidstab ✘, libvmaf ✘, libvorbis ✘, libvpx ✘, opencore-amr ✘, openjpeg ✔, opus ✘, rav1e ✘, rubberband ✘, sdl2 ✘, snappy ✘, speex ✘, srt ✘, svt-av1 ✘, tesseract ✘, theora ✘, webp ✘, x264 ✘, x265 ✘, xvid ✘, xz ✔, zeromq ✘, zimg ✘
+Build: pkgconf ✘
+Required: dav1d ✘, lame ✘, libvpx ✘, opus ✘, sdl2 ✘, svt-av1 ✘, x264 ✘, x265 ✘
 ==> Options
 --HEAD
 	Install HEAD version
+==> Caveats
+ffmpeg-full includes additional tools and libraries that are not included in the regular ffmpeg formula.
+==> Downloading https://formulae.brew.sh/api/formula/ffmpeg.json
 ==> Analytics
-install: 74,569 (30 days), 221,137 (90 days), 472,374 (365 days)
-install-on-request: 61,014 (30 days), 184,190 (90 days), 395,424 (365 days)
-build-error: 259 (30 days)
+install: 172,993 (30 days), 408,928 (90 days), 1,552,690 (365 days)
+install-on-request: 147,508 (30 days), 354,630 (90 days), 1,370,224 (365 days)
+build-error: 3,452 (30 days)
 ```
 
 Homebrew 给出了这个软件的基本信息、相关依赖和统计信息。我们确定我们想要的就是这个，接下来执行安装命令：
@@ -108,8 +93,6 @@ Homebrew 便会自动下载并安装 FFmpeg 和它所有的依赖。
 ```zsh
 brew uninstall ffmpeg
 ```
-
-默认情况下，不再依赖的包也会被一并移除。
 
 对于一些使用安装器（`.pkg`）的软件，在安装和卸载的过程中可能会要求输入密码。
 
