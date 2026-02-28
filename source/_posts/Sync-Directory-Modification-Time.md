@@ -1,7 +1,7 @@
 ---
 title: 同步目录的修改日期
 date: 2025-06-16 14:45:00 -07
-updated: 2026-02-06 08:55:00 -06
+updated: 2026-02-28 17:20:00 -06
 categories: 实用工具
 tags: Shell
 index_img: https://www.intego.com/mac-security-blog/wp-content/uploads/2021/03/downloads-hero.png
@@ -35,15 +35,17 @@ Change: Wed Nov 20 18:40:00 2024
 
 ```zsh
 setdir () {
-	local i
+	emulate -L zsh
+	setopt extendedglob globassign globdots nullglob
+	local f i
 	for i
 	do
 		[[ -e $i/.DS_Store ]] && rm -v $i/.DS_Store
-		setdir $i/^(Library|*.app)(/DN)
-		local f=($i/*(DNom[1]))
-		if (($#f))
+		setdir $i/^(Library|*.app)(/)
+		f=$i/*(om[1])
+		if [[ -n $f ]]
 		then
-			[[ $f[1] -nt $i || $f[1] -ot $i ]] && touch -achmr $f[1] $i
+			[[ $f -nt $i || $i -nt $f ]] && touch -achmr $f $i
 		else
 			rmdir -v $i
 		fi
