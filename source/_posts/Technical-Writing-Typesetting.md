@@ -1,7 +1,7 @@
 ---
 title: 技术写作标点与排版规范提示
-date: 2026-04-13 17:30:00
-updated: 2026-04-13 17:30:00
+date: 2026-04-13 17:30:00 -05
+updated: 2026-04-13 17:30:00 -05
 categories:
 tags: [Markdown, HTML, LaTeX]
 index_img: https://0xzx.com/wp-content/uploads/2024/01/Technical-Writing.webp.webp
