@@ -1,35 +1,35 @@
 ---
 title: 必应每日一图？我收下了！
 date: 2023-12-11 13:30:00 +08
-updated: 2023-12-31 13:55:00 +08
+updated: 2026-04-13 18:30:00 -05
 categories: 实用工具
 tags: [Shell, Git]
 index_img: https://cdn.wallpaperhub.app/cloudcache/3/c/a/e/9/4/3cae9423e2f818afb6e64a220ea2c39fd0cee877.jpg
 banner_img:
 ---
 
-微软必应的每日一图收集了来自全世界的自然风光、人文建筑等唯美照片，这些照片是 bing.com 的默认背景，用户也可以下载「[必应壁纸](https://www.microsoft.com/zh-cn/bing/bing-wallpaper)」来将这些图片作为桌面壁纸。
+微软必应的每日一图收录了来自全世界的自然风光和人文摄影。这些唯美的照片不仅是 bing.com 的默认背景，微软也官方提供了「[必应壁纸](https://www.microsoft.com/zh-cn/bing/bing-wallpaper)」应用供用户将其设为桌面。
 
-这些图片确实太好看了！站长很喜欢，决定每天把它们保存下来，并将最新的照片作为本站的首页图。
+这些图片质感极佳，我很喜欢，于是决定用脚本把它们每天自动保存下来，并提取最新的一张作为本站的首页头图。
 
 [![](https://img.shields.io/badge/GitHub-imageArchive-0?logo=GitHub)](https://github.com/taumasyang/imageArchive)
 
-## 抓取每日一图
+## 探秘必应每日一图 API
 
-必应的每日一图的元数据可以通过 https://www.bing.com/HPImageArchive.aspx 获取，但是直接访问此地址将不会有任何返回，需要追加查询参数。
+必应每日一图的元数据可以通过 https://www.bing.com/HPImageArchive.aspx 获取。直接访问该地址不会返回任何有效内容，我们需要为其追加查询参数：
 
-- `format`：返回数据的格式。可选：js，xml（默认），rss。
-- `idx`（必需）：图片相对今天的偏移量。可选：0–7。7 以上的数字按照 7 处理。
-- `n`（必需）：获取的图片数量。可选：1–8。8 以上的数字按照 8 处理。
-- `mkt`：每日一图的地区，大小写不敏感。不同地区的图片可能相同或不同。
+- `format`：返回数据的格式。可选：`js`，`xml`（默认），`rss`。
+- `idx`（必需）：图片日期相对今天的偏移量。可选：0-7（大于 7 按 7 处理）。
+- `n`（必需）：获取的图片数量。可选：1-8（大于 8 按 8 处理）。
+- `mkt`：地区代码，大小写不敏感。不同地区的每日一图可能有所不同。
 
 {% note danger %}
-中国大陆的 IP 只能获取中国大陆的返回结果，`mkt`参数无效。如果需要获取其他地区的结果，需要使用魔法。
+中国大陆的 IP 直接请求只能获取中国大陆（`ZH-CN`）的结果，`mkt`参数会失效。如果需要获取全球其他地区的图片，需要配置网络代理。
 {% endnote %}
 
-经过笔者的多次实验，`mkt` 取以下值时能基本覆盖所有新图片：`ZH-CN` `EN-US` `EN-GB` `EN-CA` `EN-IN` `JA-JP` `FR-FR` `DE-DE` `ES-ES` `PT-BR` `IT-IT`。为了能够确实地获取到供给其他地区的图片，以下操作全部需要需要通过魔法进行。
+经过多次测试，`mkt`取以下值时能基本覆盖必应全球每日更新的图片库：`EN-US` `JA-JP` `ZH-CN` `EN-IN` `DE-DE` `ES-ES` `FR-FR` `IT-IT` `EN-GB` `PT-BR` `EN-CA`。
 
-接下来，我们往这个地址发一条 GET 请求试试吧！
+接下来，我们发一条 GET 请求看看返回结构：
 
 https://www.bing.com/HPImageArchive.aspx?idx=0&n=1&mkt=zh-cn
 
@@ -55,60 +55,51 @@ https://www.bing.com/HPImageArchive.aspx?idx=0&n=1&mkt=zh-cn
 </images>
 ```
 
-分析返回的结果不难发现，
+分析 XML 数据，提取我们需要的部分：
 
-- `/images/image/enddate` 是图片发布的日期（`startdate`通常滞后一天）；
-- `/images/image/url` 是图片的真实地址，当然后两个查询参数不影响返回的结果；
-- `/images/image/url` 内还藏了图片的标题，例如这里是 ThailandNewYears；
-- `/images/image/copyright` 是图片的拍摄位置与版权信息；
-- `/images/image/headline` 是图片的描述。
+- `enddate`：图片实际发布的日期。
+- `urlBase`：图片的基础路径。我们可以基于它拼接出不同分辨率的图片地址（例如追加`_1920x1080.jpg`）。同时，这个字符串里还藏着图片的主题（如`ThailandNewYears`）。
+- `copyright`：图片的拍摄位置与版权信息。
+- `headline`：图片的简短描述。
 
-嗯，很好，之后我们再往 https://www.bing.com/th?id=OHR.ThailandNewYears_ZH-CN2058192262_1920x1080.jpg 发一个 GET 请求就能获取我们想要的图片了！
+基于`urlBase`，我们只需向 https://www.bing.com/th?id=OHR.ThailandNewYears_ZH-CN2058192262_1920x1080.jpg 发送请求，就能直接拿到这张图片了。
 
 ![新年快乐！](https://www.bing.com/th?id=OHR.ThailandNewYears_ZH-CN2058192262_1920x1080.jpg)
 
-## 利用脚本处理元数据
+## 编写 Zsh 自动化脚本
 
-但是，我们想要的是自动化！我们才不想每天亲自去抓取最新的图片数据，然后再去去抓取图片呢。我们写了脚本来处理这件事，之后再添加一个定时任务，每天自动运行，那才叫舒服！
+手动抓取不仅繁琐，还容易遗漏。为了实现真正的自动化，我们需要编写一个 Zsh 脚本来处理数据提取、去重、下载和归档。
 
-### 循环…
+### 遍历全球地区
 
-贪心点没关系的，我们不止想要本地区的图片，我们想要必应供给全球的图片！所以，我们需要循环，让抓图的操作对所有的地区都来一遍！
+我们想要的不仅是本地图片，而是全球范围内的优质摄影。因此，我们需要遍历之前整理出的所有地区代码：
 
 ```zsh
-for mkt in {zh-cn,en-us,en-gb,en-ca,en-in,ja-jp,fr-fr,de-de,es-es,pt-br,it-it}
+for mkt in {EN-US,JA-JP,ZH-CN,EN-IN,DE-DE,ES-ES,FR-FR,IT-IT,EN-GB,PT-BR,EN-CA}
 do
-	# What is next...?
+	# 下一步做什么？
 done
 ```
 
-### 抓取元数据
+### 获取并解析元数据
 
-要是您还记得我们之前提过的 [cURL](https://curl.se/)，这一步算是最容易的啦！
-
-```zsh
-curl -sG -d idx=0 -d n=1 -d mkt=$mkt https://www.bing.com/HPImageArchive.aspx
-```
-
-其中 `-s` 抑制了 cURL 进度条，因为我们完全不需要这种信息，我们只关心它能获取的内容。`-G` 表示我们发出的是 GET 请求，`-d` 后面跟着的就是查询参数了。
-
-### 解析 XML 参数
-
-登登～接下来是 `xmllint` 的主场了。我们可以通过**管道**把要解析的内容传递给它，用 `xpath` 参数指定我们想提取的内容，接下来就交给它！有关命令行参数与标准输入的区别，忘记了的伙伴们可以去看看这篇文章：{% post_link argument-stdin %}。
+使用 [cURL](https://curl.se/) 获取 XML，再交由`xmllint`通过 XPath 提取所需字段：
 
 ```zsh
-image=$(curl -sG -d idx=0 -d n=1 -d mkt=$mkt https://www.bing.com/HPImageArchive.aspx | xmllint --xpath '/images/image' -)
-enddate=$(echo $image | xmllint --xpath '/image/enddate/text()' -)
-urlBase=$(echo $image | xmllint --xpath '/image/urlBase/text()' -)
-headline=$(echo $image | xmllint --xpath '/image/headline/text()' -)
-copyright=$(echo $image | xmllint --xpath '/image/copyright/text()' -)
+image=$(curl -sG -d idx=0 -d n=1 -d mkt=$mkt https://www.bing.com/HPImageArchive.aspx)
+enddate=$(xmllint --xpath '//enddate/text()' - <<< $image)
+urlBase=$(xmllint --xpath '//urlBase/text()' - <<< $image)
+headline=$(xmllint --xpath '//headline/text()' - <<< $image)
+copyright=$(xmllint --xpath '//copyright/text()' - <<< $image)
 ```
 
-### 保存文件
+注：`-s`参数用于静默模式隐藏进度条，`-G`强制使用 GET 请求，`-d`用于拼接查询参数。
 
-用什么当做文件名好呢？如果只有一个地区的话，`enddate` 或许是个不错的选择，但是我们胃口很大，同一天有不同的图片，同一张图片也可能会出现在不同地区的不同日期，这样的话就非常不适合了。不过，必应很贴心地已经帮我们取好了标题，就藏在图片的 URL 里！
+### 文件命名与数据沉淀
 
-在 `urlBase` 变量 `/th?id=OHR.ThailandNewYears_ZH-CN2058192262` 中，要把 `ThailandNewYears` 提取出来，可以用 Zsh 内置的字符串截断语法。
+如何命名下载的图片？`enddate`并不是好选择，因为同一天多地区可能有不同图片，同一图片也可能在不同日期出现在不同地区。最合理的做法是利用`urlBase`中包含的标题。
+
+这里利用 Zsh 内置的字符串截断语法，将`/th?id=OHR.ThailandNewYears_ZH-CN2058192262`中的`ThailandNewYears`剥离出来：
 
 |语法|方向|程度|
 |-|-|-|
@@ -117,151 +108,118 @@ copyright=$(echo $image | xmllint --xpath '/image/copyright/text()' -)
 |`${str%_*}`|删除`_`右侧的内容|最小匹配|
 |`${str%%_*}`|删除`_`右侧的内容|最大匹配|
 
-这里，我们需要删除 URL `.` 左侧的字符，最小匹配，以及 `_` 右侧的字符，最大匹配。因此我们的文件名应该是
+结合运用，就能精准提取文件名：
 
 ```zsh
 filename=${${urlBase#*.}%%_*}
 ```
 
-{% note info %}
-同日`IT-IT`地区的`urlBase`是`/th?id=OHR.SantaMariaVenice_1185725818_IT-IT0984119913`，为了处理这类特殊情况，对下划线`_`需要最大匹配。
-{% endnote%}
-
-除了图片本身，必应贴心地给出的各类元数据也很珍贵，所以我们决定把它们统统保存下来！为了维护目录的干净整洁，我们将图片本身保存在 `img` 子目录下，将元数据保存至 `metadata.csv` 文件内。在首次运行前，需要事先制作表头。
+为了方便日后查阅，我们同时将获取的各项元数据存储在`metadata/`目录下的 CSV 文件中，并将图片下载至`img/`目录：
 
 ```zsh
-echo -n "$enddate,$filename,$mkt," >> metadata.csv
-echo -n "$(echo ${urlBase##*_} | grep -oE '[0-9]+')," >> metadata.csv
-echo -n "\"$headline\"," >> metadata.csv
-echo "\"$copyright\"" >> metadata.csv
-curl -so img/$filename.jpg www.bing.com${url%%&*}
+print -n -- "$enddate,$filename,$mkt," >> metadata.csv
+print -n -- "$(grep -oE '[0-9]+' <<< ${urlBase##*_})," >> metadata.csv
+print -n -- "\"$headline\"," >> metadata.csv
+print -- "\"$copyright\"" >> metadata.csv
+curl -so img/$filename.jpg https://www.bing.com${urlBase}_1920x1080.jpg
 ```
 
 ![](/img/BingImageMetadata.png)
 
-### 异常处理
+### 异常处理与防重复下载
 
-假如，我是说假如，我们没能获取到任何数据，会发生什么？
-
-这样的话 `xmllint` 就解析不到任何数据了，上面我们设置的所有变量都会为空，要是再继续下去，我们就会把空的内容保存到空的文件，我们的图库就乱套啦！所以，为了保持我们图库的整洁，我们需要跳过空的数据！
+网络请求总有失败的可能。如果未获取到`image`数据，强行解析会导致空变量和坏文件。同时，多地区往往存在重复推图的情况。我们需要添加校验逻辑：
 
 ```zsh
-[[ -z $image ]] && continue
+# 获取不到内容时重试或跳过
+while [[ -z $image ]]
+do image=$(curl -sG -d idx=0 -d n=1 -d mkt=$mkt https://www.bing.com/HPImageArchive.aspx)
+done
+
+# 如果图片已存在，则不再重复下载
+[[ -f img/$filename.jpg ]] && continue
 ```
 
-如果 `image` 变量为空值，就跳过后面的步骤，直接进入下一次循环。
+### 指定「最新图」
 
-不过，从不同地区获取的图片也完全有可能是相同的嘛，甚至也会出现某个地区今天的图片是其他地区昨天的图片这样的情况呢。所以，我们还需要检测文件是否已经存在，如果已经存在，那么也直接跳到下一个循环。
+因为我的博客首页需要固定读取每日最新图，我们不能每次都修改源码里的图片名称。解决方案是生成一个`latest.jpg`副本。
 
-```zsh
-[[ -e img/$filename.jpg ]] && continue
-```
-
-### 额外保存最新的图片
-
-本站的首页采用每天获取的最新的图片！但是，图片都用必应提供的标题保存了，我们怎么知道哪一张是今天新鲜出炉的呢？所以，我们需要把最新的图片另外存一份，命名为 `latest.jpg`，这样，这个文件就永远会是最新的啦。
-
-虽然一张图片占用的空间不大，用 `cp` 命令复制一份副本完全可行，不过这里我们采用了另一种方法——硬链接。硬链接相当于给了文件一个别名，在文件系统里以两份文件的形式存在，但实际上他们拥有同一个 Inode，指向硬盘上的同一块区域，是如假包换的同一份文件，因此也不占用额外存储空间。
+为了不浪费磁盘空间，这里使用硬链接，让`latest.jpg`和刚下载的图片指向硬盘上的同一物理位置：
 
 ```zsh
 ln -f img/$filename.jpg img/latest.jpg
 ```
 
-如果我们查看 `latest.jpg` 的文件信息，我们会发现，`Links: 2` 表明这份文件的实际内容有两个链接，它们的各类元数据也完全相同。
+在推送到 Git 仓库时，Git 仍会将其作为两份独立的文件树进行追踪，但这在本地管理中确实是个优雅的技巧。
 
-```zsh
-% stat -x img/latest.jpg
-  File: "img/latest.jpg"
-  Size: 277156       FileType: Regular File
-  Mode: (0644/-rw-r--r--)         Uid: (  501/tauyoung)  Gid: (   20/   staff)
-Device: 1,14   Inode: 3377751    Links: 2
-Access: Sun Dec 31 08:00:07 2023
-Modify: Sun Dec 31 08:00:07 2023
-Change: Sun Dec 31 08:00:07 2023
- Birth: Sun Dec 31 08:00:07 2023
+## 用 Git LFS 托管至 GitHub
 
-% stat -x img/ThailandNewYears.jpg
-  File: "img/ThailandNewYears.jpg"
-  Size: 277156       FileType: Regular File
-  Mode: (0644/-rw-r--r--)         Uid: (  501/tauyoung)  Gid: (   20/   staff)
-Device: 1,14   Inode: 3377751    Links: 2
-Access: Sun Dec 31 08:00:07 2023
-Modify: Sun Dec 31 08:00:07 2023
-Change: Sun Dec 31 08:00:07 2023
- Birth: Sun Dec 31 08:00:07 2023
-```
+由于图片体积较大且数量会不断增加，我们不推荐直接把图片丢进普通 Git 仓库里，而是使用 Git LFS (Large File Storage)。它将大文件替换为文本指针进行版本控制，不仅不影响拉取代码的速度，GitHub 还免费提供了 10 GiB 的 LFS 额度，绰绰有余。
 
-## 发布到 GitHub
-
-GitHub 用作图床虽然不是正经用法，但也确实是最简单的途径了。要让 GitHub 接受这些图片，首先要让 Git 来管理它们。不过，Git 主要是用来管理源代码等文本文件的，图片这类二进制文件的确不是它的长处。所以有了 Git LFS，大文件存储。Git LFS 用一个独特的方式管理体积较大的文件，这些文件原本的位置会被替换成一个指针，指向文件实际存储的位置。推送到 GitHub 上后，也会被存到专门存放大文件的地方。免费用户拥有 1GB 的大文件存储空间，对于我们这些图片来说已经是绰绰有余。
-
-通过以下命令安装和启用 Git LFS（不了解或未安装 Homebrew 的请参考{% post_link homebrew %}）：
+安装并配置 Git LFS（macOS 使用 Homebrew）：
 
 ```zsh
 brew install git-lfs
 git lfs install
 ```
 
-然后，告诉 Git LFS 处理这些文件：
+告诉 LFS 追踪所有`.jpg`文件，并保存配置规则：
 
 ```zsh
 git lfs track "*.jpg"
-```
-
-别忘了把`.gitattributes`加到 Git 储存库里哦：
-
-```zsh
 git add .gitattributes
 ```
 
-随后，按照常规的方法 Git 就行啦！
+最后，只需将`git add`、`commit`和`push`写入我们的脚本末尾，抓图后即可自动推送到 GitHub 仓库。
 
-最后在我们的脚本里面加上提交和推送的操作：
+完成推送后，latest.jpg 在外网的长期有效访问地址就是：
 
-```zsh
-git add desc img
-git commit -m "Fetch: $startdate"
-git push
+```url
+https://media.githubusercontent.com/media/<你的用户名>/<仓库名>/main/img/latest.jpg
 ```
 
-假设我们的仓库名是 `imageArchive`，最终 `latest.jpg` 的地址就是 https://media.githubusercontent.com/media/taumasyang/imageArchive/main/img/latest.jpg ，只要把这个地址插入到要使用的地方（比如博客的首页！），每天打开就是最新的图片了。就像这样：
+把这个直链放到博客配置里，就能实现首页图日更了！
 
 ![正是本站今日的首页图！](https://media.githubusercontent.com/media/taumasyang/imageArchive/main/img/latest.jpg)
 
-## 完整的脚本
+## 最终完整脚本
 
-我们可以把之前零散的代码拼接起来，去除掉一些不必要的中间变量，稍稍增加一些辅助功能，形成我们的最终脚本：
+结合上述所有思路，最终的 Zsh 脚本如下：
 
 ```zsh
 #!/bin/zsh
-idx=${1:-0}
-for mkt in {ZH-CN,EN-US,EN-GB,EN-CA,EN-IN,JA-JP,FR-FR,DE-DE,ES-ES,PT-BR,IT-IT}
+# version 1.5.3
+local -i idx=${1:-0} n=1
+(( idx > 14 )) && print -u2 -- 'index too large' && return $idx
+(( idx > 7 )) && (( n = idx - 6 ))
+local mkt image
+for mkt in {EN-US,JA-JP,ZH-CN,EN-IN,DE-DE,ES-ES,FR-FR,IT-IT,EN-GB,PT-BR,EN-CA}
 do
-	image=$(curl -sG -d idx=$idx -d n=1 -d mkt=$mkt https://www.bing.com/HPImageArchive.aspx | xmllint --xpath '/images/image' -)
-	[[ -z $image ]] && continue
-	enddate=$(echo $image | xmllint --xpath '/image/enddate/text()' -)
-	urlBase=$(echo $image | xmllint --xpath '/image/urlBase/text()' -)
-	filename=${${urlBase#*.}%%_*}
-	[[ -e img/$filename.jpg ]] && continue
-	echo "$enddate,$filename,$mkt,$(echo ${urlBase##*_} | grep -oE '[0-9]+'),\"$(echo $image | xmllint --xpath '/image/headline/text()' -)\",\"$(echo $image | xmllint --xpath '/image/copyright/text()' -)\"" >> metadata.csv
-	curl -so img/$filename.jpg www.bing.com${urlBase}_1920x1080.jpg
-	[[ $mkt == ZH-CN ]] && ln -f img/$filename.jpg img/latest.jpg
+	image=''
+	while [[ -z $image ]]
+	do image=$(curl -sG -d idx=$idx -d n=$n -d mkt=$mkt https://www.bing.com/HPImageArchive.aspx)
+	done
+	local enddate=$(xmllint --xpath '//enddate/text()' - <<< $image | head -n$n)
+	local urlBase=$(xmllint --xpath '//urlBase/text()' - <<< $image | head -n$n)
+	local filename=${${urlBase#*.}%%_*}
+	print -- "$enddate,$filename,$mkt,$(grep -oE '[0-9]+' <<< ${urlBase##*_}),\"$(xmllint --xpath '//headline/text()' - <<< $image | head -n$n)\",\"$(xmllint --
+xpath '//copyright/text()' - <<< $image | head -n$n)\"" >> metadata/$mkt.csv
+	[[ -f img/$filename.jpg ]] || curl -so img/$filename.jpg https://www.bing.com${urlBase}_1920x1080.jpg
+	ln -f img/$filename.jpg img/latest.jpg
 done
-[[ $(git status --porcelain) ]] || exit
-git add img metadata.csv
+[[ $(git status --porcelain) ]] || return
+git add img metadata
 git commit -m "Fetch: $enddate"
-git push
+(($#1)) || git push
 ```
 
-## 定时任务
+## 定时自动执行
 
-我们的脚本可以配置在本地或者云端执行。在本地执行的脚本方便调试，并且可以保证效果与调试时一模一样，但是计算机必须保持开机和联网才能完成执行；在云端执行的脚本不受本地计算机状态的影响，但是由于执行环境与网络条件不同，有可能会有不一样的效果。
+脚本写好了，最后一步就是让它自动跑起来。这里提供两种方案。
 
-本来我们是打算利用 GitHub Actions 自动执行脚本的，但是试用过后发现它们的机器上 `echo` 默认不换行，非 ASCII 字符被强制转译，都是我们不想要的效果。迫不得已我们才选用了本地定时任务的方案。
+### 方案 A：macOS 本地任务（`launchd`）
 
-作为类 Unix 的操作系统，macOS 也支持用 `cron` 工具执行定时任务，但永远不会保证执行！所以我们才用另一种 Apple 推荐的方法：`launchd` 来管理定时任务。
-
-`launchd` 的任务配置是一个 XML 文件，具体配置方法可以在 https://www.launchd.info/ 找到。这里直接给出配置，并对关键部分作一些介绍。
+如果你有一台经常开机的 Mac，可以使用自带的`launchd`服务。它通过 XML（plist）文件配置。将以下内容保存为`~/Library/LaunchAgents/top.tauyoung.imagearchive.plist`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -284,7 +242,7 @@ git push
 		<key>StartCalendarInterval</key>
 		<dict>
 			<key>Hour</key>
-			<integer>8</integer>
+			<integer>13</integer>
 			<key>Minute</key>
 			<integer>0</integer>
 		</dict>
@@ -296,20 +254,43 @@ git push
 </plist>
 ```
 
-- `Label`：任务的标签，以和域名相反的方向写成。没有自己的域名可以随便写，`local.taskname` 就是一个不错的选择。
-- `Program`：要运行的脚本或者程序。需要使用绝对路径。如果需要传入参数，请改用 `ProgramArguments`。
-- `EnvironmentVariables`：环境变量。这里配置了网络代理，以及包含 Git LFS 的搜索路径。
-- `WorkingDirectory`：工作目录，脚本中所有的相对路径都将从工作目录出发。
-- `StartCalendarInterval`：启动时间。这里设置为**本地时间**每天 8:00 运行。
-- `StandardOutPath`：标准输出路径，任务的输出会被重定向至该文件。
-- `StandardErrorPath`：错误输出路径，任务的报错会被重定向至该文件。
+- `<key>Hour</key><integer>13</integer>`表示在本地时间的每日 13:00 触发执行。
+- launchd 中必须全部使用绝对路径，不能使用`~`缩写。
 
-在任务配置中出现的路径都应该是绝对路径，因为 `launchd` 不是 SHELL，不会自动展开类似于 `~` 的路径。
-
-把写好的任务配置保存为 `~/Library/LaunchAgents/top.tauyoung.imagearchive.plist`，然后运行
+加载定时任务：
 
 ```zsh
 launchctl load ~/Library/LaunchAgents/top.tauyoung.imagearchive.plist
 ```
 
-来加载任务。
+## GitHub Actions 云端任务（推荐）
+
+云端执行不受本机休眠状态影响，更重要的是 GitHub Actions 自带海外网络环境，完美绕过了拉取其他国家／地区图片时的网络限制。
+
+在仓库的根目录下创建`.github/workflows/github-fetch.yml`：
+
+```yml
+name: Fetch
+
+on:
+  schedule:
+	- cron: '0 5 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+	runs-on: macos-latest
+	steps:
+	  - name: Checkout
+		uses: actions/checkout@v6
+	  - name: Configure Git
+		run: |
+		  git config user.name <user.name>
+		  git config user.email <user.email>
+	  - name: Fetch
+		run: ./fetch.zsh
+```
+
+保存并推送后，GitHub 就会在每天按时为你打工收图了。一切就是这么简单！
