@@ -1,7 +1,7 @@
 ---
 title: 使用加密 DNS 保护 DNS 查询
 date: 2023-11-29 15:50:00 +08
-updated: 2023-11-29 15:50:00 +08
+updated: 2026-05-02 11:30:00 -05
 categories: 实用工具
 tags: [macOS, DNS]
 index_img: http://techpp.com/wp-content/uploads/2020/07/DNS-over-HTTPS.jpg
@@ -26,17 +26,17 @@ DNS 服务如果出现问题，将会出现上网异常的情况。一个经典�
 
 DoT 和 DoH 加密了查询请求的全过程，可以保护数据在 DNS 服务器和主机之间的传输不受篡改，也可以有效避免抢答。
 
-{% note danger %}
-加密 DNS 不能帮助你翻越长城防火墙。
+{% note info %}
+加密 DNS 可以防止 DNS 污染，但不能帮助你翻越长城防火墙。
 {% endnote %}
 
-## 在设备上配置 DoH
+## 在设备上配置 DoT/DoH
 
-在设备上使用相应服务商的 DoH 软件，例如 [Cloudflare WARP](https://cloudflarewarp.com/)，可自动配置和路由设备的 DNS 查询。或者使用下面的方式手动配置。
+在设备上使用相应服务商的 DoT/DoH 应用，例如 [Cloudflare WARP](https://cloudflarewarp.com/)，可自动配置和路由设备的 DNS 查询。或者使用下面的方式手动配置。
 
-在 iOS，iPadOS 和 macOS 上，Apple 没有提供手动配置加密 DNS 的开关，但可以通过[配置描述文件](https://support.apple.com/zh-cn/guide/security/secf6fb9f053/web)进行配置。配置描述文件是一个由有效负载组成的 XML 文件（以 .mobileconfig 结尾），这些有效负载可将设置和授权信息载入到 Apple 设备上。
+在 iOS，iPadOS 和 macOS 上，Apple 没有提供手动配置加密 DNS 的开关，但可以通过[配置描述文件](https://support.apple.com/zh-cn/guide/security/secf6fb9f053/web)进行配置。配置描述文件是一个由有效负载组成的 XML 文件（以 `.mobileconfig` 结尾），这些有效负载可将设置和授权信息载入到 Apple 设备上。
 
-以[阿里云公共 DNS](https://alidns.com/) 为例。将以下文本保存为一个文件并命名为`AliDNS-https.mobileconfig`。读者可以检查下面的文本，确保里面没有出现恶意的配置。
+以 [Cloudflare DNS](https://one.one.one.one/dns/) 为例。参考 [Apple 官方文档](https://developer.apple.com/documentation/devicemanagement/dnssettings)编写配置文件 `Cloudflare DNS Encryption.mobileconfig`。读者可以检查下面的文本，确保里面没有出现恶意的配置。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -49,61 +49,75 @@ DoT 和 DoH 加密了查询请求的全过程，可以保护数据在 DNS 服务
 			<key>DNSSettings</key>
 			<dict>
 				<key>DNSProtocol</key>
-				<string>HTTPS</string>
+				<string>TLS</string>
 				<key>ServerAddresses</key>
 				<array>
-					<string>2400:3200::1</string>
-					<string>2400:3200:baba::1</string>
-					<string>223.5.5.5</string>
-					<string>223.6.6.6</string>
+					<string>1.1.1.1</string>
+					<string>1.0.0.1</string>
+					<string>2606:4700:4700::1111</string>
+					<string>2606:4700:4700::1001</string>
 				</array>
-				<key>ServerURL</key>
-				<string>https://dns.alidns.com/dns-query</string>
+				<key>ServerName</key>
+				<string>cloudflare-dns.com</string>
 			</dict>
-			<key>PayloadDescription</key>
-			<string>Configures device to use AliDNS Encrypted DNS over HTTPS</string>
 			<key>PayloadDisplayName</key>
-			<string>Ali DNS over HTTPS</string>
+			<string>Cloudflare DNS over TLS</string>
 			<key>PayloadIdentifier</key>
-			<string>cc.lxd.alidoh.dnsSettings.managed</string>
+			<string>com.cloudflare-dns.public.tls</string>
 			<key>PayloadType</key>
 			<string>com.apple.dnsSettings.managed</string>
 			<key>PayloadUUID</key>
-			<string>39e6a9fb-9532-461e-a73d-97e744bbe4e9</string>
+			<string>8F26D88D-7FA4-4AAE-B0F9-B9670E0DBCAA</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
-			<key>ProhibitDisablement</key>
-			<false/>
+		</dict>
+		<dict>
+			<key>DNSSettings</key>
+			<dict>
+				<key>DNSProtocol</key>
+				<string>HTTPS</string>
+				<key>ServerAddresses</key>
+				<array>
+					<string>1.1.1.1</string>
+					<string>1.0.0.1</string>
+					<string>2606:4700:4700::1111</string>
+					<string>2606:4700:4700::1001</string>
+				</array>
+				<key>ServerURL</key>
+				<string>https://cloudflare-dns.com/dns-query</string>
+			</dict>
+			<key>PayloadDisplayName</key>
+			<string>Cloudflare DNS over HTTPS</string>
+			<key>PayloadIdentifier</key>
+			<string>com.cloudflare-dns.public.https</string>
+			<key>PayloadType</key>
+			<string>com.apple.dnsSettings.managed</string>
+			<key>PayloadUUID</key>
+			<string>93D41B8C-A67A-4DB6-8CFB-174F92EBF6E1</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
 		</dict>
 	</array>
-	<key>PayloadDescription</key>
-	<string>Adds the AliDNS to Big Sur and iOS 14 based systems</string>
 	<key>PayloadDisplayName</key>
-	<string>Ali DNS over HTTPS</string>
+	<string>Cloudflare DNS Encryption</string>
 	<key>PayloadIdentifier</key>
-	<string>cc.lxd.alidoh</string>
-	<key>PayloadRemovalDisallowed</key>
-	<false/>
+	<string>com.cloudflare-dns.public</string>
+	<key>PayloadOrganization</key>
+	<string>Cloudflare DNS</string>
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>c9b1404a-a873-4b08-b051-48c6f6c4d6aa</string>
+	<string>8B6A14FA-353D-4DCA-85DE-AC44236011DA</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>
 </plist>
 ```
 
-如果使用其他 DoT/DoH 代理商，请修改配置文件中的 IP 地址、DNS 查询域名、文字描述和识别码。UUID 的内容并不重要，但需保证全局唯一。macOS 上可使用`uuidgen`来生成一个随机的 UUID。
+如果使用其他 DoT/DoH 代理商，请修改配置文件中的 IP 地址、DNS 查询域名、文字描述和识别码。UUID 的内容并不重要，但需保证全局唯一。macOS 上可使用 `uuidgen` 来生成一个随机的 UUID。
 
-双击此配置描述文件，然后按照系统提示进行安装。
-
-![AliDNS Profile](AliDNSProfile.png)
+在 Mac 上双击此配置描述文件，或者将其隔空投送至 iOS 设备，然后按照系统提示进行安装。
 
 请注意，此描述文件未签名，系统会向用户二次确认。签名仅仅代表文件从签名时到安装时未受篡改，不能保证文件不包含恶意内容。上述配置文件已经过读者审查，确认安全后再安装。如果您心存疑虑，请不要安装。
 
-![AliDNS Profile Unsigned Warning](AliDNSProfileUnsignedWarning.png)
-
-安装后，可以在「系统设置 > 网络 > VPN 与过滤条件」处查看，开启或关闭 DoH。
-
-![AliDNS Profile Enabled](AliDNSProfileEnabled.png)
+安装后，可以在「系统设置 > 网络 > VPN 与过滤条件」（在 iOS 设备上是「设置 > 通用 > VPN 与设备管理」）处查看，开启或关闭 DoT/DoH。
