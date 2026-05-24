@@ -1,11 +1,11 @@
 ---
 title: 使用加密 DNS 保护 DNS 查询
 date: 2023-11-29 15:50:00 +08
-updated: 2026-05-02 11:30:00 -05
+updated: 2026-05-24 02:30:00 -05
 categories: 实用工具
 tags: [macOS, DNS]
 index_img: http://techpp.com/wp-content/uploads/2020/07/DNS-over-HTTPS.jpg
-banner_img: https://cloudflarewarp.com/fc4f07e27b83408acb2de2c979b06322.jpg
+banner_img: https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oJ8VJs0r2YL0e3BKpFyCF/c65fab188baece85449672d93e6f6ac8/dns-encryption-explained-qBT4Op.png
 ---
 
 ## DNS 协议简介
@@ -104,6 +104,8 @@ DoT 和 DoH 加密了查询请求的全过程，可以保护数据在 DNS 服务
 	<string>com.cloudflare-dns.public</string>
 	<key>PayloadOrganization</key>
 	<string>Cloudflare DNS</string>
+	<key>PayloadScope</key>
+	<string>System</string>
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
