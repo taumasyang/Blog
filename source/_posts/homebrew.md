@@ -1,7 +1,7 @@
 ---
 title: 安装和使用 Homebrew
 date: 2022-09-22 10:40:30 +08
-updated: 2026-02-06 03:30:00 -06
+updated: 2026-06-04 13:10:00 +08
 categories: 实用工具
 tags: [Shell, Homebrew]
 index_img: /img/Homebrew.png
@@ -19,11 +19,11 @@ banner_img: http://beekmanbeergarden.com/wp-content/uploads/2020/10/header_brewi
 在终端中执行以下命令，并按提示操作。原版安装需要用到 GitHub 上的一些资源，因此可能会安装失败，我们使用镜像源（以上海交大镜像源为例）以加速安装：
 
 ```zsh
-export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/brew.git
-export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git
-export HOMEBREW_BOTTLE_DOMAIN=https://mirror.sjtu.edu.cn/homebrew-bottles/bottles
-export HOMEBREW_NO_INSTALL_FROM_API=1
-/bin/bash -c "$(curl -fsSL https://git.sjtu.edu.cn/sjtug/homebrew-install/-/raw/master/install.sh)"
+export HOMEBREW_API_DOMAIN=https://mirrors.cernet.edu.cn/homebrew-bottles/api
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.cernet.edu.cn/homebrew-bottles
+export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 对于基于 Intel 处理器的 Mac，Homebrew 将会安装至 `/usr/local/Homebrew`；对于基于 Apple Silicon 的 Mac，Homebrew 将会安装至 `/opt/homebrew`。
@@ -33,15 +33,21 @@ export HOMEBREW_NO_INSTALL_FROM_API=1
 ```zsh
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
-export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/brew.git
-export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git
-export HOMEBREW_BOTTLE_DOMAIN=https://mirror.sjtu.edu.cn/homebrew-bottles/bottles
-export HOMEBREW_NO_INSTALL_FROM_API=1
 ```
 
-如果是基于 Intel 处理器的 Mac，按需修改 `eval` 语句中的路径。Homebrew 目前默认使用 API 进行安装，但是上海交大镜像源目前不支持此方式，所以需要设置不从 API 安装。
+如果是基于 Intel 处理器的 Mac，按需修改 `eval` 语句中的路径。运行 `source .zprofile` 或者重启终端来启用上述设置。
 
-最后，运行 `source .zprofile` 或者重启终端来启用上述设置。恭喜你！Homebrew 已经设置完成，现在你可以自由安装多数软件了！
+创建文件 `$XDG_CONFIG_HOME/homebrew/brew.env` 或 `~/.homebrew/brew.env`，内容为：
+
+```env
+HOMEBREW_API_DOMAIN=https://mirrors.cernet.edu.cn/homebrew-bottles/api
+HOMEBREW_BOTTLE_DOMAIN=https://mirrors.cernet.edu.cn/homebrew-bottles
+HOMEBREW_BREW_GIT_REMOTE=https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+HOMEBREW_CORE_GIT_REMOTE=https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+HOMEBREW_PIP_INDEX_URL=https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+```
+
+恭喜你！Homebrew 已经设置完成，现在你可以自由安装多数软件了！
 
 ## 使用 Homebrew 安装软件
 
